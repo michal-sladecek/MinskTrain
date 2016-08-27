@@ -4,13 +4,14 @@ import babel from 'gulp-babel'
 import path from 'path'
 import bg from 'gulp-bg'
 import eslint from 'gulp-eslint'
+import mocha from 'gulp-mocha'
 
 
 gulp.task('default', ['server'])
 
 gulp.task('server', (done) => {
-    const bwPath = './node_modules/.bin/babel-watch'
-    bg(bwPath, './server/server.js')(done)
+    const bwPath = 'node'
+    bg(bwPath, './devServer.js')(done)
 })
 
 gulp.task('eslint', () => {
@@ -21,4 +22,13 @@ gulp.task('eslint', () => {
   ]).pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
+})
+
+
+gulp.task('test', () => {
+  return gulp.src(['test/*.js'])
+    .pipe(mocha({
+      compilers: {js: babel},
+      reporter: 'spec',
+    }))
 })
