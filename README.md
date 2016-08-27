@@ -1,0 +1,2 @@
+# MinskTrain
+Educational game
