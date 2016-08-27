@@ -1,0 +1,36 @@
+{
+  "name": "minsk-train",
+  "version": "1.0.0",
+  "description": "Educational game",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-node6": "^11.0.0",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-watch": "^2.0.2",
+    "check-dependencies": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-bg": "0.0.8",
+    "gulp-eslint": "^3.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misoxxx/MinskTrain.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misoxxx/MinskTrain/issues"
+  },
+  "homepage": "https://github.com/misoxxx/MinskTrain#readme"
+}
