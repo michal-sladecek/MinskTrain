@@ -1,14 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
-import css from './styles/style.styl';
+import css from './styles/style.styl'
 
-const App = (
-            <div>
-                <h1>
-                    Welcome to this page
-                </h1>
-            </div>
-        )
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import store, { history } from './store'
 
-console.log("Here")
-render(App, document.getElementById('root'))
+import testing from './components/testing'
+const router = (
+    <Provider store={store}>
+        <Router history={history}>
+            <Route path="/" component={testing}>
+          {/*  <IndexRoute component={testing}></IndexRoute> */}
+            </Route>
+        </Router>
+    </Provider>
+)
+
+render(router, document.getElementById('root'))

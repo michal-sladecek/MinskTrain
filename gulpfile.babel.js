@@ -10,8 +10,8 @@ import mocha from 'gulp-mocha'
 gulp.task('default', ['server'])
 
 gulp.task('server', (done) => {
-    const bwPath = 'node'
-    bg(bwPath, './devServer.js')(done)
+    const bwPath = './node_modules/.bin/babel-watch'
+    bg(bwPath, 'devServer.js')(done)
 })
 
 gulp.task('eslint', () => {
