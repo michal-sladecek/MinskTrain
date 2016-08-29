@@ -6,12 +6,15 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import store, { history } from './store'
 
-import testing from './components/testing'
+import Menu from './components/Menu.js'
+import Game from './components/Game.js'
+import App from './containers/App.js'
 const router = (
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={testing}>
-          {/*  <IndexRoute component={testing}></IndexRoute> */}
+            <Route path="/" component={App}>
+                <IndexRoute component={Menu}/>
+                <Route path="/game/:level" component={Game}/>
             </Route>
         </Router>
     </Provider>
