@@ -1,13 +1,33 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
-const game = React.createClass({
+import {Row, Col} from 'react-bootstrap'
+import Train from './Train'
+import ToolBox from './ToolBox'
+import GameGrid from './GameGrid'
+import LevelDescription from './LevelDescription'
+const Game = React.createClass({
     render(){
         return (
             <div>
-            <NotImplemented name='Game'/>
+                <Row>
+                    <Col md='10' mdOffset='1'>
+                        <Train {...this.props}/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md='1' mdOffset='1'>
+                        <ToolBox/>
+                    </Col>
+                    <Col md='7'>
+                        <GameGrid/>
+                    </Col>
+                    <Col md='2'>
+                        <LevelDescription/>
+                    </Col>
+                </Row>
             </div>
         )
     }
 })
 
-export default game
+export default Game

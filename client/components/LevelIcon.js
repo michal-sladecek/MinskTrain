@@ -5,10 +5,9 @@ const LevelIcon = React.createClass({
     render() {
         return (
             <Link to={`/game/${this.props.level.id}`}>
-            <div className='level-icon'>
-                
-                    <p>{this.props.level.objective}</p>
-                
+            <div className='level-icon'>  
+                    <h2>Level {this.props.level.id}</h2>     
+                    <p>{this.props.level.objective}</p>     
             </div>
             </Link>
         )

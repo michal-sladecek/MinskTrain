@@ -1,13 +1,13 @@
 import React from 'react'
-const main = React.createClass({
+const Main = React.createClass({
     render() {
         return (
             <div>
-                <h1>Misnkeho vlaciky</h1>
+                <h1>Minskeho vlaciky</h1>
                 {React.cloneElement(this.props.children, this.props) }
             </div>
         )
     }
 })
 
-export default main
+export default Main
