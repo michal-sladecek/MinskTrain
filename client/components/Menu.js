@@ -10,13 +10,17 @@ const LevelRow = React.createClass({
         const levels = this.props.levels
         console.log(levels)
         return (
+            
             <div className='levels-row'>
+                <Col md={2}/>
                 {
                     levels.map((object, i) => {
-                        return <Col md={3} key={i}><LevelIcon key={i} level={levels[i]} {...this.props}/></Col>
+                        return <Col md={2} key={i}><LevelIcon key={i} level={levels[i]} {...this.props}/></Col>
                     })
                 }
+                <Col md={2}/>
             </div>
+             
         )
     }
 })
