@@ -5,6 +5,7 @@ import Main from '../components/Main';
 function mapStateToProps(state) {
   return {
     levels: state.levels,
+    tools: state.tools
   }
 }
 

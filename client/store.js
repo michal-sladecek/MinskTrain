@@ -5,8 +5,10 @@ import { browserHistory } from 'react-router'
 import rootReducer from './reducers/root'
 
 import levels from './data/levels'
+import tools from './data/tools'
 const defaultState = {
-    levels
+    levels,
+    tools
 }
 const store = createStore(rootReducer, defaultState, window.devToolsExtension && window.devToolsExtension());
 
