@@ -8,12 +8,12 @@ const Train = React.createClass({
         for(var i=0;i<11;++i){
             vagons.push(
                 <Col md={1} key={i}>
-                    <Carriage key={11-i} id={11-i}/>
+                    <Carriage key={11-i} id={11-i} {...this.props}/>
                 </Col>)
         }
         vagons.push(
                 <Col md={1} key={12}>
-                    <Locomotive/>
+                    <Locomotive {...this.props}/>
                 </Col>)
         return (
             <div className='Train'>
