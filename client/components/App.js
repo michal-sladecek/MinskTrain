@@ -1,13 +1,13 @@
 import React from 'react'
-const Main = React.createClass({
+import NotImplemented from './NotImplemented'
+const App = React.createClass({
     render() {
         return (
-            <div>
+            <div className='App'>
                 <h1>Minskeho vlaciky</h1>
                 {this.props.children}
             </div>
         )
     }
 })
-
-export default Main
+export default App

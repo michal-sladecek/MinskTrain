@@ -7,7 +7,7 @@ const Carriage = React.createClass({
         return (
             <div className='Carriage'>
                 <p>{indexChar}</p>
-                <FormControl
+                <FormControl readOnly
                     bsSize="sm"
                     type="text"
                     value="0"

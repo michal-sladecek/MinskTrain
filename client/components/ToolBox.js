@@ -1,34 +1,32 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
 import {DropdownButton, MenuItem} from 'react-bootstrap'
-const ToolBox = React.createClass({
-    render() {
-        let groups = this.props.tools.tools
-        let toolGroups = groups.map((toolGroup, id) => {
-            return <ToolGroup key={id} id={id} toolGroup={toolGroup}/>
+import {changeTool} from '../actions/toolActions'
+
+const ToolBox = ({groups, current} ) => {
+        let toolGroups = groups.map((toolGroup, i) => {
+            return <ToolGroup key={i} groupId={i} toolGroup={toolGroup}/>
         })
-        let ct=this.props.tools.currentTool
 
         return (
             <div className='ToolBox'>
-                <img className='currentTool' src={groups[ct.group][ct.index].img}/>
+                <img className='currentTool' src={groups[current.group][current.index].img}/>
                {toolGroups}
             </div>
         )
-    }
-})
+}
 
 const ToolGroup = React.createClass({
     render() {
         const title = (<img src={this.props.toolGroup[0].img}/>)
+
         return (
             <div className='ToolIcon'>
-                <DropdownButton title={title}>
+                <DropdownButton id='nestresuj' title={title}>
                     {
                         this.props.toolGroup.map((tool, i) => {
-                            return (<MenuItem key={i}>
-                                        <ToolIcon key={i} id={i} tool={tool}/>
-                                    </MenuItem>
+                            return (
+                                <ToolIcon key={i} id={i} tool={tool}/>
                             )
                         })
                     }
@@ -38,12 +36,19 @@ const ToolGroup = React.createClass({
     }
 })
 const ToolIcon = React.createClass({
+    handleClick(e){
+        console.log("Handling event")
+        e.preventDefault()
+    },
     render() {
         return (
             <div className='ToolIcon'>
-                <img src={this.props.tool.img} title={this.props.tool.id}/>
+               <MenuItem onClick={this.handleClick}>
+                    <img src={this.props.tool.img} title={this.props.tool.id}/>
+                </MenuItem>
             </div>
         )
     }
 })
+
 export default ToolBox

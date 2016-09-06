@@ -15,7 +15,7 @@ const LevelRow = React.createClass({
                 <Col md={2}/>
                 {
                     levels.map((object, i) => {
-                        return <Col md={2} key={i}><LevelIcon key={i} level={levels[i]} {...this.props}/></Col>
+                        return <Col md={2} key={i}><LevelIcon key={i} level={levels[i]}/></Col>
                     })
                 }
                 <Col md={2}/>
@@ -25,20 +25,18 @@ const LevelRow = React.createClass({
     }
 })
 
-const Menu = React.createClass({
-    render() {
-        let levelsDivided = divideArray(this.props.levels.levels.slice(0),4)
+const Menu = ({ levels }) => {
+        let levelsDivided = divideArray(levels.slice(0),4)
         return (
             <div className='levels-grid'>
                 {
                     levelsDivided.map((object, i) => {
-                        return <Row key={i}><LevelRow key={i} { ...this.props} levels={levelsDivided[i]} /></Row>
+                        return <Row key={i}><LevelRow key={i} levels={levelsDivided[i]} /></Row>
                     })
                 }
             </div>
         )
-    }
-})
+}
 
 
 

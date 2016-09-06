@@ -1,5 +1,12 @@
+import {CHANGE_TOOL} from '../consts/actions'
+
 const tools = (state=[], action) => {
-    return state
+    console.log(state)
+    console.log(action)
+    switch(action.type){
+        default:
+            return state
+    }
 }
 
 export default tools
