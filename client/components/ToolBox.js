@@ -1,11 +1,10 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
 import {DropdownButton, MenuItem} from 'react-bootstrap'
-import {changeTool} from '../actions/toolActions'
 
-const ToolBox = ({groups, current} ) => {
+const ToolBox = ({groups, current, changeTool}) => {
         let toolGroups = groups.map((toolGroup, i) => {
-            return <ToolGroup key={i} groupId={i} toolGroup={toolGroup}/>
+            return <ToolGroup key={i} groupId={i} toolGroup={toolGroup} changeTool={changeTool}/>
         })
 
         return (
@@ -22,11 +21,11 @@ const ToolGroup = React.createClass({
 
         return (
             <div className='ToolIcon'>
-                <DropdownButton id='nestresuj' title={title}>
+                <DropdownButton id='nestresuj' title={title} noCaret>
                     {
                         this.props.toolGroup.map((tool, i) => {
                             return (
-                                <ToolIcon key={i} id={i} tool={tool}/>
+                                <ToolIcon key={i} id={i} groupId={this.props.groupId} tool={tool} changeTool={this.props.changeTool}/>
                             )
                         })
                     }
@@ -37,8 +36,7 @@ const ToolGroup = React.createClass({
 })
 const ToolIcon = React.createClass({
     handleClick(e){
-        console.log("Handling event")
-        e.preventDefault()
+        this.props.changeTool(this.props.groupId, this.props.id)
     },
     render() {
         return (

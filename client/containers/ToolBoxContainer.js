@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
+import {bindActionCreators} from 'redux'
 import ToolBox from '../components/ToolBox'
+import * as actionCreators from '../actions/toolActions'
 
 const mapStateToProps = (state) => {
   return {
@@ -8,7 +10,11 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actionCreators, dispatch)
+}
+
 const ToolBoxContainer = connect(
-  mapStateToProps)(ToolBox)
+  mapStateToProps,mapDispatchToProps)(ToolBox)
 
 export default ToolBoxContainer

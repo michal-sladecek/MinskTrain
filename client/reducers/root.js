@@ -1,5 +1,5 @@
 import levels from './levels'
-import tools from './levels'
+import tools from './tools'
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
