@@ -1,5 +1,6 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
+import {DropdownButton, MenuItem} from 'react-bootstrap'
 const ToolBox = React.createClass({
     render() {
         let groups = this.props.tools.tools
@@ -19,20 +20,28 @@ const ToolBox = React.createClass({
 
 const ToolGroup = React.createClass({
     render() {
+        const title = (<img src={this.props.toolGroup[0].img}/>)
         return (
             <div className='ToolIcon'>
-
-                <img src={this.props.toolGroup[0].img}/>
+                <DropdownButton title={title}>
+                    {
+                        this.props.toolGroup.map((tool, i) => {
+                            return (<MenuItem key={i}>
+                                        <ToolIcon key={i} id={i} tool={tool}/>
+                                    </MenuItem>
+                            )
+                        })
+                    }
+                </DropdownButton>
             </div>
         )
     }
 })
-
 const ToolIcon = React.createClass({
     render() {
         return (
             <div className='ToolIcon'>
-                <NotImplemented name='ToolIcon'/>
+                <img src={this.props.tool.img} title={this.props.tool.id}/>
             </div>
         )
     }
