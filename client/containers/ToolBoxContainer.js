@@ -5,8 +5,8 @@ import * as actionCreators from '../actions/toolActions'
 
 const mapStateToProps = (state) => {
   return {
-      groups: state.tools.tools,
-      current: state.tools.currentTool
+      groups: state.game.tools,
+      current: state.game.currentTool
   }
 }
 

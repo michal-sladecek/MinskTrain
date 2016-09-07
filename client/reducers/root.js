@@ -1,8 +1,7 @@
-import levels from './levels'
-import tools from './tools'
+import game from './game'
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-const rootReducer = combineReducers({levels, tools, routing: routerReducer });
+const rootReducer = combineReducers({game, routing: routerReducer });
 
 export default rootReducer

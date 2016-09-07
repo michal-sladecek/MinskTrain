@@ -39,8 +39,6 @@ const ToolIcon = React.createClass({
     },
     
     render() {
-        console.log(this.props.groupId)
-        console.log(this.props.id)
         return (
             <div className='ToolIcon'>
                <MenuItem onClick={this.handleClick}>

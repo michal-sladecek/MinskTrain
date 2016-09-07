@@ -3,7 +3,7 @@ import Menu from '../components/Menu'
 
 const mapStateToProps = (state) => {
   return {
-      levels: state.levels.levels
+      levels: state.game.levels
   }
 }
 

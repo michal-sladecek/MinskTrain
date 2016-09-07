@@ -1,7 +1,15 @@
 //  U
 // L R 
 //  D
-const tools = {
+import levelsDefault from './levels'
+let map = []
+for(let i=0;i<15;++i){
+    map.push([])
+    for(let j=0;j<20;j++){
+        map[i].push(null)
+    }
+}
+const defaultGame = {
     tools: [
         [
             {
@@ -10,6 +18,22 @@ const tools = {
             },
             {
                 id: 'UD',
+                img: '/static/img/UDRail.jpg'
+            },
+            {
+                id: 'RU',
+                img: '/static/img/LRrail.jpg'
+            },
+            {
+                id: 'UL',
+                img: '/static/img/UDRail.jpg'
+            },
+            {
+                id: 'LD',
+                img: '/static/img/LRrail.jpg'
+            },
+            {
+                id: 'DR',
                 img: '/static/img/UDRail.jpg'
             }
         ],
@@ -41,7 +65,9 @@ const tools = {
     currentTool: {
         group: 0,
         index: 0
-    }
+    },
+    map: map,
+    levels: levelsDefault
 }
 
-export default tools
+export default defaultGame

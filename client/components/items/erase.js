@@ -13,3 +13,12 @@ export const Erase = React.createClass({
         )
     }
 })
+
+export const Nothing = React.createClass({
+    render() {
+        return (
+            <svg width='40' height='40'>
+            </svg>
+        )
+    }
+})

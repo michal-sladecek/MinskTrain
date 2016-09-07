@@ -32,4 +32,42 @@ export const UDrails = React.createClass({
     }
 })
 
+export const RUrails = React.createClass({
+    render() {
+        let transform=''
+        if(this.props.transform){
+            transform=this.props.transform
+        }
+        const style = {'fill':'none','stroke': 'rgb(0,0,0)','strokeWidth': '2' }
+        return (
+            <svg width='40' height='40'>
+            <g transform = {this.props.transform}>
+                <path d="M40 15 Q 25 15 25 0" style={style}/>
+                <path d="M40 25 Q 15 25 15 0" style={style}/>
+            </g>
+            </svg>
+        )
+    }
+})
 
+export const ULrails = React.createClass({
+    render() {
+        return (
+            <RUrails transform='rotate(90 20 20)'/>
+        )
+    }
+})
+export const LDrails = React.createClass({
+    render() {
+        return (
+            <RUrails transform='rotate(180 20 20)'/>
+        )
+    }
+})
+export const DRrails = React.createClass({
+    render() {
+        return (
+            <RUrails transform='rotate(270 20 20)'/>
+        )
+    }
+})

@@ -1,7 +1,6 @@
-import toolGroups from '../consts/items'
+import toolGroups from '../../consts/items'
 
-const levels = {
-    'levels': [
+const levelsDefault =  [
         {
             'id': 0,
             'objective': 'Pripocitaj jedna k prvemu vagonu',
@@ -39,6 +38,5 @@ const levels = {
             'allowed': [toolGroups.RAILS, toolGroups.ADD_ONE, toolGroups.SUB_ONE, toolGroups.SWITCHES]
         }
     ]
-}
 
-export default levels
+export default levelsDefault

@@ -1,11 +1,21 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
-const Tile = React.createClass({
-    render() {
-        return (
-            <div className='Tile'>
-            </div>
-        )
+import items from './items/items'
+const Tile = ({coord, show, useTool}) => {
+    let tileImg=[]
+    if(show){
+        tileImg=items[show.group][show.index]
     }
-})
+    function onclick(e){
+        e.preventDefault()
+        useTool(coord)
+    }
+    return (
+        <div className='Tile' onClick={onclick}>
+            {
+                tileImg
+            }
+        </div>
+    )
+}
 export default Tile
