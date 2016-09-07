@@ -1,24 +1,23 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
-import {DropdownButton, MenuItem} from 'react-bootstrap'
-
+import {DropdownButton, MenuItem, ButtonToolbar} from 'react-bootstrap'
+import items from './items/items'
+import {UDrails} from './items/rails'
 const ToolBox = ({groups, current, changeTool}) => {
         let toolGroups = groups.map((toolGroup, i) => {
-            return <ToolGroup key={i} groupId={i} toolGroup={toolGroup} changeTool={changeTool}/>
+            return <ToolGroup key={i} groupId={i} changeTool={changeTool} toolGroup={toolGroup}/>
         })
-
         return (
             <div className='ToolBox'>
-                <img className='currentTool' src={groups[current.group][current.index].img}/>
-               {toolGroups}
-            </div>
+                    {items[current.group][current.index]}
+                    {toolGroups}
+             </div>
         )
 }
 
 const ToolGroup = React.createClass({
     render() {
-        const title = (<img src={this.props.toolGroup[0].img}/>)
-
+        const title = items[this.props.groupId][0]
         return (
             <div className='ToolGroup'>
                 <DropdownButton id='nestresuj' title={title} noCaret>
@@ -38,11 +37,14 @@ const ToolIcon = React.createClass({
     handleClick(e){
         this.props.changeTool(this.props.groupId, this.props.id)
     },
+    
     render() {
+        console.log(this.props.groupId)
+        console.log(this.props.id)
         return (
             <div className='ToolIcon'>
-               <MenuItem {...this.props} onClick={this.handleClick}>
-                    <img src={this.props.tool.img} title={this.props.tool.id}/>
+               <MenuItem onClick={this.handleClick}>
+                    {items[this.props.groupId][this.props.id]}
                 </MenuItem>
             </div>
         )

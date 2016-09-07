@@ -1,0 +1,35 @@
+import React from 'react'
+
+
+export const LRrails = React.createClass({
+    render() {
+        let transform=''
+        if(this.props.transform){
+            transform=this.props.transform
+        }
+        let tracks = []
+        const style = {'stroke': 'rgb(0,0,0)','strokeWidth': '2' }
+        for(var i=5;i<40;i+=5){
+            tracks.push(<line key={i/5} x1="15" y1={i} x2="25" y2={i} style={style}/> )
+        }
+        return (
+            <svg width='40' height='40'>
+            <g transform = {this.props.transform}>
+                <line x1="15" y1="0" x2="15" y2="40" style={style} />
+                <line x1="25" y1="0" x2="25" y2="40" style={style} />
+                {tracks}
+            </g>
+            </svg>
+        )
+    }
+})
+
+export const UDrails = React.createClass({
+    render() {
+        return (
+            <LRrails transform='rotate(90 20 20)'/>
+        )
+    }
+})
+
+
