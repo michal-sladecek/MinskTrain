@@ -2,7 +2,6 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 const Locomotive = React.createClass({
     render() {
-        let buttons = []
         return (
             <div className='Locomotive'>
                 <Button bsSize='sm' onClick={this.props.play}>
