@@ -1,27 +1,40 @@
-import {CHANGE_TOOL, USE_TOOL} from '../consts/actions'
+import {CHANGE_TOOL, USE_TOOL, CHANGE_NUMBER} from '../consts/actions'
 import defaultGame from './data/game'
 
 const game = (state=defaultGame, action) => {
-    console.log(state)
-    console.log(action)
     switch(action.type){
         case USE_TOOL:
-            let newState = Object.assign({}, state)
-            console.log(newState)
-            if(state.tools[state.currentTool.group][state.currentTool.index].id === 'ERASER'){
-                newState.map[action.coord.x][action.coord.y] = undefined
+            const x = action.coord.x
+            const y = action.coord.y
+            if(state.currentTool === 'ERASER'){
+                return {
+                    ...state,
+                    map: [...state.map.slice(0, action.coord.x),
+                        [
+                            ...state.map[x].slice(0,action.coord.y),
+                            null,
+                            ...state.map[x].slice(action.coord.y+1)
+                        ], ...state.map.slice(action.coord.x+1)]
+                }
             }else{
-                newState.map[action.coord.x][action.coord.y] = state.currentTool
+                return {
+                    ...state,
+                    map: [...state.map.slice(0, action.coord.x),
+                        [
+                            ...state.map[x].slice(0,action.coord.y),
+                            {type: state.currentTool},
+                            ...state.map[x].slice(action.coord.y+1)
+                        ], ...state.map.slice(action.coord.x+1)]
+                }
             }
             return newState
         case CHANGE_TOOL:
             return {
                 ...state,
-                currentTool:{
-                    group: action.group,
-                    index: action.id
-                }
+                currentTool: action.toolId
             }
+        case CHANGE_NUMBER:
+
         default:
             return state
     }

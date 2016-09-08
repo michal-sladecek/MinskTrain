@@ -9,65 +9,20 @@ for(let i=0;i<15;++i){
         map[i].push(null)
     }
 }
+let carriage = Array.apply(null, Array(12)).map(function () { return 0; })
 const defaultGame = {
-    tools: [
-        [
-            {
-                id: 'LR',
-                img: '/static/img/LRrail.jpg'
-            },
-            {
-                id: 'UD',
-                img: '/static/img/UDRail.jpg'
-            },
-            {
-                id: 'RU',
-                img: '/static/img/LRrail.jpg'
-            },
-            {
-                id: 'UL',
-                img: '/static/img/UDRail.jpg'
-            },
-            {
-                id: 'LD',
-                img: '/static/img/LRrail.jpg'
-            },
-            {
-                id: 'DR',
-                img: '/static/img/UDRail.jpg'
-            }
-        ],
-        [
-            {
-                id: 'DRU',
-                img: '/static/img/DRU.jpg'
-            },
-            {
-                id: 'LDR',
-                img: '/static/img/LDR.jpg'
-            },
-            {
-                id: 'RUL',
-                img: '/static/img/RUL.jpg'
-            },
-            {
-                id: 'ULD',
-                img: '/static/img/ULD.jpg'
-            }
-        ],
-        [
-            {
-                id: 'ERASER',
-                img: '/static/img/erase.jpg'
-            }
-        ],
-    ],
-    currentTool: {
-        group: 0,
-        index: 0
+    tools: {
+        'rails': ['LR', 'UD', 'RU', 'UL', 'LD', 'DR'],
+        'switches': ['DRU','LDR','RUL','ULD'],
+        'helpers': ['ERASER'],
     },
+    currentTool: 'LR',
     map: map,
-    levels: levelsDefault
+    levels: levelsDefault,
+    train:{
+        carriage
+    }
+
 }
 
 export default defaultGame

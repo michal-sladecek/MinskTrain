@@ -6,9 +6,7 @@ import {divideArray} from '../functions/helpers'
 
 const LevelRow = React.createClass({
     render() {
-        console.log(this.props)
         const levels = this.props.levels
-        console.log(levels)
         return (
             
             <div className='levels-row'>

@@ -1,10 +1,9 @@
 import {CHANGE_TOOL, USE_TOOL} from '../consts/actions.js'
 
-export function changeTool(group, id){
+export function changeTool(toolId){
     return {
         type: CHANGE_TOOL,
-        group: group,
-        id: id
+        toolId
     }
 }
 

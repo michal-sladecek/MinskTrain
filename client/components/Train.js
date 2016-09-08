@@ -1,6 +1,6 @@
 import React from 'react'
 import Locomotive from './Locomotive'
-import Carriage from './Carriage'
+import CarriageContainer from '../containers/CarriageContainer'
 import {Col} from 'react-bootstrap'
 const Train = React.createClass({
     render(){
@@ -8,7 +8,7 @@ const Train = React.createClass({
         for(var i=0;i<11;++i){
             vagons.push(
                 <Col md={1} key={i}>
-                    <Carriage key={11-i} id={11-i}/>
+                    <CarriageContainer key={11-i} id={11-i}/>
                 </Col>)
         }
         vagons.push(

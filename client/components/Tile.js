@@ -4,7 +4,7 @@ import items from './items/items'
 const Tile = ({coord, show, useTool}) => {
     let tileImg=[]
     if(show){
-        tileImg=items[show.group][show.index]
+        tileImg=items[show.type]
     }
     function onclick(e){
         e.preventDefault()
