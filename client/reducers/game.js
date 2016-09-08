@@ -1,9 +1,9 @@
-import {CHANGE_TOOL, USE_TOOL, CHANGE_NUMBER} from '../consts/actions'
+import * as actions from '../consts/actions'
 import defaultGame from './data/game'
 
 const game = (state=defaultGame, action) => {
     switch(action.type){
-        case USE_TOOL:
+        case actions.USE_TOOL:
             const x = action.coord.x
             const y = action.coord.y
             if(state.currentTool === 'ERASER'){
@@ -28,12 +28,12 @@ const game = (state=defaultGame, action) => {
                 }
             }
             return newState
-        case CHANGE_TOOL:
+        case actions.CHANGE_TOOL:
             return {
                 ...state,
                 currentTool: action.toolId
             }
-        case CHANGE_NUMBER:
+        case actions.CHANGE_NUMBER:
             let number = parseInt(action.num)
             if(isNaN(number)){
                 return Object.assign({},state)
@@ -52,6 +52,16 @@ const game = (state=defaultGame, action) => {
                     ]
                 }
             }
+        case actions.PLAY:
+             return {...state, playing: 'running'}
+        case actions.FORWARD:
+            return {...state, playing: 'forwarding'}
+        case actions.FAST:
+            return {...state, playing: 'fast'}
+        case actions.PAUSE:
+            return {...state, playing: 'paused'}
+        case actions.STOP:
+            return {...state, playing: 'stopped'}
         default:
             return state
     }

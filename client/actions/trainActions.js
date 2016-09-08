@@ -1,9 +1,34 @@
-import {CHANGE_NUMBER} from '../consts/actions'
+import * as actions from '../consts/actions'
 export function changeNumber(vagon, num){
     return {
-        type: CHANGE_NUMBER,
+        type: actions.CHANGE_NUMBER,
         vagon,
-        num,
+        num
     }
 }
 
+export function play(){
+    return {
+        type: actions.PLAY
+    }
+}
+export function forward(){
+    return {
+        type: actions.FORWARD
+    }
+}
+export function fast(){
+    return {
+        type: actions.FAST
+    }
+}
+export function pause(){
+    return {
+        type: actions.PAUSE
+    }
+}
+export function stop(){
+    return {
+        type: actions.STOP
+    }
+}

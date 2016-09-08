@@ -21,8 +21,8 @@ const defaultGame = {
     levels: levelsDefault,
     train:{
         carriage
-    }
-
+    },
+    playing: 'stopped'
 }
 
 export default defaultGame

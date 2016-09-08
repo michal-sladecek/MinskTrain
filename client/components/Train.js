@@ -1,5 +1,5 @@
 import React from 'react'
-import Locomotive from './Locomotive'
+import LocomotiveContainer from '../containers/LocomotiveContainer'
 import CarriageContainer from '../containers/CarriageContainer'
 import {Col} from 'react-bootstrap'
 const Train = React.createClass({
@@ -13,7 +13,7 @@ const Train = React.createClass({
         }
         vagons.push(
                 <Col md={1} key={12}>
-                    <Locomotive/>
+                    <LocomotiveContainer/>
                 </Col>)
         return (
             <div className='Train'>
