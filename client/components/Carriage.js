@@ -1,22 +1,34 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
-import {FormControl} from 'react-bootstrap'
-const Carriage = ({id, num, changeNumber} ) => {
-        const handler = (e) => {
-            changeNumber(id,e.target.value)
+import {Button, Modal} from 'react-bootstrap'
+const Carriage = React.createClass({
+    getInitialState: function() {
+        return { show: false };
+    },
+    render(){
+        let indexChar = String.fromCharCode(this.props.id+64)
+        const submit = (e) => {
+            e.preventDefault()
+            this.props.changeNumber(this.props.id, e.target.getElementsByTagName("input")[0].value)
+            hideModal()
         }
-        let indexChar = String.fromCharCode(id+64)
+        const showModal = (e) => {
+            this.setState({ show: true })
+        }
+        const hideModal = (e) => {
+            this.setState({ show: false })
+        }
         return (
             <div className='Carriage'>
                 <p>{indexChar}</p>
-                <FormControl
-                    bsSize="sm"
-                    type="text"
-                    value={num}
-                    onKeyPress={handler}
-                    onChange={handler}
-                />
+                <Button bsSize="lg" onClick={showModal}>{this.props.num}</Button>
+                <Modal show={this.state.show} onHide={hideModal}>
+                    <form onSubmit={submit}>
+                        <input type='text' placeholder='Enter new number' autoFocus/>
+                    </form>
+                </Modal>
             </div>
         )
-}
+    }
+})
 export default Carriage

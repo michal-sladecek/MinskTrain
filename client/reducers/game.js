@@ -34,7 +34,24 @@ const game = (state=defaultGame, action) => {
                 currentTool: action.toolId
             }
         case CHANGE_NUMBER:
-
+            let number = parseInt(action.num)
+            if(isNaN(number)){
+                return Object.assign({},state)
+            }
+            if(number > 99 || number < 0){
+                return Object.assign({},state)
+            }
+            return {
+                ...state,
+                train:{
+                    ...state.train,
+                    carriage: [
+                    ...state.train.carriage.slice(0, action.vagon),
+                    number,
+                    ...state.train.carriage.slice(action.vagon + 1)
+                    ]
+                }
+            }
         default:
             return state
     }
