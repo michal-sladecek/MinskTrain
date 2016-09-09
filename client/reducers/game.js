@@ -22,7 +22,7 @@ const game = (state=defaultGame, action) => {
                     map: [...state.map.slice(0, action.coord.x),
                         [
                             ...state.map[x].slice(0,action.coord.y),
-                            {type: state.currentTool},
+                            {type: state.currentTool, id: 0},
                             ...state.map[x].slice(action.coord.y+1)
                         ], ...state.map.slice(action.coord.x+1)]
                 }
