@@ -1,5 +1,6 @@
 import * as actions from '../consts/actions'
 import defaultGame from './data/game'
+import {getNextNode} from '../../common/compile'
 
 const game = (state=defaultGame, action) => {
     switch(action.type){
@@ -53,7 +54,8 @@ const game = (state=defaultGame, action) => {
                 }
             }
         case actions.PLAY:
-             return {...state, playing: 'running'}
+            console.log(getNextNode(state.map, 'L', {x:0,y:0}))
+            return {...state, playing: 'running'}
         case actions.FORWARD:
             return {...state, playing: 'forwarding'}
         case actions.FAST:

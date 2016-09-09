@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const LRrails = React.createClass({
+export const UDrails = React.createClass({
     render() {
         let transform=''
         if(this.props.transform){
@@ -24,10 +24,10 @@ export const LRrails = React.createClass({
     }
 })
 
-export const UDrails = React.createClass({
+export const LRrails = React.createClass({
     render() {
         return (
-            <LRrails transform='rotate(90 20 20)'/>
+            <UDrails transform='rotate(90 20 20)'/>
         )
     }
 })
@@ -53,7 +53,7 @@ export const RUrails = React.createClass({
 export const ULrails = React.createClass({
     render() {
         return (
-            <RUrails transform='rotate(90 20 20)'/>
+            <RUrails transform='rotate(270 20 20)'/>
         )
     }
 })
@@ -67,7 +67,7 @@ export const LDrails = React.createClass({
 export const DRrails = React.createClass({
     render() {
         return (
-            <RUrails transform='rotate(270 20 20)'/>
+            <RUrails transform='rotate(90 20 20)'/>
         )
     }
 })
