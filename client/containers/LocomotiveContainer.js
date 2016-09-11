@@ -5,7 +5,7 @@ import * as actionCreators from '../actions/trainActions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    playing: state.playing
+    playing: state.game.playing
   }
 }
 

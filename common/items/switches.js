@@ -41,7 +41,7 @@ export const RULswitch = {
                 else    
                     return 'U'
             case 'U': return 'R'
-            case 'R': return 'R'
+            case 'L': return 'R'
             default: return 'BAD_OPERATION'
         }
     }

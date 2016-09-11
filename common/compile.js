@@ -57,7 +57,7 @@ export const processNode = (station, direction, train, changeNumber) => {
 }
 
 export const processToNextNode = (map, direction, train, changeNumber, coord) => {
-    if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
+    if(coord.x < 0 || coord.y < 0 || coord.x >= map.length || coord.y >= map[coord.x].length){
         return {coord: {x:curx, y:cury}, animationStr, direction, ending: true}
     }
     if(map[coord.x][coord.y]){

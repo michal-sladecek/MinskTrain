@@ -6,7 +6,7 @@ const Carriage = React.createClass({
         return { show: false };
     },
     render(){
-        let indexChar = String.fromCharCode(this.props.id+64)
+        let indexChar = String.fromCharCode(this.props.id+65)
         const submit = (e) => {
             e.preventDefault()
             this.props.changeNumber(this.props.id, e.target.getElementsByTagName("input")[0].value)

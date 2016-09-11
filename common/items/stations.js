@@ -41,7 +41,7 @@ export const LRMinusOne = {
                 return 'R'
             case 'R':
                 changeNum(id,vagons[id]-1)
-                return 'D'
+                return 'L'
             default:
                 return 'BAD_OPERATION'
         }

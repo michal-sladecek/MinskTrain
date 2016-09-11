@@ -8,7 +8,7 @@ const Train = React.createClass({
         for(var i=0;i<11;++i){
             vagons.push(
                 <Col md={1} key={i}>
-                    <CarriageContainer key={11-i} id={11-i}/>
+                    <CarriageContainer key={10-i} id={10-i}/>
                 </Col>)
         }
         vagons.push(

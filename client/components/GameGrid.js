@@ -1,5 +1,6 @@
 import React from 'react'
 import TileContainer from '../containers/TileContainer'
+import AnimationContainer from '../containers/AnimationContainer'
 import NotImplemented from './NotImplemented'
 const GameGrid = React.createClass({
     render() {
@@ -11,16 +12,13 @@ const GameGrid = React.createClass({
             }
             rows.push(<div className='TileRow' key={i}>{row}</div>)
         }
+        //RDRRDLLLUL
         return (
            <div >
             <div className='grid'>
             {rows}
             </div>
-            <div className='animationSvg'>
-                <svg width="840" height="630">
-                    <line x1="0" y1="0" x2="840" y2="630" style={{'stroke': 'rgb(255,0,0)','strokeWidth': '2' }}/> 
-                </svg>
-            </div>           
+            <AnimationContainer/>          
            </div>
         )
     }

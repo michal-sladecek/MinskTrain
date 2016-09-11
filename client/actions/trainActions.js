@@ -7,6 +7,11 @@ export function changeNumber(vagon, num){
     }
 }
 
+export function station(){
+    return {
+        type: actions.STATION,
+    }
+}
 export function play(){
     return {
         type: actions.PLAY
