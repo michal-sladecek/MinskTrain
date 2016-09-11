@@ -4,6 +4,7 @@
 import React from 'react'
 import {LRrails, UDrails, RUrails, ULrails, LDrails, DRrails} from './rails'
 import {DRUswitch, LDRswitch, RULswitch, ULDswitch} from './switches'
+import {UDPlusOne, LRPlusOne} from './stations'
 import {Nothing} from './helpers'
 const  items = {
     'LR': LRrails,
@@ -16,6 +17,8 @@ const  items = {
     'LDR': LDRswitch,
     'RUL': RULswitch,
     'ULD': ULDswitch,
+    'LRPLUSONE': LRPlusOne,
+    'UDPLUSONE': UDPlusOne,
     'NOTHING': Nothing
 }
 export default items

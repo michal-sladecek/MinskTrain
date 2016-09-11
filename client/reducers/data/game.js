@@ -15,6 +15,7 @@ const defaultGame = {
         'rails': ['LR', 'UD', 'RU', 'UL', 'LD', 'DR'],
         'switches': ['DRU','LDR','RUL','ULD'],
         'helpers': ['ERASER'],
+        'stations': ['UDPLUSONE', 'LRPLUSONE']
     },
     currentTool: 'LR',
     map: map,

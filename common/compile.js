@@ -7,6 +7,13 @@ const directionsRev = {
     'L' : 'R'
 }
 
+const directions = {
+    'U' : {x:-1, y:0},
+    'D' : {x:1, y:0},
+    'R' : {x:0, y:1},
+    'L' : {x:0, y:-1}
+}
+
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y
@@ -15,22 +22,11 @@ export const getNextNode = (map, direction, coord) => {
         let cur = map[curx][cury].type  
         while(cur && items[cur].type != 'node'){     
             direction = items[cur].action(direction)
-            switch(direction){
-                case 'U':
-                    curx -= 1
-                    break
-                case 'D':
-                    curx += 1
-                    break
-                case 'R':
-                    cury += 1
-                    break
-                case 'L':
-                    cury -= 1
-                    break
-                case 'BAD_OPERATION':
-                    return {error:'BAD_OPERATION', animationStr}
+            if(direction == 'BAD_OPERATION'){
+                return {error:'BAD_OPERATION', animationStr} 
             }
+            curx += directions[direction].x
+            cury += directions[direction].y
             animationStr +=direction
             direction = directionsRev[direction]
             if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
@@ -55,4 +51,25 @@ export const getNextNode = (map, direction, coord) => {
 //
 export const processNode = (station, direction, train, changeNumber) => {
     return items[station.type].action(direction, train, station.id, changeNumber)
+}
+
+export const processToNextNode = (map, direction, train, changeNumber, coord) => {
+    if(map[coord.x][coord.y]){
+        const station = map[coord.x][coord.y]
+        if(items[station.type].type == 'node'){
+            let dir = processNode(station, direction, train, changeNumber)
+            if(dir == 'BAD_OPERATION') return 'BAD_OPERATION'
+            let nextNode =  getNextNode(map, directionsRev[dir], 
+                {x:coord.x + directions[dir].x,
+                y:coord.y + directions[dir].y}
+             )
+             nextNode.animationStr = dir + nextNode.animationStr
+             return nextNode
+        }
+        else {
+            return getNextNode(map, direction, coord)
+        }
+    } else{
+        return 'BAD_OPERATION'
+    }
 }

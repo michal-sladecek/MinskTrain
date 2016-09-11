@@ -21,7 +21,7 @@ describe('Helpers', () => {
     })
 })
 
-import {getNextNode, processNode} from '../common/compile'
+import {getNextNode, processNode, processToNextNode} from '../common/compile'
 
 describe('Compile', () => {
     describe('#getNextNode', () => {
@@ -122,5 +122,30 @@ describe('Compile', () => {
             assert.equal("D", processNode(stationUp, 'U', train, (id, num) => {train[id]=num}))
             assert.equal("BAD_OPERATION", processNode(stationUp, 'L', train, (id, num) => {train[id]=num}))
         })
+        it('Should be able to change train numbers', () => {
+            const stationPlusOne = {"type": "LRPLUSONE", "id": 1}
+            assert.equal("R", processNode(stationPlusOne, 'L', train , (id, num) => {train[id]=num}))
+            assert.equal(1,train[1])
+        })
+    })
+    describe('#processToNextNode', () => {
+        //(map, direction, train, changeNumber, coord)
+        const map1 = [[{"type":"LR","id":0},{"type":"LR","id":0},{"type":"LRPLUSONE","id":0},{"type":"LD","id":0},null,null,{"type":"UD","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,{"type":"UD","id":0},null,null,{"type":"UD","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,{"type":"UD","id":0},null,null,{"type":"UD","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,{"type":"RU","id":0},{"type":"LDR","id":0},{"type":"LR","id":0},{"type":"ULD","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,{"type":"UDPLUSONE","id":0},null,{"type":"UD","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,{"type":"RU","id":0},{"type":"LR","id":0},{"type":"UL","id":0},null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]]
+        it('Should return correct values on path and change numbers in train accordingly', () => {
+            let train = [0,0,0]
+            let ret1 = processToNextNode(map1,'L', train, (id,num)=>{train[id]=num}, {x:0,y:0})
+            assert.deepEqual({coord:{x:0,y:2}, direction:"L", animationStr:"RR"}, ret1)
+            let ret2 = processToNextNode(map1, 'L',train, (id,num)=>{train[id]=num}, {x:0,y:2})
+            assert.deepEqual({coord:{x:3,y:4}, direction:"L", animationStr:"RDDDR"}, ret2)
+            assert.deepEqual([1,0,0],train)
+            let ret3 = processToNextNode(map1, 'L',train, (id,num)=>{train[id]=num}, {x:3,y:4})
+            assert.deepEqual({coord:{x:4,y:4}, direction:"U", animationStr:"D"}, ret3)
+            let ret4 = processToNextNode(map1, 'U',train, (id,num)=>{train[id]=num}, {x:4,y:4})
+            assert.deepEqual({coord:{x:3,y:6}, direction:"D", animationStr:"DRRUU"}, ret4)
+            let ret5 = processToNextNode(map1, 'D',train, (id,num)=>{train[id]=num}, {x:3,y:6})
+            assert.deepEqual({coord:{x:-1,y:6}, direction:"D", animationStr:"UUUU"}, ret5)
+            assert.deepEqual([2,0,0], train)
+        })
+
     })
 })
