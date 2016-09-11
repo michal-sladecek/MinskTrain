@@ -2,6 +2,7 @@ import * as actions from '../consts/actions'
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
 
+
 const game = (state=defaultGame, action) => {
     switch(action.type){
         case actions.USE_TOOL:

@@ -15,10 +15,10 @@ const Game = React.createClass({
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={1} mdOffset={1}>
+                    <Col md={1} mdOffset={1} smOffset={0}>
                         <ToolBoxContainer/>
                     </Col>
-                    <Col md={7}>
+                    <Col md={7} sm={8}>
                         <GameGrid/>
                     </Col>
                     <Col md={2}>
