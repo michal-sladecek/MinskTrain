@@ -6,6 +6,7 @@ const directionsRev = {
     'D' : 'U',
     'L' : 'R'
 }
+
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y
@@ -13,9 +14,7 @@ export const getNextNode = (map, direction, coord) => {
     if(map[curx][cury]){   
         let cur = map[curx][cury].type  
         while(cur && items[cur].type != 'node'){     
-            
             direction = items[cur].action(direction)
-            console.log(direction)
             switch(direction){
                 case 'U':
                     curx -= 1
@@ -30,24 +29,30 @@ export const getNextNode = (map, direction, coord) => {
                     cury -= 1
                     break
                 case 'BAD_OPERATION':
-                    return 'BAD_OPERATION'
+                    return {error:'BAD_OPERATION', animationStr}
             }
             animationStr +=direction
             direction = directionsRev[direction]
-            if(curx < 0 || cury < 0 || curx >= 15 || cury >= 20){
-                return {x:-1,y:-1}
+            if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
+                return {coord: {x:curx, y:cury}, animationStr, direction}
             }
             if(map[curx][cury])
                 cur = map[curx][cury].type
             else
-                return 'BAD_OPERATION'
+                return {error:'BAD_OPERATION', animationStr}
         }
         if(!cur){
-            return 'BAD_OPERATION'
+            return {error: 'BAD_OPERATION'}
         } else{
             return {coord: {x:curx, y:cury}, direction, animationStr}
         }
     }else{
-        return 'BAD_OPERATION'
+        return {error: 'BAD_OPERATION'}
     }
+}
+
+//changeNumber(vagon, num) is either dispatcher with action (client) or changing the number in array (server)
+//
+export const processNode = (station, direction, train, changeNumber) => {
+
 }
