@@ -17,6 +17,9 @@ const directions = {
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y
+    if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
+        return {coord: {x:curx, y:cury}, animationStr, direction, ending: true}
+    }
     let animationStr = ''
     if(map[curx][cury]){   
         let cur = map[curx][cury].type  
@@ -30,7 +33,7 @@ export const getNextNode = (map, direction, coord) => {
             animationStr +=direction
             direction = directionsRev[direction]
             if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
-                return {coord: {x:curx, y:cury}, animationStr, direction}
+                return {coord: {x:curx, y:cury}, animationStr, direction, ending: true}
             }
             if(map[curx][cury])
                 cur = map[curx][cury].type
@@ -54,6 +57,9 @@ export const processNode = (station, direction, train, changeNumber) => {
 }
 
 export const processToNextNode = (map, direction, train, changeNumber, coord) => {
+    if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
+        return {coord: {x:curx, y:cury}, animationStr, direction, ending: true}
+    }
     if(map[coord.x][coord.y]){
         const station = map[coord.x][coord.y]
         if(items[station.type].type == 'node'){
