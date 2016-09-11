@@ -21,7 +21,7 @@ describe('Helpers', () => {
     })
 })
 
-import {getNextNode} from '../common/compile'
+import {getNextNode, processNode} from '../common/compile'
 
 describe('Compile', () => {
     describe('#getNextNode', () => {
@@ -108,6 +108,19 @@ describe('Compile', () => {
             assert.deepEqual(dir, "L")
             assert.deepEqual(coord, {x:0, y:0})
             assert.deepEqual(res, expected)
+        })
+    })
+    describe('#processNode', () => {
+        //(station, direction, train, changeNumber
+        let train = [1, 0 ,0 ,0]
+        const stationRight = { "type": "DRU", "id": 0 }
+        const stationUp = {"type": "DRU", "id": 1 }
+        it("Should return correct values for DRU", () => {
+            assert.equal("R", processNode(stationRight, 'D', train , (id, num) => {train[id]=num}))
+            assert.equal("U", processNode(stationUp, 'D', train, (id, num) => {train[id]=num}))
+            assert.equal("D", processNode(stationUp, 'R', train, (id, num) => {train[id]=num}))
+            assert.equal("D", processNode(stationUp, 'U', train, (id, num) => {train[id]=num}))
+            assert.equal("BAD_OPERATION", processNode(stationUp, 'L', train, (id, num) => {train[id]=num}))
         })
     })
 })
