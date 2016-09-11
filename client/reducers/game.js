@@ -5,6 +5,9 @@ import {getNextNode} from '../../common/compile'
 const game = (state=defaultGame, action) => {
     switch(action.type){
         case actions.USE_TOOL:
+            if(state.mode != 'stopped'){
+                return state
+            }
             const x = action.coord.x
             const y = action.coord.y
             if(state.currentTool === 'ERASER'){
@@ -55,15 +58,9 @@ const game = (state=defaultGame, action) => {
             }
         case actions.PLAY:
             console.log(getNextNode(state.map, 'L', {x:0,y:0}))
-            return {...state, playing: 'running'}
-        case actions.FORWARD:
-            return {...state, playing: 'forwarding'}
-        case actions.FAST:
-            return {...state, playing: 'fast'}
-        case actions.PAUSE:
-            return {...state, playing: 'paused'}
+            return {...state, mode: 'running'}
         case actions.STOP:
-            return {...state, playing: 'stopped'}
+            return {...state, mode: 'stopped'}
         default:
             return state
     }

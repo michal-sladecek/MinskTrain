@@ -22,7 +22,7 @@ const defaultGame = {
     train:{
         carriage
     },
-    playing: 'stopped'
+    mode: 'stopped'
 }
 
 export default defaultGame
