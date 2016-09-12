@@ -3,7 +3,7 @@
 
 import React from 'react'
 import {LRrails, UDrails, RUrails, ULrails, LDrails, DRrails} from './rails'
-import {DRUswitch, LDRswitch, RULswitch, ULDswitch} from './switches'
+import {DRUswitch, LDRswitch, RULswitch, ULDswitch, DLUswitch,LURswitch,RDLswitch,URDswitch} from './switches'
 import {UDPlusOne, LRPlusOne, LRMinusOne, UDMinusOne} from './stations'
 import {Nothing} from './helpers'
 const  items = {
@@ -17,6 +17,10 @@ const  items = {
     'LDR': LDRswitch,
     'RUL': RULswitch,
     'ULD': ULDswitch,
+    'DLU': DLUswitch,
+    'LUR': LURswitch,
+    'RDL': RDLswitch,
+    'URD': URDswitch,
     'LRPLUSONE': LRPlusOne,
     'UDPLUSONE': UDPlusOne,
     'LRMINUSONE': LRMinusOne,

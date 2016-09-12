@@ -14,11 +14,10 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 12.-18.
--Create the missing switches                                        E   (V)
 -Refactor reducers/game.js, especially train moving                 M   (V)
 -Animate movement                                                   H   (V)
 -Make ids for switches and stations chosable                        H   (V)
--Add pause functionality                                            M   (O)
+-Fix pause functionality                                            M   (O)
 -Group levels by serie                                              M   (O)
 
 -Add plus/minus/divide stations                                     H   (O)

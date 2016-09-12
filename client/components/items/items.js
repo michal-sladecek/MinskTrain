@@ -1,6 +1,6 @@
 import React from 'react'
 import {LRrails, UDrails, RUrails, ULrails, LDrails, DRrails} from './rails'
-import {DRUswitch, LDRswitch, RULswitch, ULDswitch} from './switches'
+import {DRUswitch, LDRswitch, RULswitch, ULDswitch, DLUswitch, LURswitch, RDLswitch, URDswitch} from './switches'
 import {Erase, Nothing} from './helpers'
 import {UDPlusOne, LRPlusOne, UDMinusOne, LRMinusOne} from './stations'
 const  items = {
@@ -20,6 +20,10 @@ const  items = {
     'LDR': React.createElement(LDRswitch),
     'RUL': React.createElement(RULswitch),
     'ULD': React.createElement(ULDswitch),
+    'DLU': React.createElement(DLUswitch),
+    'LUR': React.createElement(LURswitch),
+    'RDL': React.createElement(RDLswitch),
+    'URD': React.createElement(URDswitch),
     'ERASER': React.createElement(Erase),
     'NOTHING': React.createElement(Nothing),
     'UDPLUSONE': React.createElement(UDPlusOne),

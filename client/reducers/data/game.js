@@ -9,11 +9,12 @@ for(let i=0;i<15;++i){
         map[i].push(null)
     }
 }
+
 let carriage = Array.apply(null, Array(11)).map(function () { return 0; })
 const defaultGame = {
     tools: {
         'rails': ['LR', 'UD', 'RU', 'UL', 'LD', 'DR'],
-        'switches': ['DRU','LDR','RUL','ULD'],
+        'switches': ['DRU','LDR','RUL','ULD', 'DLU', 'LUR', 'RDL', 'URD'],
         'helpers': ['ERASER'],
         'stations': ['UDPLUSONE', 'LRPLUSONE', 'LRMINUSONE', 'UDMINUSONE']
     },
