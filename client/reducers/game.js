@@ -11,6 +11,7 @@ const game = (state=defaultGame, action) => {
             }
             const x = action.coord.x
             const y = action.coord.y
+            const id = action.id.charCodeAt(0) - 65
             if(state.currentTool === 'ERASER'){
                 return {
                     ...state,
@@ -27,7 +28,7 @@ const game = (state=defaultGame, action) => {
                     map: [...state.map.slice(0, action.coord.x),
                         [
                             ...state.map[x].slice(0,action.coord.y),
-                            {type: state.currentTool, id: 1},
+                            {type: state.currentTool, id},
                             ...state.map[x].slice(action.coord.y+1)
                         ], ...state.map.slice(action.coord.x+1)]
                 }

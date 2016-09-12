@@ -14,11 +14,14 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 12.-18.
--Refactor reducers/game.js, especially train moving                 M   (V)
+-Refactor and debug reducers/game.js, especially train moving       M   (V)
+    -Fix bug with changing number on first tile 
+    -Fix bug 1                                    E   (V)
 -Animate movement                                                   H   (V)
 -Make ids for switches and stations chosable                        H   (V)
 -Fix pause functionality                                            M   (O)
 -Group levels by serie                                              M   (O)
+-Add error modal box                                                E   (O)
 
 -Add plus/minus/divide stations                                     H   (O)
 -Design train to look nice                                          H   (V)

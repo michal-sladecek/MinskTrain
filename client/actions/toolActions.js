@@ -7,9 +7,11 @@ export function changeTool(toolId){
     }
 }
 
-export function useTool(coord){
+export function useTool(coord, id){
+    if(!id) id = 'A'
     return {
         type: USE_TOOL,
-        coord
+        coord,
+        id
     }
 }

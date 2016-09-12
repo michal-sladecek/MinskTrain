@@ -4,12 +4,17 @@ import Tile from '../components/Tile'
 import * as actionCreators from '../actions/toolActions'
 
 const mapStateToProps = (state, ownProps) => {
+  let modal = true
+  if(state.game.notAskId.indexOf(state.game.currentTool) != -1){
+    modal = false
+  }
   return {
       coord:{
           x:ownProps.x,
           y:ownProps.y
       },
-      show: state.game.map[ownProps.x][ownProps.y]
+      show: state.game.map[ownProps.x][ownProps.y],
+      modal
   }
 }
 
