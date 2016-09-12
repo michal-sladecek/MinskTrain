@@ -64,7 +64,8 @@ const game = (state=defaultGame, action) => {
                 mode: 'running',
                 animation: {
                         ...state.animation,
-                    str: process.animationStr
+                    str: process.animationStr,
+                    speed: 0.5
                 },
                 train: {
                         ...state.train,
@@ -144,6 +145,30 @@ const game = (state=defaultGame, action) => {
                     },
                     mode: 'stopped'
                 }
+        case actions.PAUSE:
+            return {
+                ...state,
+                animation: {
+                    ...state.animation,
+                    speed: 1000
+                }
+            }
+        case actions.FORWARD:
+            return {
+                ...state,
+                animation: {
+                    ...state.animation,
+                    speed: 0.2
+                }
+            }
+        case actions.FAST:
+            return {
+                ...state,
+                animation: {
+                    ...state.animation,
+                    speed: 0.05
+                }
+            }
         default:
             return state
     }

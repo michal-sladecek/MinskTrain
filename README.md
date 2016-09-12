@@ -15,12 +15,10 @@ When adding new station, you must register it in:
 
 ##Tasks for 12.-18.
 -Create the missing switches                                        E   (V)
--Give some consistency into compile (error handling etc)            E   (V)
 -Refactor reducers/game.js, especially train moving                 M   (V)
 -Animate movement                                                   H   (V)
 -Make ids for switches and stations chosable                        H   (V)
 -Add pause functionality                                            M   (O)
--Add animation speed up functionality                               E   (O)
 -Group levels by serie                                              M   (O)
 
 -Add plus/minus/divide stations                                     H   (O)

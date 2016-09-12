@@ -23,7 +23,7 @@ export const getNextNode = (map, direction, coord) => {
     let animationStr = ''
     if(map[curx][cury]){   
         let cur = map[curx][cury].type  
-        while(cur && items[cur].type != 'node'){     
+        while(cur && items[cur].type != 'node'){
             direction = items[cur].action(direction)
             if(direction == 'BAD_OPERATION'){
                 return {error:'BAD_OPERATION', animationStr} 
@@ -58,17 +58,21 @@ export const processNode = (station, direction, train, changeNumber) => {
 
 export const processToNextNode = (map, direction, train, changeNumber, coord) => {
     if(coord.x < 0 || coord.y < 0 || coord.x >= map.length || coord.y >= map[coord.x].length){
-        return {coord: {x:curx, y:cury}, animationStr, direction, ending: true}
+        return {coord: {x:curx, y:cury}, animationStr: '', direction, ending: true}
     }
     if(map[coord.x][coord.y]){
         const station = map[coord.x][coord.y]
+        if(!items[station.type]) throw {error:"Undefined item", info:{stationType: station.type}}
         if(items[station.type].type == 'node'){
             let dir = processNode(station, direction, train, changeNumber)
-            if(dir == 'BAD_OPERATION') return 'BAD_OPERATION'
+            if(dir == 'BAD_OPERATION') return {error: 'BAD_OPERATION'}
             let nextNode =  getNextNode(map, directionsRev[dir], 
                 {x:coord.x + directions[dir].x,
                 y:coord.y + directions[dir].y}
              )
+             if(nextNode.error){
+                 return {...nextNode, animationStr: dir}
+             }
              nextNode.animationStr = dir + nextNode.animationStr
              return nextNode
         }
@@ -76,6 +80,6 @@ export const processToNextNode = (map, direction, train, changeNumber, coord) =>
             return getNextNode(map, direction, coord)
         }
     } else{
-        return 'BAD_OPERATION'
+        return {error:'BAD_OPERATION'}
     }
 }
