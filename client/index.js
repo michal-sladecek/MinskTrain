@@ -7,14 +7,14 @@ import { Provider } from 'react-redux'
 import store, { history } from './store'
 
 import MenuContainer from './containers/MenuContainer.js'
-import Game from './components/Game.js'
+import GameContainer from './containers/GameContainer.js'
 import App from './components/App.js'
 const router = (
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={App}>
                 <IndexRoute component={MenuContainer}/>
-                <Route path="/game/:level" component={Game}/>
+                <Route path="/game/:level" component={GameContainer}/>
             </Route>
         </Router>
     </Provider>

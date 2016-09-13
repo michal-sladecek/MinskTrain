@@ -37,3 +37,9 @@ export function stop(){
         type: actions.STOP
     }
 }
+
+export function clearError(){
+    return {
+        type: actions.CLEAR_ERROR
+    }
+}

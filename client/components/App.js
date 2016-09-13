@@ -1,5 +1,4 @@
 import React from 'react'
-import NotImplemented from './NotImplemented'
 const App = React.createClass({
     render() {
         return (

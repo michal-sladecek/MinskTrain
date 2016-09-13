@@ -27,7 +27,8 @@ const defaultGame = {
     train:{
         carriage,
         nextStop:{x:0,y:0},
-        coord: {x:0,y:0}
+        coord: {x:0,y:0},
+        error: ''
     },
     mode: 'stopped',
     animation:{

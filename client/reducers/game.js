@@ -2,6 +2,55 @@ import * as actions from '../consts/actions'
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
 
+const resetTrain = (state) => {
+    return {
+        ...state,
+        animation: {
+            ...state.animation,
+            str: "",
+            speed: 0.5
+        },
+        train: {
+            ...state.train,
+            coord: { x: 0, y:0 },
+            nextStop: { x: 0, y:0 },
+            fromDirection: 'L'
+        },
+        mode: 'stopped'
+    }
+}
+const moveTrain = (state) => {
+    console.log(state)
+    let changeNumber = {id: 0,num: state.train.carriage[0]}
+    let process = processToNextNode(state.map, state.train.fromDirection, state.train.carriage,
+                (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
+    console.log(process)
+    if(process.ending){
+        return {...resetTrain(state)}
+    }
+    if(process.error){
+        const reseted = resetTrain(state)
+        return {...reseted, train: {...reseted.train, error: process.error}}
+    }
+    return {
+        ...state, 
+        animation: {
+            ...state.animation,
+            str: process.animationStr
+        },
+        train: {
+            ...state.train,
+            carriage: [
+                ...state.train.carriage.slice(0,changeNumber.id),
+                changeNumber.num,
+                ...state.train.carriage.slice(changeNumber.id+1)
+            ],
+            coord: state.train.nextStop,
+            nextStop: process.coord,
+            fromDirection: process.direction
+        }
+    }
+}
 
 const game = (state=defaultGame, action) => {
     switch(action.type){
@@ -12,28 +61,27 @@ const game = (state=defaultGame, action) => {
             const x = action.coord.x
             const y = action.coord.y
             const id = action.id.charCodeAt(0) - 65
-            if(state.currentTool === 'ERASER'){
+            if(id < 0 || id >= state.train.carriage.length){
                 return {
                     ...state,
-                    map: [...state.map.slice(0, action.coord.x),
-                        [
-                            ...state.map[x].slice(0,action.coord.y),
-                            null,
-                            ...state.map[x].slice(action.coord.y+1)
-                        ], ...state.map.slice(action.coord.x+1)]
-                }
-            }else{
-                return {
-                    ...state,
-                    map: [...state.map.slice(0, action.coord.x),
-                        [
-                            ...state.map[x].slice(0,action.coord.y),
-                            {type: state.currentTool, id},
-                            ...state.map[x].slice(action.coord.y+1)
-                        ], ...state.map.slice(action.coord.x+1)]
+                    train: {
+                        ...state.train,
+                        error: 'NO_SUCH_INDICE'
+                    }
                 }
             }
-            return newState
+            return {
+                ...state,
+                map: [
+                    ...state.map.slice(0, action.coord.x),
+                    [
+                        ...state.map[x].slice(0,action.coord.y),
+                        (state.currentTool === 'ERASER')? null : {type: state.currentTool, id},
+                        ...state.map[x].slice(action.coord.y+1)
+                    ],
+                    ...state.map.slice(action.coord.x+1)
+                ]
+            }
         case actions.CHANGE_TOOL:
             return {
                 ...state,
@@ -58,94 +106,13 @@ const game = (state=defaultGame, action) => {
                     ]
                 }
             }
-        case actions.PLAY: {
-            let changeNumber = null
-            let process = processToNextNode(state.map, 'L', state.train.carriage, (id, num) => { changeNumber = { id, num } }, { x: 0, y: 0 })
-            return {...state,
-                mode: 'running',
-                animation: {
-                        ...state.animation,
-                    str: process.animationStr,
-                    speed: 0.5
-                },
-                train: {
-                        ...state.train,
-                    coord: { x: 0, y: 0 },
-                    fromDirection: process.direction,
-                    nextStop: process.coord
-                }
-            }
-        }
+        case actions.PLAY: 
+            const moved = moveTrain({...resetTrain(state)})
+            return {...moved, mode: (moved.train.error)?'stopped':'running'}
         case actions.STATION:
-        {
-            let changeNumber = null
-            if(state.train.nextStop.x < 0 || state.train.nextStop.x > 15 || state.train.nextStop.y < 0 || state.train.nextStop.y>20){
-                return {
-                    ...state,
-                    animation: {
-                        ...state.animation,
-                        str: ""
-                    },
-                    train: {
-                        ...state.train,
-                        coord: {x:0,y:0},
-                        nextStop: {x:0,y:0}
-                    },
-                    mode: 'stopped'
-                }
-            }
-            let process = processToNextNode(state.map,state.train.fromDirection,state.train.carriage,
-                (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
-            console.log(changeNumber)
-            console.log(process)
-            if(changeNumber){
-                return {...state, 
-                    animation: {
-                        ...state.animation,
-                        str: process.animationStr
-                    },
-                    train: {
-                        ...state.train,
-                        carriage: [
-                            ...state.train.carriage.slice(0,changeNumber.id),
-                            changeNumber.num,
-                            ...state.train.carriage.slice(changeNumber.id+1)
-                        ]
-                        ,
-                        coord: state.train.nextStop,
-                        nextStop: process.coord,
-                        fromDirection: process.direction
-                    }
-                 }
-            }else {
-                return {...state, 
-                    animation: {
-                        ...state.animation,
-                        str: process.animationStr
-                    },
-                    train: {
-                        ...state.train,
-                        coord: state.train.nextStop,
-                        nextStop: process.coord,
-                        fromDirection: process.direction
-                    }
-                 }
-            }
-        }
+           return moveTrain(state)
         case actions.STOP:
-            return {
-                    ...state,
-                    animation: {
-                        ...state.animation,
-                        str: ""
-                    },
-                    train: {
-                        ...state.train,
-                        coord: {x:0,y:0},
-                        nextStop: {x:0,y:0}
-                    },
-                    mode: 'stopped'
-                }
+            return {...resetTrain(state), mode: 'stopped'}
         case actions.PAUSE:
             return {
                 ...state,
@@ -168,6 +135,14 @@ const game = (state=defaultGame, action) => {
                 animation: {
                     ...state.animation,
                     speed: 0.05
+                }
+            }
+        case actions.CLEAR_ERROR:
+            return {
+                ...state,
+                train:{
+                    ...state.train,
+                    error: ''
                 }
             }
         default:
