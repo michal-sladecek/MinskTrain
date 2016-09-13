@@ -60,7 +60,7 @@ describe('Compile', () => {
             let dir = "L"
             let res = getNextNode(map, dir, coord)
 
-            const expected = {coord: {x:-1, y:3}, direction: "D", animationStr:"RRRU", ending: true}
+            const expected = {coord: {x:-1, y:3}, direction: "D", animationStr:"RRRU"}
             
             assert.deepEqual(originalMap, map)
             assert.deepEqual(dir, "L")
@@ -143,7 +143,7 @@ describe('Compile', () => {
             let ret4 = processToNextNode(map1, 'U',train, (id,num)=>{train[id]=num}, {x:4,y:4})
             assert.deepEqual({coord:{x:3,y:6}, direction:"D", animationStr:"DRRUU"}, ret4)
             let ret5 = processToNextNode(map1, 'D',train, (id,num)=>{train[id]=num}, {x:3,y:6})
-            assert.deepEqual({coord:{x:-1,y:6}, direction:"D", animationStr:"UUUU", ending: true}, ret5)
+            assert.deepEqual({coord:{x:-1,y:6}, direction:"D", animationStr:"UUUU"}, ret5)
             assert.deepEqual([2,0,0], train)
         })
 

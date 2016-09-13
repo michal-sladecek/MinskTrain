@@ -24,7 +24,7 @@ const Game = React.createClass({
                 </Row>
                 <Row>
                     <Col md={1} mdOffset={1} smOffset={0}>
-                        <ToolBoxContainer/>
+                        <ToolBoxContainer level={this.props.params.level}/>
                     </Col>
                     <Col md={7} sm={8}>
                         <GameGrid/>

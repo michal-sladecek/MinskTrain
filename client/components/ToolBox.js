@@ -3,9 +3,11 @@ import NotImplemented from './NotImplemented'
 import {DropdownButton, MenuItem, ButtonToolbar} from 'react-bootstrap'
 import items from './items/items'
 import {UDrails} from './items/rails'
-const ToolBox = ({groups, current, changeTool}) => {
+const ToolBox = ({groups, current, changeTool, level}) => {
         let toolGroups = Object.keys(groups).map((toolGroup, i) => {
-            return <ToolGroup key={i} groupId={toolGroup} changeTool={changeTool} toolGroup={groups[toolGroup]}/>
+            if(level.allowed.indexOf(toolGroup) != -1)
+                return <ToolGroup key={i} groupId={toolGroup} changeTool={changeTool} toolGroup={groups[toolGroup]}/>
+            return null
         })
         return (
             <div className='ToolBox'>

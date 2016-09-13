@@ -3,10 +3,11 @@ import {bindActionCreators} from 'redux'
 import ToolBox from '../components/ToolBox'
 import * as actionCreators from '../actions/toolActions'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
       groups: state.game.tools,
-      current: state.game.currentTool
+      current: state.game.currentTool,
+      level: state.game.levels[ownProps.level]
   }
 }
 
