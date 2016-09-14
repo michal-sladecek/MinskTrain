@@ -1,15 +1,15 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
 import items from './items/items'
-import {Modal} from 'react-bootstrap'
+import {Modal, OverlayTrigger, Tooltip} from 'react-bootstrap'
 const Tile = React.createClass({
     getInitialState(){
         return { showModal: false }
     },
     render(){
-        let tileImg=[]
+        let tileImg = []
         if(this.props.show){
-            tileImg=items[this.props.show.type]
+            tileImg=items[this.props.show.type]           
         }
         const submit = (e) => {
             e.preventDefault()
@@ -33,19 +33,40 @@ const Tile = React.createClass({
             this.setState({ showModal: false })
         }
         const whatToDo = (this.props.modal)?showModal:submitNoModal
-        return (
-            <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
-                {
-                    tileImg
-                }
-                <Modal show={this.state.showModal} onHide={hideModal}>
-                    <form onSubmit={submit}>
-                        <input type='text' placeholder='Enter character of carriage' autoFocus/>
-                    </form>
-                </Modal>
-            </div>
-            
-        )
+        if(this.props.show && this.props.tooltip){
+            const tooltip = (
+             <Tooltip id="tooltip" ><strong>{String.fromCharCode(65+this.props.show.id)}</strong></Tooltip>
+            )
+            return (
+            <OverlayTrigger placement="left" overlay={tooltip}>
+                <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
+                    { tileImg }
+                
+                    <Modal show={this.state.showModal} onHide={hideModal}>
+                        <form onSubmit={submit}>
+                            <input type='text' placeholder='Enter character of carriage' autoFocus/>
+                        </form>
+                    </Modal>
+                    
+                </div>
+             </OverlayTrigger>         
+        ) 
+        }
+        else {
+           return (
+                <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
+                    { tileImg }
+                
+                    <Modal show={this.state.showModal} onHide={hideModal}>
+                        <form onSubmit={submit}>
+                            <input type='text' placeholder='Enter character of carriage' autoFocus/>
+                        </form>
+                    </Modal>
+                    
+                </div>  
+        )  
+        }
+        
     }
 })
 export default Tile

@@ -5,16 +5,22 @@ import * as actionCreators from '../actions/toolActions'
 
 const mapStateToProps = (state, ownProps) => {
   let modal = true
+  let tooltip = false
   if(state.game.notAskId.indexOf(state.game.currentTool) != -1){
     modal = false
   }
+  if(state.game.map[ownProps.x][ownProps.y] && 
+    state.game.notAskId.indexOf(state.game.map[ownProps.x][ownProps.y].type) == -1){
+      tooltip = true
+    }
   return {
       coord:{
           x:ownProps.x,
           y:ownProps.y
       },
       show: state.game.map[ownProps.x][ownProps.y],
-      modal
+      modal,
+      tooltip
   }
 }
 
