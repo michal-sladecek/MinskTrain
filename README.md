@@ -14,7 +14,6 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 13.-15.
--Fix toolbox bug (only clickable in corner)
 -Design train to look nice                                          H   (V)
 -Fix smaller screensizes                                            H
 -Fix bug of horizontal minus track
