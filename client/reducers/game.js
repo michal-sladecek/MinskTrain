@@ -20,11 +20,9 @@ const resetTrain = (state) => {
     }
 }
 const moveTrain = (state) => {
-    console.log(state)
     let changeNumber = {id: 0,num: state.train.carriage[0]}
     let process = processToNextNode(state.map, state.train.fromDirection, state.train.carriage,
                 (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
-    console.log(process)
     if(process.ending){
         return {...resetTrain(state)}
     }
