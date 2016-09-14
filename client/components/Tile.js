@@ -16,7 +16,13 @@ const Tile = React.createClass({
             this.props.useTool(this.props.coord, e.target.getElementsByTagName("input")[0].value)
             hideModal()
         }
+        const submitNoModal = (e) => {
+            if(e.target !== this.refs.div) return
+            e.preventDefault()
+            this.props.useTool(this.props.coord)
+        }
         const showModal = (e) => {
+            if(e.target !== this.refs.div) return
             if(!this.props.modal){
                 this.props.useTool(this.props.coord)
             } else{
@@ -26,8 +32,9 @@ const Tile = React.createClass({
         const hideModal = (e) => {
             this.setState({ showModal: false })
         }
+        const whatToDo = (this.props.modal)?showModal:submitNoModal
         return (
-            <div className='Tile' onClick={showModal}>
+            <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
                 {
                     tileImg
                 }
