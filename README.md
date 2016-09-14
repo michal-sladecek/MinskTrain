@@ -15,6 +15,7 @@ When adding new station, you must register it in:
 
 ##Tasks for 13.-15.
 -Design train to look nice                                          H   (V)
+-Fix smaller screensizes                                            H
 -Fix errors to be more intuitive                                    E
 -Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)

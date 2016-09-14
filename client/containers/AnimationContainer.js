@@ -31,7 +31,7 @@ const Animation = React.createClass({
         return {
             updateAnimation: false,
             style: {
-                'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '8'
+                'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '10'
             },
             animationPath: '',
             reRender: false,
