@@ -14,12 +14,10 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 13.-15.
--Group levels by serie                                              M   (O)
-
--Animate movement                                                   H   (V)
-    -Fix pause functionality                                            M   (O)
-
 -Design train to look nice                                          H   (V)
 -Fix errors to be more intuitive                                    E
 -Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)
+-Design animation path to look nice
+
+-Group levels by serie                                              M   (O)

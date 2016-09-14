@@ -105,6 +105,9 @@ const game = (state=defaultGame, action) => {
                 }
             }
         case actions.PLAY: 
+            if(state.mode === 'running'){
+                return {...state, animation: {...state.animation, speed:0.5}}
+            }
             const moved = moveTrain({...resetTrain(state)})
             return {...moved, mode: (moved.train.error)?'stopped':'running'}
         case actions.STATION:
@@ -116,7 +119,7 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 animation: {
                     ...state.animation,
-                    speed: 1000
+                    speed: 100000
                 }
             }
         case actions.FORWARD:

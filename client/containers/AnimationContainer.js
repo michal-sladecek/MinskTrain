@@ -27,23 +27,64 @@ import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/trainActions'
 
 const Animation = React.createClass({
+    getInitialState() {
+        return {
+            updateAnimation: false,
+            style: {
+                'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '8'
+            },
+            animationPath: '',
+            reRender: false,
+        }
+    },
+
+    componentDidUpdate(prevProps, prevState) {
+        if(this.refs.path){
+            let path = this.refs.path
+            const length = path.getTotalLength()
+            if(this.state.updateAnimation) {   
+                this.setState({
+                    style: {
+                        ...this.state.style,
+                        strokeDasharray: '15 '+(length-15),
+                        strokeDashoffset: '0',
+                    }, 
+                    updateAnimation: false,
+                    reRender: true    
+                }    
+                )
+            } else {
+                if(!this.state.reRender) return
+                let curOffset = parseFloat(this.state.style.strokeDashoffset)
+                if(curOffset <= -length+15) this.props.station()
+                else {
+                    this.setState( {style: {...this.state.style, strokeDashoffset: curOffset - 1 }, reRender: false})
+                    setTimeout(()=>{this.setState({reRender: true})}, this.props.speed*5)
+                }
+            }
+        }
+    },
+
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.speed == this.props.speed)
+            this.setState({updateAnimation:true})
+        this.setState({reRender: true})
+    },
     render(){
         let animation = this.props.str
         if(!animation){
             return (<div/>)
         }
-        console.log(getAnimationPath(animation, this.props.coord))
-        const style = {'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '2'}
-        let station = this.props.station
-        if(animation.length > 0)
-            setTimeout(function(){ station(); }, this.props.speed*animation.length*1000);
+        if(this.state.updateAnimation) {
+            this.state.animationPath = getAnimationPath(animation, this.props.coord)
+        }
         return (
-        <div className='animationSvg'>
-            <svg width="840" height="630">
-                <path style={style} 
-                    d={getAnimationPath(animation, this.props.coord)}/>
-            </svg>
-         </div>
+            <div className='animationSvg'>
+                <svg width="840" height="630">
+                    <path ref='path' style={this.state.style} 
+                        d={this.state.animationPath}/>
+                </svg>
+            </div>
         )
     }
 })
