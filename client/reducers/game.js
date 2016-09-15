@@ -28,7 +28,7 @@ const moveTrain = (state) => {
     }
     if(process.error){
         const reseted = resetTrain(state)
-        return {...reseted, train: {...reseted.train, error: process.error}}
+        return {...reseted, train: {...reseted.train, notify: process.error}}
     }
     return {
         ...state, 
@@ -64,7 +64,7 @@ const game = (state=defaultGame, action) => {
                     ...state,
                     train: {
                         ...state.train,
-                        error: 'NO_SUCH_INDICE'
+                        notify: 'NO_SUCH_INDICE'
                     }
                 }
             }
@@ -138,12 +138,12 @@ const game = (state=defaultGame, action) => {
                     speed: 0.05
                 }
             }
-        case actions.CLEAR_ERROR:
+        case actions.CLEAR_NOTIFY:
             return {
                 ...state,
                 train:{
                     ...state.train,
-                    error: ''
+                    notify: ''
                 }
             }
         default:

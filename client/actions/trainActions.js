@@ -38,8 +38,8 @@ export function stop(){
     }
 }
 
-export function clearError(){
+export function clearNotify(){
     return {
-        type: actions.CLEAR_ERROR
+        type: actions.CLEAR_NOTIFY
     }
 }

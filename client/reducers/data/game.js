@@ -1,7 +1,7 @@
 //  U
 // L R 
 //  D
-import levelsDefault from './levels'
+import levelsDefault from '../../../common/levels'
 let map = []
 for(let i=0;i<15;++i){
     map.push([])
@@ -27,7 +27,7 @@ const defaultGame = {
         carriage,
         nextStop:{x:0,y:0},
         coord: {x:0,y:0},
-        error: ''
+        notify: ''
     },
     mode: 'stopped',
     animation:{

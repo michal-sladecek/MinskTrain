@@ -14,6 +14,7 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 13.-15.
+-Vlacik prichadza zlava zhora a odchadza vpravo dole
 -Design train to look nice                                          H   (V)
 -Fix smaller screensizes                                            H
 -Fix bug of horizontal minus track
@@ -21,6 +22,7 @@ When adding new station, you must register it in:
 -Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)
 -Design animation path to look nice
+-Vytvor napovedu
 -Create backend 
 
 -Group levels by serie                                              M   (O)

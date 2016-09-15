@@ -13,7 +13,7 @@ import {Modal} from 'react-bootstrap'
 const Game = React.createClass({
     render(){
         const hideModal = (e) => {
-            this.props.clearError()
+            this.props.clearNotify()
         }
         return (
             <div>
@@ -33,8 +33,8 @@ const Game = React.createClass({
                         <LevelDescriptionContainer level={this.props.params.level}/>
                     </Col>
                 </Row>
-                <Modal show={this.props.error !== ''} onHide={hideModal}>
-                    <h3>{this.props.error}</h3>
+                <Modal show={this.props.notify !== ''} onHide={hideModal}>
+                    <h3>{this.props.notify}</h3>
                 </Modal>
             </div>
         )
@@ -43,7 +43,7 @@ const Game = React.createClass({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-      error: state.game.train.error
+      notify: state.game.train.notify
   }
 }
 
