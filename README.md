@@ -14,7 +14,6 @@ When adding new station, you must register it in:
 3. reducers/data/game.js -> Tools that user gets
 
 ##Tasks for 13.-15.
--Design train to look nice                                          H   (V)
 -Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)
 -Design animation path to look nice

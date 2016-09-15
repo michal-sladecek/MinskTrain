@@ -39,7 +39,7 @@ const Tile = React.createClass({
              <Tooltip id="tooltip" >{tooltips[this.props.show.type](this.props.show.id)}</Tooltip>
             )
             return (
-            <OverlayTrigger placement="left" overlay={tooltip}>
+            <OverlayTrigger placement="left" overlay={tooltip} draggable>
                 <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
                     { tileImg }
                 
@@ -55,7 +55,7 @@ const Tile = React.createClass({
         }
         else {
            return (
-                <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
+                <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo} draggable>
                     { tileImg }
                 
                     <Modal show={this.state.showModal} onHide={hideModal}>
