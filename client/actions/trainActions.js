@@ -37,7 +37,11 @@ export function stop(){
         type: actions.STOP
     }
 }
-
+export function reset(){
+    return {
+        type: actions.RESET
+    }
+}
 export function clearNotify(){
     return {
         type: actions.CLEAR_NOTIFY

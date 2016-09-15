@@ -19,12 +19,25 @@ const resetTrain = (state) => {
         mode: 'stopped'
     }
 }
+
+const checkLevelDone = (state) => {
+    const id = state.curLevel
+    const check = state.levels[id].checker
+    return check(state.train.origCarriage, state.train.carriage)
+}
 const moveTrain = (state) => {
     let changeNumber = {id: 0,num: state.train.carriage[0]}
     let process = processToNextNode(state.map, state.train.fromDirection, state.train.carriage,
                 (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
     if(process.ending){
-        return {...resetTrain(state)}
+        const reseted = resetTrain(state)
+        let status = ''
+        if(checkLevelDone(state)){
+            status = 'SUCCESS'
+        } else {
+            status = 'FAILURE'
+        }
+        return {...reseted, train: {...reseted.train, notify: status}}
     }
     if(process.error){
         const reseted = resetTrain(state)
@@ -109,7 +122,9 @@ const game = (state=defaultGame, action) => {
                 return {...state, animation: {...state.animation, speed:0.5}}
             }
             const moved = moveTrain({...resetTrain(state)})
-            return {...moved, mode: (moved.train.error)?'stopped':'running'}
+            return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.error)?'stopped':'running'}
+        case actions.RESET:
+            return ({...state, train: {...state.train, carriage: state.train.origCarriage}})
         case actions.STATION:
            return moveTrain(state)
         case actions.STOP:

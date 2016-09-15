@@ -11,6 +11,7 @@ for(let i=0;i<15;++i){
 }
 
 let carriage = Array.apply(null, Array(11)).map(function () { return 0; })
+let origCarriage = Array.apply(null, Array(11)).map(function () { return 0; })
 const defaultGame = {
 
     tools: {
@@ -25,6 +26,7 @@ const defaultGame = {
     levels: levelsDefault,
     train:{
         carriage,
+        origCarriage,
         nextStop:{x:0,y:0},
         coord: {x:0,y:0},
         notify: ''

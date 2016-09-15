@@ -19,6 +19,9 @@ const Locomotive = React.createClass({
                 <Button bsSize='sm' onClick={this.props.stop}>
                     <span className="glyphicon glyphicon-stop" aria-hidden="true"></span>
                 </Button>
+                <Button bsSize='sm' onClick={this.props.reset}>
+                    <span className="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                </Button>
             </div>
         )
     }
