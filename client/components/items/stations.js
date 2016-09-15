@@ -33,10 +33,6 @@ export const LRPlusOne = React.createClass({
 
 export const UDMinusOne = React.createClass({
     render() {
-        let transform=''
-        if(this.props.transform){
-            transform=this.props.transform
-        }
         let tracks = []
         const style = {'stroke': 'rgb(0,0,0)','strokeWidth': '2' }
         for(var i=5;i<40;i+=5){
@@ -57,8 +53,20 @@ export const UDMinusOne = React.createClass({
 
 export const LRMinusOne = React.createClass({
     render() {
+        let tracks = []
+        const style = { 'stroke': 'rgb(0,0,0)', 'strokeWidth': '2' }
+        for (var i = 5; i < 40; i += 5) {
+            tracks.push(<line key={i / 5} x1={i} y1='15' x2={i} y2='25' style={style}/>)
+        }
         return (
-             <UDMinusOne transform='rotate(90 20 20)'/>
+            <svg width='40' height='40'>
+                <g transform = {this.props.transform}>
+                    <line x1="0" y1="15" x2="40" y2="15" style={style} />
+                    <line x1="0" y1="25" x2="40" y2="25" style={style} />
+                    {tracks}
+                    <path d="M17 5 h7 v3 h-7 v-3 z"/>
+                </g>
+            </svg>
         )
     }
 })
