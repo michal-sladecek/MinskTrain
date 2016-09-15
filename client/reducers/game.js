@@ -21,6 +21,7 @@ const resetTrain = (state) => {
 }
 
 const checkLevelDone = (state) => {
+    if(state.train.nextStop.x !== 14 || state.train.nextStop.y !== 20) return false
     const id = state.curLevel
     const check = state.levels[id].checker
     return check(state.train.origCarriage, state.train.carriage)
@@ -29,6 +30,10 @@ const moveTrain = (state) => {
     let changeNumber = {id: 0,num: state.train.carriage[0]}
     let process = processToNextNode(state.map, state.train.fromDirection, state.train.carriage,
                 (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
+    if(process.error){
+        const reseted = resetTrain(state)
+        return {...reseted, train: {...reseted.train, notify: process.error}, mode: 'stopped'}
+    }
     if(process.ending){
         const reseted = resetTrain(state)
         let status = ''
@@ -38,10 +43,6 @@ const moveTrain = (state) => {
             status = 'FAILURE'
         }
         return {...reseted, train: {...reseted.train, notify: status}}
-    }
-    if(process.error){
-        const reseted = resetTrain(state)
-        return {...reseted, train: {...reseted.train, notify: process.error}}
     }
     return {
         ...state, 

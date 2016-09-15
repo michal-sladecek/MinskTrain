@@ -14,11 +14,12 @@ const GameGrid = React.createClass({
         }
         //RDRRDLLLUL
         return (
-           <div >
+           <div className='GameGrid'>
             <div className='grid'>
             {rows}
             </div>
-            <AnimationContainer/>          
+            <AnimationContainer/>     
+            <div className='clear'/>     
            </div>
         )
     }

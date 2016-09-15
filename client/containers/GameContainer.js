@@ -11,11 +11,13 @@ import {Modal} from 'react-bootstrap'
 
 
 const Game = React.createClass({
+    componentDidMount(){
+        this.props.setLevel(this.props.params.level)
+    },
     render(){
         const hideModal = (e) => {
             this.props.clearNotify()
         }
-        this.props.setLevel(this.props.params.level)
         return (
             <div>
                 <Row>
@@ -24,13 +26,13 @@ const Game = React.createClass({
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={1} mdOffset={1} smOffset={0}>
+                    <Col md={1}>
                         <ToolBoxContainer level={this.props.params.level}/>
                     </Col>
-                    <Col md={7} sm={8}>
+                    <Col md={9}>
                         <GameGrid/>
                     </Col>
-                    <Col md={2}>
+                    <Col md={1}>
                         <LevelDescriptionContainer level={this.props.params.level}/>
                     </Col>
                 </Row>

@@ -13,7 +13,6 @@ const directions = {
     'R' : {x:0, y:1},
     'L' : {x:0, y:-1}
 }
-
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y

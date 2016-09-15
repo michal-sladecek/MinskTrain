@@ -71,9 +71,19 @@ const Animation = React.createClass({
         this.setState({reRender: true})
     },
     render(){
+        const sipkaStyle = {'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '3'}
         let animation = this.props.str
         if(!animation){
-            return (<div/>)
+            return (<div className='animationSvg'>
+                <svg width="840" height="630">
+                    <line style={sipkaStyle} x1={0} y1={22} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={16} y1={16} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={16} y1={28} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={818} y2={607}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={613}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={601}/>
+                </svg>
+                </div>)
         }
         if(this.state.updateAnimation) {
             this.state.animationPath = getAnimationPath(animation, this.props.coord)
@@ -81,6 +91,12 @@ const Animation = React.createClass({
         return (
             <div className='animationSvg'>
                 <svg width="840" height="630">
+                    <line style={sipkaStyle} x1={0} y1={22} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={16} y1={16} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={16} y1={28} x2={22} y2={22}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={818} y2={607}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={613}/>
+                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={601}/>
                     <path ref='path' style={this.state.style} 
                         d={this.state.animationPath}/>
                 </svg>
