@@ -8,6 +8,7 @@ import GameGrid from '../components/GameGrid'
 import LevelDescriptionContainer from './LevelDescriptionContainer'
 import * as actionCreators from '../actions/trainActions'
 import {Modal} from 'react-bootstrap'
+import errors from '../messages/errors'
 
 
 const Game = React.createClass({
@@ -37,7 +38,7 @@ const Game = React.createClass({
                     </Col>
                 </Row>
                 <Modal show={this.props.notify !== ''} onHide={hideModal}>
-                    <h3>{this.props.notify}</h3>
+                    <h3>{errors[this.props.notify]}</h3>
                 </Modal>
             </div>
         )

@@ -34,7 +34,7 @@ const moveTrain = (state) => {
                 (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
     if(process.error){
         const reseted = resetTrain(state)
-        return {...reseted, train: {...reseted.train, notify: process.error}, mode: 'stopped'}
+        return {...reseted, train: {...reseted.train, notify: process.error}}
     }
     if(process.ending){
         const reseted = resetTrain(state)
@@ -125,7 +125,7 @@ const game = (state=defaultGame, action) => {
                 return {...state, animation: {...state.animation, speed:speedLevels.NORMAL}}
             }
             const moved = moveTrain({...resetTrain(state)})
-            return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.error)?'stopped':'running'}
+            return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.notify)?'stopped':'running'}
         case actions.RESET:
             return ({...state, train: {...state.train, carriage: state.train.origCarriage}})
         case actions.STATION:

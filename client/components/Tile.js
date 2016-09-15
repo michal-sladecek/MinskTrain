@@ -2,6 +2,7 @@ import React from 'react'
 import NotImplemented from './NotImplemented'
 import items from './items/items'
 import {Modal, OverlayTrigger, Tooltip} from 'react-bootstrap'
+import tooltips from '../messages/tooltips'
 const Tile = React.createClass({
     getInitialState(){
         return { showModal: false }
@@ -35,7 +36,7 @@ const Tile = React.createClass({
         const whatToDo = (this.props.modal)?showModal:submitNoModal
         if(this.props.show && this.props.tooltip){
             const tooltip = (
-             <Tooltip id="tooltip" ><strong>{String.fromCharCode(65+this.props.show.id)}</strong></Tooltip>
+             <Tooltip id="tooltip" >{tooltips[this.props.show.type](this.props.show.id)}</Tooltip>
             )
             return (
             <OverlayTrigger placement="left" overlay={tooltip}>
