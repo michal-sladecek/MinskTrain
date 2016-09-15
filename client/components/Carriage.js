@@ -19,9 +19,9 @@ const Carriage = React.createClass({
             this.setState({ show: false })
         }
         return (
-            <div className='Carriage'>
+            <div onClick={showModal} className='Carriage'>
                 <p>{indexChar}</p>
-                <Button bsSize="lg" onClick={showModal}>{this.props.num}</Button>
+                <h3 >{this.props.num}</h3>
                 <Modal show={this.state.show} onHide={hideModal}>
                     <form onSubmit={submit}>
                         <input type='text' placeholder='Enter new number' autoFocus/>
