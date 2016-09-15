@@ -1,4 +1,5 @@
 const tileSize=42
+const tick=30
 const getAnimationPath = (animationStr, coord) => {
     let path = 'M '
     path += (coord.y*tileSize+tileSize/2) +" "+(coord.x*tileSize+tileSize/2)
@@ -35,6 +36,7 @@ const Animation = React.createClass({
             },
             animationPath: '',
             reRender: false,
+            renders: 0
         }
     },
 
@@ -42,7 +44,8 @@ const Animation = React.createClass({
         if(this.refs.path){
             let path = this.refs.path
             const length = path.getTotalLength()
-            if(this.state.updateAnimation) {   
+            if(this.state.updateAnimation) {
+                console.log("Ahoj")
                 this.setState({
                     style: {
                         ...this.state.style,
@@ -56,19 +59,20 @@ const Animation = React.createClass({
             } else {
                 if(!this.state.reRender) return
                 let curOffset = parseFloat(this.state.style.strokeDashoffset)
+                console.log(this.state.style.strokeDashoffset)
                 if(curOffset <= -length+15) this.props.station()
                 else {
-                    this.setState( {style: {...this.state.style, strokeDashoffset: curOffset - 1 }, reRender: false})
-                    setTimeout(()=>{this.setState({reRender: true})}, this.props.speed*5)
+                    this.setState( {style: {...this.state.style, strokeDashoffset: curOffset - this.props.speed }, reRender: false})
+                    setTimeout(()=>{this.setState({reRender: true})}, tick)
                 }
             }
         }
     },
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.speed == this.props.speed)
+        if(nextProps.speed == this.props.speed){
             this.setState({updateAnimation:true})
-        this.setState({reRender: true})
+        }
     },
     render(){
         const sipkaStyle = {'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '3'}

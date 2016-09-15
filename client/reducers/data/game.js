@@ -2,6 +2,8 @@
 // L R 
 //  D
 import levelsDefault from '../../../common/levels'
+import * as speedLevels from '../../consts/speedLevels'
+
 let map = []
 for(let i=0;i<15;++i){
     map.push([])
@@ -34,7 +36,7 @@ const defaultGame = {
     mode: 'stopped',
     animation:{
         str: "",
-        speed: 0.5
+        speed: speedLevels.NORMAL
     },
     curLevel: -1
 }

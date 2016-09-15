@@ -1,4 +1,6 @@
 import * as actions from '../consts/actions'
+import * as speedLevels from '../consts/speedLevels'
+
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
 
@@ -8,7 +10,7 @@ const resetTrain = (state) => {
         animation: {
             ...state.animation,
             str: "",
-            speed: 0.5
+            speed: speedLevels.NORMAL
         },
         train: {
             ...state.train,
@@ -120,7 +122,7 @@ const game = (state=defaultGame, action) => {
             }
         case actions.PLAY: 
             if(state.mode === 'running'){
-                return {...state, animation: {...state.animation, speed:0.5}}
+                return {...state, animation: {...state.animation, speed:speedLevels.NORMAL}}
             }
             const moved = moveTrain({...resetTrain(state)})
             return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.error)?'stopped':'running'}
@@ -135,7 +137,7 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 animation: {
                     ...state.animation,
-                    speed: 100000
+                    speed: speedLevels.PAUSE
                 }
             }
         case actions.FORWARD:
@@ -143,7 +145,7 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 animation: {
                     ...state.animation,
-                    speed: 0.2
+                    speed: speedLevels.FORWARD
                 }
             }
         case actions.FAST:
@@ -151,7 +153,7 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 animation: {
                     ...state.animation,
-                    speed: 0.05
+                    speed: speedLevels.FAST
                 }
             }
         case actions.CLEAR_NOTIFY:
