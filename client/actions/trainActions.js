@@ -43,3 +43,10 @@ export function clearNotify(){
         type: actions.CLEAR_NOTIFY
     }
 }
+
+export function setLevel(id) {
+    return {
+        type: actions.SET_LEVEL,
+        id
+    }
+}

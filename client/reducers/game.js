@@ -146,6 +146,11 @@ const game = (state=defaultGame, action) => {
                     notify: ''
                 }
             }
+        case actions.SET_LEVEL:
+            return {
+                ...state,
+                curLevel: action.id
+            }
         default:
             return state
     }

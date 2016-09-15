@@ -33,7 +33,8 @@ const defaultGame = {
     animation:{
         str: "",
         speed: 0.5
-    }
+    },
+    curLevel: -1
 }
 
 export default defaultGame

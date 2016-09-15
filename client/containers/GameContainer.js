@@ -15,6 +15,7 @@ const Game = React.createClass({
         const hideModal = (e) => {
             this.props.clearNotify()
         }
+        this.props.setLevel(this.props.params.level)
         return (
             <div>
                 <Row>
