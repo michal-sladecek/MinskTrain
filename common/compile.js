@@ -48,13 +48,11 @@ export const getNextNode = (map, direction, coord) => {
         return {error: 'BAD_OPERATION'}
     }
 }
-
 //changeNumber(vagon, num) is either dispatcher with action (client) or changing the number in array (server)
 //
 export const processNode = (station, direction, train, changeNumber) => {
     return items[station.type].action(direction, train, station.id, changeNumber)
 }
-
 export const processToNextNode = (map, direction, train, changeNumber, coord) => {
     if(coord.x < 0 || coord.y < 0 || coord.x >= map.length || coord.y >= map[coord.x].length){
         return {ending: true}
