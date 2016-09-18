@@ -8,7 +8,7 @@ function fetchingStatus(){
 function gotStatus(status){
     return {
         type:actions.GOT_STATUS,
-        status
+        status, 
     }
 }
 
@@ -16,6 +16,7 @@ export function sendLevel() {
   return function (dispatch, getState) {
       const state = getState().game
       const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel})
+      dispatch(fetchingStatus())
       fetch(urls.baseUrl + urls.sendLevel,{
         headers: {
             'Accept': 'application/json',
@@ -26,6 +27,7 @@ export function sendLevel() {
       })
       .then(function(res){ return res.json() })
       .then(function(json){
+          dispatch(gotStatus(json))
         })
 
   }

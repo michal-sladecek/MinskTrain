@@ -34,7 +34,7 @@ const moveTrain = (state) => {
                 (id,num)=>{changeNumber={id,num}}, state.train.nextStop)
     if(process.error){
         const reseted = resetTrain(state)
-        return {...reseted, train: {...reseted.train, notify: process.error}}
+        return {...reseted, train: {...reseted.train, notify: {id:process.error}}}
     }
     if(process.ending){
         const reseted = resetTrain(state)
@@ -44,7 +44,7 @@ const moveTrain = (state) => {
         } else {
             status = 'FAILURE'
         }
-        return {...reseted, train: {...reseted.train, notify: status}}
+        return {...reseted, train: {...reseted.train, notify: {id:status}}}
     }
     return {
         ...state, 
@@ -80,7 +80,7 @@ const game = (state=defaultGame, action) => {
                     ...state,
                     train: {
                         ...state.train,
-                        notify: 'NO_SUCH_INDICE'
+                        notify:{id: 'NO_SUCH_INDICE'}
                     }
                 }
             }
@@ -125,7 +125,7 @@ const game = (state=defaultGame, action) => {
                 return {...state, animation: {...state.animation, speed:speedLevels.NORMAL}}
             }
             const moved = moveTrain({...resetTrain(state)})
-            return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.notify)?'stopped':'running'}
+            return {...moved, train: {...moved.train, origCarriage: state.train.carriage} ,mode: (moved.train.notify.id)?'stopped':'running'}
         case actions.RESET:
             return ({...state, train: {...state.train, carriage: state.train.origCarriage}})
         case actions.STATION:
@@ -161,13 +161,27 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 train:{
                     ...state.train,
-                    notify: ''
+                    notify:{id: ''}
                 }
             }
         case actions.SET_LEVEL:
             return {
                 ...state,
                 curLevel: action.id
+            }
+        case actions.FETCHING_STATUS:
+            return {
+                ...state,
+                fetching: true
+            }
+        case actions.GOT_STATUS:
+            return {
+                ...state,
+                fetching:false,
+                train:{
+                    ...state.train,
+                    notify: {id: 'SERVER', ...action.status}
+                }
             }
         default:
             return state

@@ -45,7 +45,6 @@ const Animation = React.createClass({
             let path = this.refs.path
             const length = path.getTotalLength()
             if(this.state.updateAnimation) {
-                console.log("Ahoj")
                 this.setState({
                     style: {
                         ...this.state.style,
@@ -59,7 +58,6 @@ const Animation = React.createClass({
             } else {
                 if(!this.state.reRender) return
                 let curOffset = parseFloat(this.state.style.strokeDashoffset)
-                console.log(this.state.style.strokeDashoffset)
                 if(curOffset <= -length+15) this.props.station()
                 else {
                     this.setState( {style: {...this.state.style, strokeDashoffset: curOffset - this.props.speed }, reRender: false})

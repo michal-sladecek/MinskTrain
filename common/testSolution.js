@@ -28,7 +28,7 @@ const testSolution = function(map, curLevel){
                 continue
             }
         }
-        return {ok:false, reason:'WA', failure: originalTrain}
+        return {ok:false, reason:'FAILURE', failure: originalTrain}
     }
     return {ok:true}
 }

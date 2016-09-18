@@ -31,13 +31,14 @@ const defaultGame = {
         origCarriage,
         nextStop:{x:0,y:0},
         coord: {x:0,y:0},
-        notify: ''
+        notify: {id:''}
     },
     mode: 'stopped',
     animation:{
         str: "",
         speed: speedLevels.NORMAL
     },
+    fetching: false,
     curLevel: -1
 }
 

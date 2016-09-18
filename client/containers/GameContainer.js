@@ -10,15 +10,11 @@ import * as actionCreators from '../actions/trainActions'
 import {Modal} from 'react-bootstrap'
 import errors from '../messages/errors'
 
-
 const Game = React.createClass({
     componentDidMount(){
         this.props.setLevel(this.props.params.level)
     },
     render(){
-        const hideModal = (e) => {
-            this.props.clearNotify()
-        }
         return (
             <div>
                 <Row>
@@ -37,9 +33,6 @@ const Game = React.createClass({
                         <LevelDescriptionContainer level={this.props.params.level}/>
                     </Col>
                 </Row>
-                <Modal show={this.props.notify !== ''} onHide={hideModal}>
-                    <h3>{errors[this.props.notify]}</h3>
-                </Modal>
             </div>
         )
     }
@@ -47,7 +40,6 @@ const Game = React.createClass({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-      notify: state.game.train.notify
   }
 }
 

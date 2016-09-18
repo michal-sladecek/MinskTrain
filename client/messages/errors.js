@@ -1,6 +1,34 @@
+import React from 'react'
 const errors = {
-    'BAD_OPERATION': 'Ups, vlacik sa nam vykolaji',
-    'SUCCESS': 'Juchuuu, vlacik splnil ulohu',
-    'FAILURE': 'Dakde bola spachana chyba',
+    'BAD_OPERATION': (<h3>'Ups, vlacik sa nam vykolajil'</h3>),
+    'SUCCESS': (<h3>'Juchuuu, vlacik splnil ulohu'</h3>),
+    'FAILURE': (<h3>'Dakde bola spachana chyba'</h3>),
+    'TLE': (<h3>Casovy limit vyprsal</h3>)
 }
-export default errors
+const functions = {
+    'SERVER': (notify) => {
+        if(notify.ok){
+            return (<h2>Super! Level splneny :) </h2>)
+        }
+        let vlaciky = notify.failure.map((num, i) => {
+            return (<p>Vo vlaciku {String.fromCharCode(i+65)} bolo na zaciatku cislo {num}</p>)
+        }) 
+        return (
+            <div>
+                <h2>Level sa nepodarilo splnit.</h2>
+                {errors[notify.reason]}
+                {vlaciky}
+            </div>
+        )
+    }
+}
+function getNotify(notify){
+    console.log(notify)
+    if(notify.id in errors) {
+        return errors[notify.id]
+    } 
+    else if(notify.id in functions) {
+        return functions[notify.id](notify)
+    }
+}
+export default getNotify
