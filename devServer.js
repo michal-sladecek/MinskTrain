@@ -4,6 +4,8 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 var bodyParser = require('body-parser')
 
+import testSolution from './common/testSolution'
+
 var app = express();
 var compiler = webpack(config);
 import * as urls from './common/urls'
@@ -24,8 +26,8 @@ app.get('*', function(req, res) {
 
 app.post(urls.sendLevel, function(req, res) {
   res.setHeader('Content-Type', 'application/json');
-  res.send(req.body);
-  console.log(req.body.curLevel)
+  const result = testSolution(req.body.map, req.body.curLevel)
+  res.send(JSON.stringify(result))
 })
 
 app.listen(8000, 'localhost', function(err) {
