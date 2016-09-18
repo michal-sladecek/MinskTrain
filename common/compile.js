@@ -13,11 +13,12 @@ const directions = {
     'R' : {x:0, y:1},
     'L' : {x:0, y:-1}
 }
+const endingNode = {x: 14, y: 20}
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y
     if(curx < 0 || cury < 0 || curx >= map.length || cury >= map[curx].length){
-        return {coord: {x:curx, y:cury}, animationStr, direction}
+        return {error:'BAD_OPERATION'}
     }
     let animationStr = ''
     if(map[curx][cury]){   
@@ -54,8 +55,11 @@ export const processNode = (station, direction, train, changeNumber) => {
     return items[station.type].action(direction, train, station.id, changeNumber)
 }
 export const processToNextNode = (map, direction, train, changeNumber, coord) => {
-    if(coord.x < 0 || coord.y < 0 || coord.x >= map.length || coord.y >= map[coord.x].length){
+    if(coord.x === endingNode.x && coord.y === endingNode.y){
         return {ending: true}
+    }
+    if(coord.x < 0 || coord.y < 0 || coord.x >= map.length || coord.y >= map[coord.x].length){
+        return {error: "BAD_OPERATION"}
     }
     if(map[coord.x][coord.y]){
         const station = map[coord.x][coord.y]

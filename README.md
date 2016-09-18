@@ -15,7 +15,6 @@ When adding new station, you must register it in:
 
 ##Tasks for 13.-15.
 -Add frontend to testing (fetching and results)
--BUG: train coming out of map (except the last station) should return BAD_OPERATION
 
 -Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)
