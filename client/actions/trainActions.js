@@ -6,7 +6,12 @@ export function changeNumber(vagon, num){
         num
     }
 }
-
+export function setTrain(newVagons){
+    return {
+        type: actions.SET_TRAIN,
+        newVagons
+    }
+}
 export function station(){
     return {
         type: actions.STATION,

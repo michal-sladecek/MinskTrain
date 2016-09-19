@@ -11,9 +11,14 @@ const Notification = React.createClass({
         const hideModal = (e) => {
             this.props.clearNotify()
         }
+        const otestuj = (newVagons) => {
+            this.props.clearNotify()
+            this.props.setTrain(newVagons)
+            this.props.play()
+        }
         return (
             <Modal show = {this.props.notify.id !== ''} onHide={hideModal}>
-                {getNotify(this.props.notify)}
+                {getNotify(this.props.notify, { otestuj })}
             </Modal>
         )
     }

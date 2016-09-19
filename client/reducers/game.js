@@ -178,6 +178,14 @@ const game = (state=defaultGame, action) => {
                     notify: {id: 'SERVER', ...action.status}
                 }
             }
+        case actions.SET_TRAIN:
+            return {
+                ...state,
+                train: {
+                    ...state.train,
+                    carriage: action.newVagons,
+                }
+            }
         default:
             return state
     }
