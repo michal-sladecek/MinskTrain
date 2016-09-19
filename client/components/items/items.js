@@ -3,12 +3,14 @@ import {LRrails, UDrails, RUrails, ULrails, LDrails, DRrails} from './rails'
 import {DRUswitch, LDRswitch, RULswitch, ULDswitch, DLUswitch, LURswitch, RDLswitch, URDswitch} from './switches'
 import {Erase, Nothing} from './helpers'
 import {UDPlusOne, LRPlusOne, UDMinusOne, LRMinusOne} from './stations'
+import {UDSetX, LRSetX} from './setTo'
 const  items = {
 //Headers for menu
     'rails': React.createElement(LRrails),
     'switches': React.createElement(RULswitch),
     'helpers': React.createElement(Erase),
     'stations': React.createElement(UDPlusOne),
+    'setters': React.createElement(UDSetX),
 //Items
     'LR': React.createElement(LRrails),
     'UD': React.createElement(UDrails),
@@ -29,6 +31,8 @@ const  items = {
     'UDPLUSONE': React.createElement(UDPlusOne),
     'LRPLUSONE': React.createElement(LRPlusOne),
     'UDMINUSONE': React.createElement(UDMinusOne),
-    'LRMINUSONE': React.createElement(LRMinusOne)
+    'LRMINUSONE': React.createElement(LRMinusOne),
+    'UDSETX': React.createElement(UDSetX),
+    'LRSETX': React.createElement(LRSetX)
 }
 export default items

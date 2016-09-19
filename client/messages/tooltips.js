@@ -59,7 +59,35 @@ const tooltips = {
     'DLU': switchTooltip,
     'LUR': switchTooltip,
     'RDL': switchTooltip,
-    'URD': switchTooltip
+    'URD': switchTooltip,
+    'LRSETX': (id) => {
+        return (
+            <p>
+                Zmeni cislo vo vagone  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)+' '}
+                </i>
+                na cislo z vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFrom)}
+                </i>
+            </p>
+        )
+    },
+    'UDSETX': (id) => {
+        return (
+            <p>
+                Zmeni cislo vo vagone  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)+' '}
+                </i>
+                na cislo z vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFrom)}
+                </i>
+            </p>
+        )
+    }
 }
 
 export default tooltips

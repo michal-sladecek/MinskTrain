@@ -1,5 +1,4 @@
 const buildStation = (type, id) => {
-    console.log({type,id})
     switch(type){
         case 'LR':
         case 'UD':
@@ -20,11 +19,32 @@ const buildStation = (type, id) => {
         case 'LUR':
         case 'RDL':
         case 'URD':
-            const idT = id.charCodeAt(0) - 65
-            if(idT < 0 || idT >= 11 || id.length != 1){
+        {
+            const idT = id[0].charCodeAt(0) - 65
+            if(idT < 0 || idT >= 11 || id[0].length != 1){
                 return {error: true}
             }
             return {type, id: idT}
+        }
+        case 'LRSETX':
+        case 'UDSETX':
+        {
+            const idFrom = id[1].charCodeAt(0) - 65
+            if(idFrom < 0 || idFrom >= 11 || id[0].length != 1){
+                return {error: true}
+            }
+            const idTo = id[0].charCodeAt(0) - 65
+            if(idTo < 0 || idTo >= 11 || id[0].length != 1){
+                return {error: true}
+            }
+            return {
+                type,
+                id:{
+                    vagonFrom: idFrom,
+                    vagonTo: idTo
+                }
+            }
+        }
         case 'ERASER':
             return null
         default:

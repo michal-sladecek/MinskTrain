@@ -12,6 +12,8 @@ When adding new station, you must register it in:
 1. client/components/items/items.js -> Here belongs svg 40x40 icon of the station
 2. common/items/items.js -> Here belongs the behaviour of the tool when train passes by it
 3. reducers/data/game.js -> Tools that user gets
+4. reducers/buildStation.js
+5. messages/tooltips.js
 
 ##Tasks for 13.-15.
 -Add frontend to testing (fetching and results)

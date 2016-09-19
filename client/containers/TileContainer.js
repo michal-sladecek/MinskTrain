@@ -18,8 +18,8 @@ const mapStateToProps = (state, ownProps) => {
           x:ownProps.x,
           y:ownProps.y
       },
+      currentTool: state.game.currentTool,
       show: state.game.map[ownProps.x][ownProps.y],
-      modal,
       tooltip
   }
 }

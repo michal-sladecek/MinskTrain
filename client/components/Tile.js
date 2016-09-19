@@ -3,6 +3,7 @@ import NotImplemented from './NotImplemented'
 import items from './items/items'
 import {Modal, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import tooltips from '../messages/tooltips'
+import getBuildModal from './items/forms'
 const Tile = React.createClass({
     getInitialState(){
         return { showModal: false }
@@ -14,7 +15,9 @@ const Tile = React.createClass({
         }
         const submit = (e) => {
             e.preventDefault()
-            this.props.useTool(this.props.coord, e.target.getElementsByTagName("input")[0].value)
+            const array = Array.prototype.slice.call(e.target.getElementsByTagName("input")).map((val) => {return val.value})
+            console.log(array)
+            this.props.useTool(this.props.coord, array)
             hideModal()
         }
         const submitNoModal = (e) => {
@@ -24,16 +27,22 @@ const Tile = React.createClass({
         }
         const showModal = (e) => {
             if(e.target !== this.refs.div) return
-            if(!this.props.modal){
-                this.props.useTool(this.props.coord)
-            } else{
-                this.setState({ showModal: true })
-            }
+            this.setState({ showModal: true })
         }
         const hideModal = (e) => {
             this.setState({ showModal: false })
         }
-        const whatToDo = (this.props.modal)?showModal:submitNoModal
+        let form = getBuildModal(submit, this.props.currentTool)
+        let modal = []
+        let whatToDo = submitNoModal
+        if(form){
+            modal = (
+                <Modal show={this.state.showModal} onHide={hideModal}>
+                    {form}
+                </Modal>
+            )
+            whatToDo = showModal
+        }
         if(this.props.show && this.props.tooltip){
             const tooltip = (
              <Tooltip id="tooltip" >{tooltips[this.props.show.type](this.props.show.id)}</Tooltip>
@@ -42,13 +51,7 @@ const Tile = React.createClass({
             <OverlayTrigger placement="left" overlay={tooltip} draggable>
                 <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo}>
                     { tileImg }
-                
-                    <Modal show={this.state.showModal} onHide={hideModal}>
-                        <form onSubmit={submit}>
-                            <input type='text' placeholder='Enter character of carriage' autoFocus/>
-                        </form>
-                    </Modal>
-                    
+                    {modal}        
                 </div>
              </OverlayTrigger>         
         ) 
@@ -57,13 +60,7 @@ const Tile = React.createClass({
            return (
                 <div ref='div' className='Tile' onClick={whatToDo} onDragEnter={whatToDo} draggable>
                     { tileImg }
-                
-                    <Modal show={this.state.showModal} onHide={hideModal}>
-                        <form onSubmit={submit}>
-                            <input type='text' placeholder='Enter character of carriage' autoFocus/>
-                        </form>
-                    </Modal>
-                    
+                    {modal}
                 </div>  
         )  
         }

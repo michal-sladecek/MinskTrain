@@ -20,7 +20,8 @@ const defaultGame = {
         'rails': ['LR', 'UD', 'RU', 'UL', 'LD', 'DR'],
         'stations': ['UDPLUSONE', 'LRPLUSONE', 'LRMINUSONE', 'UDMINUSONE'],
         'switches': ['DRU','LDR','RUL','ULD', 'DLU', 'LUR', 'RDL', 'URD'],
-        'helpers': ['ERASER'],
+        'setters': ['LRSETX', 'UDSETX'],
+        'helpers': ['ERASER']
     },
     notAskId: ['LR', 'UD', 'RU', 'UL', 'LD', 'DR', 'ERASER'],
     currentTool: 'LR',
