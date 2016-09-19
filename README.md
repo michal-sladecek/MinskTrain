@@ -9,16 +9,16 @@ If comes from B or C, it will go to A
 
 ## Adding new stations
 When adding new station, you must register it in:
-1. client/components/items/items.js -> Here belongs svg 40x40 icon of the station
-2. common/items/items.js -> Here belongs the behaviour of the tool when train passes by it
-3. reducers/data/game.js -> Tools that user gets
-4. reducers/buildStation.js
-5. messages/tooltips.js
+* client/components/items/items.js  Here belongs svg 40x40 icon of the station
+* client/components/items/forms.js  Form to show to player when adding tool
+* common/items/items.js  Here belongs the behaviour of the tool when train passes by it
+* reducers/data/game.js  Tools that user gets
+* reducers/buildStation.js    Actions to perform in reducer when building station
+* messages/tooltips.js      Tooltip to show when hovering over station
+* common/levels.js    In which level user gets the item
 
 ##Tasks for 13.-15.
--Add frontend to testing (fetching and results)
 
--Make tooltips, everything should be much more intuitive
 -Add plus/minus/divide/multiply stations                            H   (O)
 -Design animation path to look nice
 -Vytvor napovedu
