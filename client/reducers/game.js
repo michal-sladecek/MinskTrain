@@ -3,6 +3,7 @@ import * as speedLevels from '../consts/speedLevels'
 
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
+import buildStation from './buildStation'
 
 const resetTrain = (state) => {
     return {
@@ -74,15 +75,9 @@ const game = (state=defaultGame, action) => {
             }
             const x = action.coord.x
             const y = action.coord.y
-            const id = action.id.charCodeAt(0) - 65
-            if(id < 0 || id >= state.train.carriage.length){
-                return {
-                    ...state,
-                    train: {
-                        ...state.train,
-                        notify:{id: 'NO_SUCH_INDICE'}
-                    }
-                }
+            const station = buildStation(state.currentTool, action.id)
+            if(station.error){
+                return state
             }
             return {
                 ...state,
@@ -90,7 +85,7 @@ const game = (state=defaultGame, action) => {
                     ...state.map.slice(0, action.coord.x),
                     [
                         ...state.map[x].slice(0,action.coord.y),
-                        (state.currentTool === 'ERASER')? null : {type: state.currentTool, id},
+                        station,
                         ...state.map[x].slice(action.coord.y+1)
                     ],
                     ...state.map.slice(action.coord.x+1)
