@@ -4,6 +4,7 @@ import {DRUswitch, LDRswitch, RULswitch, ULDswitch, DLUswitch, LURswitch, RDLswi
 import {Erase, Nothing} from './helpers'
 import {UDPlusOne, LRPlusOne, UDMinusOne, LRMinusOne} from './stations'
 import {UDSetX, LRSetX} from './setTo'
+import {UDPlus, LRPlus, UDMinus, LRMinus} from './plusminus'
 const  items = {
 //Headers for menu
     'rails': React.createElement(LRrails),
@@ -11,6 +12,7 @@ const  items = {
     'helpers': React.createElement(Erase),
     'stations': React.createElement(UDPlusOne),
     'setters': React.createElement(UDSetX),
+    'plusminus': React.createElement(UDPlus),
 //Items
     'LR': React.createElement(LRrails),
     'UD': React.createElement(UDrails),
@@ -32,6 +34,10 @@ const  items = {
     'LRPLUSONE': React.createElement(LRPlusOne),
     'UDMINUSONE': React.createElement(UDMinusOne),
     'LRMINUSONE': React.createElement(LRMinusOne),
+    'UDPLUS':   React.createElement(UDPlus),
+    'UDMINUS':  React.createElement(UDMinus),
+    'LRPLUS':   React.createElement(LRPlus),
+    'LRMINUS':  React.createElement(LRMinus),
     'UDSETX': React.createElement(UDSetX),
     'LRSETX': React.createElement(LRSetX)
 }

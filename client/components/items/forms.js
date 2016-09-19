@@ -2,13 +2,6 @@ import React from 'react'
 
 const getBuildModal = (submit, type) => {
     switch(type){
-        case 'LR':
-        case 'UD':
-        case 'RU':
-        case 'UL':
-        case 'LD':
-        case 'DR':
-            return null
         case 'UDPLUSONE':
         case 'LRPLUSONE':
         case 'LRMINUSONE':
@@ -31,10 +24,24 @@ const getBuildModal = (submit, type) => {
             return (
                 <form onSubmit={submit}>
                     <input type='text' placeholder='Enter character of carriage to set' autoFocus/><br/>
-                    <input type='text' placeholder='Enter number to take value from'/>
+                    <input type='text' placeholder='Enter number to take value from'/><br/>
                     <input type="submit"/>
                 </form>
             )
+        case 'LRPLUS':
+        case 'UDPLUS':
+        case 'LRMINUS':
+        case 'UDMINUS':
+            return (
+                <form onSubmit={submit}>
+                    <input type='text' placeholder='Enter first carriage' autoFocus/><br/>
+                    <input type='text' placeholder='Enter second carriage'/><br/>
+                    <input type='text' placeholder='Enter carriage where the result should go'/><br/>
+                    <input type="submit"/>
+                </form>
+            )
+        default:
+            return null
     }
 }
 

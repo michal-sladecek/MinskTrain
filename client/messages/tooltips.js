@@ -87,6 +87,62 @@ const tooltips = {
                 </i>
             </p>
         )
+    },
+    'LRPLUS': (id) => {
+        return (
+            <p>
+                Scita cisla vo vagonoch  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'UDPLUS': (id) => {
+        return (
+            <p>
+                Scita cisla vo vagonoch  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'LRMINUS': (id) => {
+        return (
+            <p>
+                Odcita cislo vo vagone
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromB)+' '}
+                </i> od vagona <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'UDMINUS': (id) => {
+        return (
+            <p>
+                Odcita cislo vo vagone
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromB)+' '}
+                </i> od vagona <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
     }
 }
 

@@ -45,6 +45,32 @@ const buildStation = (type, id) => {
                 }
             }
         }
+        case 'LRMINUS':
+        case 'UDMINUS':
+        case 'LRPLUS':
+        case 'UDPLUS':
+        {
+            const idA = id[0].charCodeAt(0) - 65
+            if(idA < 0 || idA >= 11 || id[0].length != 1){
+                return {error: true}
+            }
+            const idB = id[1].charCodeAt(0) - 65
+            if(idB < 0 || idB >= 11 || id[1].length != 1){
+                return {error: true}
+            }
+            const idTo = id[2].charCodeAt(0) - 65
+            if(idTo < 0 || idTo >= 11 || id[2].length != 1){
+                return {error: true}
+            }
+            return {
+                type,
+                id:{
+                    vagonFromA: idA,
+                    vagonFromB: idB,
+                    vagonTo: idTo
+                }
+            }
+        }    
         case 'ERASER':
             return null
         default:

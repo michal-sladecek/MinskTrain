@@ -76,7 +76,7 @@ const game = (state=defaultGame, action) => {
             const x = action.coord.x
             const y = action.coord.y
             const station = buildStation(state.currentTool, action.id)
-            if(station.error){
+            if(station!=null && station.error){
                 return state
             }
             return {

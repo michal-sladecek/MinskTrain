@@ -97,3 +97,71 @@ export const UDSetX = {
         }
     }  
 }
+
+export const LRPlus = {
+    group: 'setters',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'L': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] + vagons[id.vagonFromB])
+                return 'R'
+            case 'R':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] + vagons[id.vagonFromB])
+                return 'L'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const UDPlus = {
+    group: 'setters',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'U': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] + vagons[id.vagonFromB])
+                return 'D'
+            case 'D':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] + vagons[id.vagonFromB])
+                return 'U'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const LRMinus = {
+    group: 'setters',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'L': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                return 'R'
+            case 'R':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                return 'L'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const UDMinus = {
+    group: 'setters',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'U': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                return 'D'
+            case 'D':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                return 'U'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}

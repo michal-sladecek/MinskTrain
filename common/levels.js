@@ -41,7 +41,7 @@ const levelsDefault =  [
             'id': 4,
             'objective': 'Vymen cisla v prvom a druhom vozni',
             'hint': 'Vsimni si, co si dostal :)',
-            'allowed': ['rails','stations', 'switches', 'helpers', 'setters'],
+            'allowed': ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
             checker: function(oldTrain, newTrain) {
                 return (oldTrain[1]===newTrain[0] && oldTrain[0]===newTrain[1])
             }
