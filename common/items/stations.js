@@ -99,7 +99,7 @@ export const UDSetX = {
 }
 
 export const LRPlus = {
-    group: 'setters',
+    group: 'plusminus',
     type: 'node',
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
@@ -116,7 +116,7 @@ export const LRPlus = {
 }
 
 export const UDPlus = {
-    group: 'setters',
+    group: 'plusminus',
     type: 'node',
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
@@ -133,7 +133,7 @@ export const UDPlus = {
 }
 
 export const LRMinus = {
-    group: 'setters',
+    group: 'plusminus',
     type: 'node',
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
@@ -150,7 +150,7 @@ export const LRMinus = {
 }
 
 export const UDMinus = {
-    group: 'setters',
+    group: 'plusminus',
     type: 'node',
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){

@@ -1,7 +1,16 @@
 import cases from '../levelsTestCases/cases.js'
 import levels from './levels'
+import items from './items/items'
 import {processToNextNode} from './compile'
+
 const testSolution = function(map, curLevel){
+    for(var i=0;i<map.length;++i){
+        for(var j=0;j<map[i].length;++j){
+            if(levels[curLevel].allowed.indexOf(items[map[i][j].type].type) == -1){
+                return {ok:false, reason:'NOT_ALLOWED', failure: cases[0]}
+            }
+        }
+    }
     for(var i=0;i<cases.length;++i){
         const originalTrain = cases[i]
         let trainCopy = originalTrain.slice()
@@ -9,7 +18,7 @@ const testSolution = function(map, curLevel){
         let coord = {x:0, y:0}
         let dir = 'L'
         let ending = false
-        while(new Date().getTime() - start < 10000) {
+        while(new Date().getTime() - start < 3000) {
             const next = processToNextNode(map,dir, trainCopy, (id,val)=>{trainCopy[id]=val}, coord)
             if(next.error){
                 return {ok:false, reason:next.error, failure: originalTrain}
@@ -20,7 +29,7 @@ const testSolution = function(map, curLevel){
             coord = next.coord
             dir = next.direction
         }
-        if(new Date().getTime() - start > 10000){
+        if(new Date().getTime() - start > 3500){
             return {ok:false, reason:'TLE', failure:originalTrain}
         }
         if(coord.x === 14 && coord.y === 20){

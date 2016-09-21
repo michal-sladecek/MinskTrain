@@ -19,8 +19,5 @@ When adding new station, you must register it in:
 
 ##Tasks for 13.-15.
 
--Add plus/minus/divide/multiply stations                            H   (O)
--Design animation path to look nice
--Vytvor napovedu
--Center game grid
--Group levels by serie                                              M   (O)
+* Server databaza - kto uz vyriesil ktory level
+* Vytvorit dalsie stanice - deleno, modulo, nasobenie, vynuluj

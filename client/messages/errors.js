@@ -4,7 +4,8 @@ const errors = {
     'BAD_OPERATION': (<h3>'Ups, vlacik sa nam vykolajil'</h3>),
     'SUCCESS': (<h3>'Juchuuu, vlacik splnil ulohu'</h3>),
     'FAILURE': (<h3>'Dakde bola spachana chyba'</h3>),
-    'TLE': (<h3>Casovy limit vyprsal</h3>)
+    'TLE': (<h3>Casovy limit vyprsal</h3>),
+    'NOT_ALLOWED': (<h3>Pouzivas stanicu ktora je v tomto levely zakazana.</h3>)
 }
 const functions = {
     'SERVER': (notify, func) => {
