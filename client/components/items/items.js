@@ -5,7 +5,7 @@ import {Erase, Nothing} from './helpers'
 import {UDPlusOne, LRPlusOne, UDMinusOne, LRMinusOne} from './stations'
 import {UDSetX, LRSetX} from './setTo'
 import {UDPlus, LRPlus, UDMinus, LRMinus} from './plusminus'
-import {UDMul, LRMul} from './muldivmod'
+import {UDMul, LRMul,LRDiv, UDDiv, LRMod, UDMod} from './muldivmod'
 const  items = {
 //Headers for menu
     'rails': React.createElement(LRrails),
@@ -43,6 +43,10 @@ const  items = {
     'UDSETX': React.createElement(UDSetX),
     'LRSETX': React.createElement(LRSetX),
     'LRMUL': React.createElement(LRMul),
-    'UDMUL': React.createElement(UDMul)
+    'UDMUL': React.createElement(UDMul),
+    'LRDIV': React.createElement(LRDiv),
+    'UDDIV': React.createElement(UDDiv),
+    'LRMOD': React.createElement(LRMul),
+    'UDMOD': React.createElement(UDMul)
 }
 export default items

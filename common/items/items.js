@@ -4,7 +4,8 @@
 import React from 'react'
 import {LRrails, UDrails, RUrails, ULrails, LDrails, DRrails} from './rails'
 import {DRUswitch, LDRswitch, RULswitch, ULDswitch, DLUswitch,LURswitch,RDLswitch,URDswitch} from './switches'
-import {UDPlusOne, LRPlusOne, LRMinusOne, UDMinusOne, LRSetX, UDSetX, LRPlus, LRMinus, UDPlus, UDMinus, LRMul, UDMul} from './stations'
+import {UDPlusOne, LRPlusOne, LRMinusOne, UDMinusOne, LRSetX, UDSetX, LRPlus,
+     LRMinus, UDPlus, UDMinus, LRMul, UDMul, LRMod, UDMod, LRDiv, UDDiv} from './stations'
 import {Nothing} from './helpers'
 const  items = {
     'LR': LRrails,
@@ -33,6 +34,10 @@ const  items = {
     'UDSETX': UDSetX,
     'NOTHING': Nothing,
     'LRMUL': LRMul,
-    'UDMUL': UDMul
+    'UDMUL': UDMul,
+    'LRDIV': LRDiv,
+    'UDDIV': UDDiv,
+    'LRMOD': LRMod,
+    'UDMOD': UDMod
 }
 export default items

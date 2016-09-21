@@ -20,4 +20,3 @@ When adding new station, you must register it in:
 ##Tasks for 13.-15.
 
 * Server databaza - kto uz vyriesil ktory level
-* Vytvorit dalsie stanice - deleno, modulo, nasobenie, vynuluj

@@ -199,3 +199,75 @@ export const UDMul = {
         }
     }  
 }
+
+export const LRDiv = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        if(vagons[id.vagonFromB]===0) return 'BAD_OPERATION'
+        switch(fromDirection){
+            case 'L': 
+                changeNum(id.vagonTo,Math.floor(vagons[id.vagonFromA] / vagons[id.vagonFromB]))
+                return 'R'
+            case 'R':
+                changeNum(id.vagonTo,Math.floor(vagons[id.vagonFromA] / vagons[id.vagonFromB]))
+                return 'L'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const UDDiv = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        if(vagons[id.vagonFromB]===0) return 'BAD_OPERATION'
+        switch(fromDirection){
+            case 'U': 
+                changeNum(id.vagonTo,Math.floor(vagons[id.vagonFromA] / vagons[id.vagonFromB]))
+                return 'D'
+            case 'D':
+                changeNum(id.vagonTo,Math.floor(vagons[id.vagonFromA] / vagons[id.vagonFromB]))
+                return 'U'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const LRMod = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        if(vagons[id.vagonFromB]===0) return 'BAD_OPERATION'
+        switch(fromDirection){
+            case 'L': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] % vagons[id.vagonFromB])
+                return 'R'
+            case 'R':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] % vagons[id.vagonFromB])
+                return 'L'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const UDMod = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        if(vagons[id.vagonFromB]===0) return 'BAD_OPERATION'
+        switch(fromDirection){
+            case 'U': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] % vagons[id.vagonFromB])
+                return 'D'
+            case 'D':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] % vagons[id.vagonFromB])
+                return 'U'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}

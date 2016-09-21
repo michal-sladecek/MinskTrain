@@ -171,6 +171,62 @@ const tooltips = {
                 </i>
             </p>
         )
+    },
+    'LRDIV': (id) => {
+        return (
+            <p>
+                Vydeli cislo vo vagone
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> cislom vo vagone <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a celociselny vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'UDDIV': (id) => {
+        return (
+             <p>
+                Vydeli cislo vo vagone
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> cislom vo vagone <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a celociselny vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'LRMOD': (id) => {
+        return (
+            <p>
+                Zvysok 
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> po deleni cislom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'UDMOD': (id) => {
+        return (
+              <p>
+                Zvysok 
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> po deleni cislom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
     }
 }
 
