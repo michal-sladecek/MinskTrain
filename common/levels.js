@@ -95,7 +95,7 @@ const levelsDefault =  [
             id: 9,
             objective: 'Daj do vozna C najvacsieho spolocneho delitela A a B',
             hint: 'Poznas Euklidov algoritmus?',
-            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
             checker: function(oldTrain, newTrain) {
                 return (newTrain[2]===gcd(oldTrain[0],oldTrain[1]))
             }

@@ -32,6 +32,8 @@ const getBuildModal = (submit, type) => {
         case 'UDPLUS':
         case 'LRMINUS':
         case 'UDMINUS':
+        case 'LRMUL':
+        case 'UDMUL':
             return (
                 <form onSubmit={submit}>
                     <input type='text' placeholder='Enter first carriage' autoFocus/><br/>
@@ -40,6 +42,7 @@ const getBuildModal = (submit, type) => {
                     <input type="submit"/>
                 </form>
             )
+        
         default:
             return null
     }

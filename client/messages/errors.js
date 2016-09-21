@@ -5,7 +5,16 @@ const errors = {
     'SUCCESS': (<h3>'Juchuuu, vlacik splnil ulohu'</h3>),
     'FAILURE': (<h3>'Dakde bola spachana chyba'</h3>),
     'TLE': (<h3>Casovy limit vyprsal</h3>),
-    'NOT_ALLOWED': (<h3>Pouzivas stanicu ktora je v tomto levely zakazana.</h3>)
+    'NOT_ALLOWED': (<h3>Pouzivas stanicu ktora je v tomto levely zakazana.</h3>),
+    'HELP': (
+        <div>
+        <h2>Napoveda k vlaciku</h2>
+        <p>V tejto hre staviate kolajnice, pokladate stanice a cielom je, aby vasa trat plnila ulohu ked po nej prejde vlacik</p>
+        <p>Tu si mozte testovat vase riesenie na roznych cislach vo vlaciku, ked kliknete na vagon tak mate moznost napisat don cislo</p>
+        <p>Na to aby vas level presiel testovacom, musi byt schopny splnit ulohu nech su na zaciatku vo vlaciku hocijake cisla</p>
+        <p>Postupom hry budes dostavat nove stanice, tieto stanice su schopne robit s vlakom nejake operacie.</p>
+        </div>
+    )
 }
 const functions = {
     'SERVER': (notify, func) => {

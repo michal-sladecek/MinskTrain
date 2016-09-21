@@ -143,6 +143,34 @@ const tooltips = {
                 </i>
             </p>
         )
+    },
+    'LRMUL': (id) => {
+        return (
+            <p>
+                Vynasobi cisla vo vagonoch  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
+    },
+    'UDMUL': (id) => {
+        return (
+            <p>
+                Vynasobi cisla vo vagonoch  
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonFromA)+' '}
+                </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a vysledok da do vagona
+                <i>
+                 {' '+String.fromCharCode(65+id.vagonTo)}
+                </i>
+            </p>
+        )
     }
 }
 

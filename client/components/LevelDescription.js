@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 
 
-const LevelDescription = ({level, sendLevel, fetching}) =>{
+const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
         let button =''
         if(fetching){
             button = (<Button bsSize='sm' disabled>Testuje sa...</Button>)
@@ -18,6 +18,7 @@ const LevelDescription = ({level, sendLevel, fetching}) =>{
                     <h4 className='Hint'>Hint</h4>
                     <p>{level.hint}</p>
                 </div>
+                <Button bsSize='sm' onClick={showHelp}>Zobraz napovedu</Button>
             </div>
         )
 }

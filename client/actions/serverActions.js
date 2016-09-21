@@ -32,3 +32,8 @@ export function sendLevel() {
 
   }
 }
+export function showHelp() {
+    return {
+        type:actions.SHOW_HELP,
+    }
+}

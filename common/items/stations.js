@@ -165,3 +165,37 @@ export const UDMinus = {
         }
     }  
 }
+
+export const LRMul = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'L': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] * vagons[id.vagonFromB])
+                return 'R'
+            case 'R':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] * vagons[id.vagonFromB])
+                return 'L'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}
+
+export const UDMul = {
+    group: 'muldivmod',
+    type: 'node',
+    action: (fromDirection, vagons, id, changeNum) => {
+        switch(fromDirection){
+            case 'U': 
+                changeNum(id.vagonTo,vagons[id.vagonFromA] * vagons[id.vagonFromB])
+                return 'D'
+            case 'D':
+                changeNum(id.vagonTo,vagons[id.vagonFromA] * vagons[id.vagonFromB])
+                return 'U'
+            default:
+                return 'BAD_OPERATION'
+        }
+    }  
+}

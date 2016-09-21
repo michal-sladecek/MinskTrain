@@ -179,6 +179,14 @@ const game = (state=defaultGame, action) => {
                     notify: {id: 'SERVER', ...action.status}
                 }
             }
+        case actions.SHOW_HELP:
+            return {
+                ...state,
+                train: {
+                    ...state.train,
+                    notify: {id: 'HELP'}
+                }
+            }
         case actions.SET_TRAIN:
             return {
                 ...state,
