@@ -14,7 +14,7 @@ const  items = {
     'stations': React.createElement(UDPlusOne),
     'setters': React.createElement(UDSetX),
     'plusminus': React.createElement(UDPlus),
-    'muldivmod': React.createElement(LRMul)
+    'muldivmod': React.createElement(LRMul),
 //Items
     'LR': React.createElement(LRrails),
     'UD': React.createElement(UDrails),

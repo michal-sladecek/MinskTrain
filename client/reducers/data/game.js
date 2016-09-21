@@ -22,7 +22,7 @@ const defaultGame = {
         'switches': ['DRU','LDR','RUL','ULD', 'DLU', 'LUR', 'RDL', 'URD'],
         'setters': ['LRSETX', 'UDSETX'],
         'plusminus': ['LRPLUS', 'UDPLUS', 'LRMINUS', 'UDMINUS'],
-        'muldivmod': ['LRMUL','UDMUL']
+        'muldivmod': ['LRMUL','UDMUL'],
         'helpers': ['ERASER']
     },
     notAskId: ['LR', 'UD', 'RU', 'UL', 'LD', 'DR', 'ERASER'],

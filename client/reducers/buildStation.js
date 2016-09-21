@@ -49,6 +49,12 @@ const buildStation = (type, id) => {
         case 'UDMINUS':
         case 'LRPLUS':
         case 'UDPLUS':
+        case 'LRMUL':
+        case 'UDMUL':
+        case 'LRDIV':
+        case 'UDDIV':
+        case 'LRMOD':
+        case 'UDMOD':
         {
             const idA = id[0].toUpperCase().charCodeAt(0) - 65
             if(idA < 0 || idA >= 11 || id[0].length != 1){
