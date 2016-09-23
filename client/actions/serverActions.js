@@ -11,6 +11,12 @@ function gotStatus(status){
         status, 
     }
 }
+function gotSolvedLevels(solved){
+    return {
+        type:actions.GOT_SOLVED_LEVELS,
+        solved, 
+    }
+}
 
 export function sendLevel() {
   return function (dispatch, getState) {
@@ -26,11 +32,27 @@ export function sendLevel() {
         body: jsonMap
       })
       .then(function(res){ return res.json() })
-      .then(function(json){
+      .then(function(json){        
+          dispatch(getSolvedLevels())
           dispatch(gotStatus(json))
         })
-
   }
+}
+export function getSolvedLevels() {
+    return (dispatch) => {
+        fetch(urls.baseUrl + urls.getSolvedLevels,{
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({id: 'asdjf432'})
+        })
+        .then(function(res){ return res.json() })
+        .then(function(json){
+            dispatch(gotSolvedLevels(json))
+            })
+    }
 }
 export function showHelp() {
     return {

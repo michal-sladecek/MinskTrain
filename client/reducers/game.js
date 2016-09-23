@@ -27,6 +27,7 @@ const checkLevelDone = (state) => {
     if(state.train.nextStop.x !== 14 || state.train.nextStop.y !== 20) return false
     const id = state.curLevel
     const check = state.levels[id].checker
+    console.log(state.levels[id])
     return check(state.train.origCarriage, state.train.carriage)
 }
 const moveTrain = (state) => {
@@ -195,6 +196,9 @@ const game = (state=defaultGame, action) => {
                     carriage: action.newVagons,
                 }
             }
+        case actions.GOT_SOLVED_LEVELS:
+            console.log(action)
+            return state
         default:
             return state
     }
