@@ -18,16 +18,21 @@ const Notification = React.createClass({
         }
         return (
             <Modal bsSize="large" show = {this.props.notify.id !== ''} onHide={hideModal}>  
-                    {getNotify(this.props.notify, { otestuj })}
+                    {getNotify(this.props.notify, { otestuj, hideModal }, this.props.nextLevel)}
             </Modal>
         )
     }
 })
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-      notify: state.game.train.notify
-  }
+    let nextLevel = 'menu'
+    if (state.game.levels.length > state.game.curLevel) {
+        nextLevel = '' + (parseInt(state.game.curLevel) + 1)
+    }
+    return {
+        notify: state.game.train.notify,
+        nextLevel: nextLevel
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

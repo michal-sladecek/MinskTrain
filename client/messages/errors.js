@@ -1,5 +1,7 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
+import {Link} from 'react-router'
+
 const errors = {
     'BAD_OPERATION': (<h3>'Ups, vlacik sa nam vykolajil'</h3>),
     'SUCCESS': (<h3>'Juchuuu, vlacik splnil ulohu'</h3>),
@@ -17,9 +19,18 @@ const errors = {
     )
 }
 const functions = {
-    'SERVER': (notify, func) => {
+    'SERVER': (notify, func, nextLevel) => {
         if(notify.ok){
-            return (<h2>Super! Level splneny :) </h2>)
+            var next = '/'
+            if(nextLevel !== 'menu'){
+                next = '/game/'+nextLevel
+            }
+            return (
+                <div>
+                    <h2>Super! Level splneny :) </h2>
+                    <Link onClick={func.hideModal} to={next}>Dalsi level</Link>
+                </div>
+            )
         }
         let vlaciky = notify.failure.map((num, i) => {
             return (<p>Vo vlaciku {String.fromCharCode(i+65)} bolo na zaciatku cislo {num}</p>)
@@ -37,12 +48,12 @@ const functions = {
         )
     }
 }
-function getNotify(notify, func){
+function getNotify(notify, func, nextLevel){
     if(notify.id in errors) {
         return errors[notify.id]
     } 
     else if(notify.id in functions) {
-        return functions[notify.id](notify, func)
+        return functions[notify.id](notify, func, nextLevel)
     }
 }
 export default getNotify

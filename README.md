@@ -17,6 +17,5 @@ When adding new station, you must register it in:
 * messages/tooltips.js      Tooltip to show when hovering over station
 * common/levels.js    In which level user gets the item
 
-##Tasks for 13.-15.
-
-* Server databaza - kto uz vyriesil ktory level
+##Next tasks
+* more routing - Back button, Next Level
