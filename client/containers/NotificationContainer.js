@@ -18,7 +18,7 @@ const Notification = React.createClass({
         }
         return (
             <Modal bsSize="large" show = {this.props.notify.id !== ''} onHide={hideModal}>  
-                    {getNotify(this.props.notify, { otestuj, hideModal }, this.props.nextLevel)}
+                    {getNotify(this.props.notify, { otestuj, hideModal , setLevel: this.props.setLevel}, this.props.nextLevel)}
             </Modal>
         )
     }

@@ -40,7 +40,6 @@ export function sendLevel() {
 }
 export function getSolvedLevels() {
     return (dispatch, getState) => {
-        console.log("Going to get solved levels")
         fetch(urls.baseUrl + urls.getSolvedLevels,{
             headers: {
                 'Accept': 'application/json',

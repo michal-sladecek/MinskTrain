@@ -18,4 +18,16 @@ When adding new station, you must register it in:
 * common/levels.js    In which level user gets the item
 
 ##Next tasks
-* more routing - Back button, Next Level
+* Klikanie na menu je tazkopadne
+* Dialogy na napisanie pismen su male
+* Pri vyssich rychlostiach sa vlacik objavuje aj v predoslej stanici
+* Pri zmene levela nevidno ze sa zmenil (zmeni sa popis aj url, ale mapa sa neresetne)
+* Nikde nevidno ze sa da na vlaciky kliknut
+* Menu vyzera hrozne, zisli by sa nejake styly
+* Napovedu treba tiez nastylovat
+* Move nie je obviozne
+* Niektore kolajnice vyzeraju zle
+
+
+## Bugs
+* Po odoslani levelu 3 a kliknuti na dalsi level sa nic nedialo - treba odchytit

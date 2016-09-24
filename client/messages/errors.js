@@ -25,10 +25,15 @@ const functions = {
             if(nextLevel !== 'menu'){
                 next = '/game/'+nextLevel
             }
+            const onclick= () => {
+                console.log("CLicked")
+                func.setLevel(nextLevel)
+                func.hideModal()
+            }
             return (
                 <div>
                     <h2>Super! Level splneny :) </h2>
-                    <Link onClick={func.hideModal} to={next}>Dalsi level</Link>
+                    <Link onClick={onclick} to={next}>Dalsi level</Link>
                 </div>
             )
         }
