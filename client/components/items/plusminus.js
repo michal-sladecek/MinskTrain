@@ -17,7 +17,7 @@ export const UDPlus = React.createClass({
                 <line x1="25" y1="0" x2="25" y2="40" style={style} />
                 {tracks}
                 <path d="M7 15 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 v-3 h3 z"/>
-                <circle cx={9} cy={20} r={5} style={{'fill':'none','stroke': 'rgb(0,0,0)', 'strokeWidth': '2'}}/>
+                <circle cx={8} cy={20} r={7} style={{'fill':'none','stroke': 'rgb(0,0,0)', 'strokeWidth': '2'}}/>
             </g>
             </svg>
         )
@@ -44,9 +44,9 @@ export const UDMinus = React.createClass({
             <g transform = {this.props.transform}>
                 <line x1="15" y1="0" x2="15" y2="40" style={style} />
                 <line x1="25" y1="0" x2="25" y2="40" style={style} />
-                <circle cx={6} cy={16} r={4} style={{'fill':'none','stroke': 'rgb(0,0,0)','strokeWidth':'2'}}/>
+                <circle cx={6} cy={17} r={7} style={{'fill':'none','stroke': 'rgb(0,0,0)','strokeWidth':'2'}}/>
                 {tracks}
-                <path d="M3 15 h7 v3 h-7 v-3 z"/>
+                <path d="M2 15 h9 v3 h-9 v-3 z"/>
             </g>
             </svg>
         )
@@ -66,7 +66,8 @@ export const LRMinus = React.createClass({
                     <line x1="0" y1="15" x2="40" y2="15" style={style} />
                     <line x1="0" y1="25" x2="40" y2="25" style={style} />
                     {tracks}
-                    <path d="M17 5 h7 v3 h-7 v-3 z"/>
+                    <circle cx={20} cy={7} r={7} style={{'fill':'none','stroke': 'rgb(0,0,0)','strokeWidth':'2'}}/>
+                    <path d="M16 5 h9 v3 h-9 v-3 z"/>
                 </g>
             </svg>
         )

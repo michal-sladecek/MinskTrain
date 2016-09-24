@@ -27,7 +27,4 @@ When adding new station, you must register it in:
 * Napovedu treba tiez nastylovat
 * Move nie je obviozne
 * Niektore kolajnice vyzeraju zle
-
-
-## Bugs
-* Po odoslani levelu 3 a kliknuti na dalsi level sa nic nedialo - treba odchytit
+* Texty nepouzivaju diakritiku
