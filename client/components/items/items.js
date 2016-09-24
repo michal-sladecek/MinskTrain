@@ -46,7 +46,7 @@ const  items = {
     'UDMUL': React.createElement(UDMul),
     'LRDIV': React.createElement(LRDiv),
     'UDDIV': React.createElement(UDDiv),
-    'LRMOD': React.createElement(LRMul),
-    'UDMOD': React.createElement(UDMul)
+    'LRMOD': React.createElement(LRMod),
+    'UDMOD': React.createElement(UDMod)
 }
 export default items
