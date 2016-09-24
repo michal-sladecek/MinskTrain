@@ -27,7 +27,6 @@ const checkLevelDone = (state) => {
     if(state.train.nextStop.x !== 14 || state.train.nextStop.y !== 20) return false
     const id = state.curLevel
     const check = state.levels[id].checker
-    console.log(state.levels[id])
     return check(state.train.origCarriage, state.train.carriage)
 }
 const moveTrain = (state) => {
@@ -77,7 +76,6 @@ const game = (state=defaultGame, action) => {
             const x = action.coord.x
             const y = action.coord.y
             const station = buildStation(state.currentTool, action.id)
-            console.log({x,y,station})
             if(station!=null && station.error){
                 return state
             }
@@ -197,11 +195,13 @@ const game = (state=defaultGame, action) => {
                 }
             }
         case actions.GOT_SOLVED_LEVELS:
-            console.log(action)
             var newLevels = state.levels
             const solved = action.solved
+            console.log(solved)
             for(var i = 0; i < solved.length; ++i){
-                newLevels = [...newLevels.slice(0,solved[i]), {...newLevels[solved[i]], solved: true}, ...newLevels.slice(solved[i]+1)]
+                let x = parseInt(solved[i])
+                newLevels = [...newLevels.slice(0,x), {...newLevels[x], solved: true}, ...newLevels.slice(x+1)]
+                console.log(newLevels)
             }
             return {
                 ...state,

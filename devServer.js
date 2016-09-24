@@ -5,7 +5,7 @@ var config = require('./webpack.config.dev')
 var bodyParser = require('body-parser')
 
 import testSolution from './common/testSolution'
-
+import * as users from './users'
 var app = express()
 var compiler = webpack(config);
 import * as urls from './common/urls'
@@ -27,13 +27,17 @@ app.get('*', (req, res) => {
 
 app.post(urls.getSolvedLevels, (req, res) => {
   res.setHeader('Content-Type', 'application/json')
-  const solved = [2, 4, 7]
-  res.send(JSON.stringify(solved))
+  users.getAllSolvedLevels(req.body.id, (solved) => {
+    res.send(JSON.stringify(solved))
+  })
 })
 
 app.post(urls.sendLevel, (req, res) => {
   res.setHeader('Content-Type', 'application/json')
   const result = testSolution(req.body.map, req.body.curLevel)
+  if(result.ok){
+    users.solveLevel(req.body.id, req.body.curLevel)
+  }
   res.send(JSON.stringify(result))
 })
 

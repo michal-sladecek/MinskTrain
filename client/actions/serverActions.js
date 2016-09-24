@@ -21,7 +21,7 @@ function gotSolvedLevels(solved){
 export function sendLevel() {
   return function (dispatch, getState) {
       const state = getState().game
-      const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel})
+      const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel, id: state.clientId})
       dispatch(fetchingStatus())
       fetch(urls.baseUrl + urls.sendLevel,{
         headers: {
@@ -39,14 +39,15 @@ export function sendLevel() {
   }
 }
 export function getSolvedLevels() {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        console.log("Going to get solved levels")
         fetch(urls.baseUrl + urls.getSolvedLevels,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({id: 'asdjf432'})
+            body: JSON.stringify({id: getState().game.clientId})
         })
         .then(function(res){ return res.json() })
         .then(function(json){

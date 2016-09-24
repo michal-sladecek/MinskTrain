@@ -19,7 +19,7 @@ let levels = levelsDefault.map((val,i) => {
     return val
 })
 const defaultGame = {
-
+    clientId: 'asdjf432',
     tools: {
         'rails': ['LR', 'UD', 'RU', 'UL', 'LD', 'DR'],
         'stations': ['UDPLUSONE', 'LRPLUSONE', 'LRMINUSONE', 'UDMINUSONE'],

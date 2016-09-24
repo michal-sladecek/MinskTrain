@@ -16,7 +16,6 @@ const Tile = React.createClass({
         const submit = (e) => {
             e.preventDefault()
             const array = Array.prototype.slice.call(e.target.getElementsByTagName("input")).map((val) => {return val.value})
-            console.log(array)
             this.props.useTool(this.props.coord, array)
             hideModal()
         }

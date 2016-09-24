@@ -16,7 +16,6 @@ const Notification = React.createClass({
             this.props.setTrain(newVagons)
             this.props.play()
         }
-        console.log(this.props)
         return (
             <Modal bsSize="large" show = {this.props.notify.id !== ''} onHide={hideModal}>  
                     {getNotify(this.props.notify, { otestuj })}

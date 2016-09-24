@@ -7,8 +7,6 @@ const testSolution = function(map, curLevel){
     for(var i=0;i<map.length;++i){
         for(var j=0;j<map[i].length;++j){
             if(map[i][j]){
-                console.log(levels[curLevel].allowed)
-                console.log(items[map[i][j].type])
                 if(levels[curLevel].allowed.indexOf(items[map[i][j].type].group) == -1){
                     return {ok:false, reason:'NOT_ALLOWED', failure: cases[0]}
                 }

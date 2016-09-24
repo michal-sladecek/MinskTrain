@@ -38,7 +38,6 @@ const functions = {
     }
 }
 function getNotify(notify, func){
-    console.log(notify)
     if(notify.id in errors) {
         return errors[notify.id]
     } 
