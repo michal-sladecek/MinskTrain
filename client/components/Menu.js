@@ -23,7 +23,12 @@ const LevelRow = React.createClass({
     }
 })
 
-const Menu = ({ levels }) => {
+const Menu = React.createClass({
+    componentDidMount() {
+        this.props.getSolvedLevels()
+    },
+    render() {
+        const levels = this.props.levels
         let levelsDivided = divideArray(levels.slice(0),4)
         return (
             <div className='levels-grid'>
@@ -34,7 +39,8 @@ const Menu = ({ levels }) => {
                 }
             </div>
         )
-}
+    }
+})
 
 
 

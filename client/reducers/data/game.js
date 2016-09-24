@@ -14,6 +14,10 @@ for(let i=0;i<15;++i){
 
 let carriage = Array.apply(null, Array(11)).map(function () { return 0; })
 let origCarriage = Array.apply(null, Array(11)).map(function () { return 0; })
+let levels = levelsDefault.map((val,i) => {
+    val.solved = false
+    return val
+})
 const defaultGame = {
 
     tools: {
@@ -27,8 +31,8 @@ const defaultGame = {
     },
     notAskId: ['LR', 'UD', 'RU', 'UL', 'LD', 'DR', 'ERASER'],
     currentTool: 'LR',
-    map: map,
-    levels: levelsDefault,
+    map,
+    levels,
     train:{
         carriage,
         origCarriage,
