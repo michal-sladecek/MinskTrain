@@ -198,7 +198,15 @@ const game = (state=defaultGame, action) => {
             }
         case actions.GOT_SOLVED_LEVELS:
             console.log(action)
-            return state
+            var newLevels = state.levels
+            const solved = action.solved
+            for(var i = 0; i < solved.length; ++i){
+                newLevels = [...newLevels.slice(0,solved[i]), {...newLevels[solved[i]], solved: true}, ...newLevels.slice(solved[i]+1)]
+            }
+            return {
+                ...state,
+                levels: newLevels
+            }
         default:
             return state
     }

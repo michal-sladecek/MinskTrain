@@ -8,6 +8,7 @@ const LevelIcon = React.createClass({
             <Button block>
             
             <div className='level-icon'>  
+                    {this.props.level.solved? <h2>VYRIESENY</h2>:null}
                     <h2>Level {this.props.level.id}</h2>     
                     <p>{this.props.level.objective}</p>     
             </div>
