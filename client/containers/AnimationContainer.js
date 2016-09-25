@@ -58,7 +58,7 @@ const Animation = React.createClass({
             } else {
                 if(!this.state.reRender) return
                 let curOffset = parseFloat(this.state.style.strokeDashoffset)
-                if(curOffset <= -length+15) this.props.station()
+                if(curOffset - this.props.speed < -length+15) this.props.station()
                 else {
                     this.setState( {style: {...this.state.style, strokeDashoffset: curOffset - this.props.speed }, reRender: false})
                     setTimeout(()=>{this.setState({reRender: true})}, tick)
