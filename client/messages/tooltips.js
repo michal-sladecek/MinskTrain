@@ -12,6 +12,9 @@ function switchTooltip(id){
 }
 
 const tooltips = {
+    'VAGON': () => {
+        <p>Kliknutím môžeš zmeniť číslo v tomto vagóne</p>
+    },
     'UDPLUSONE': (id) => {
         return (
             <p>

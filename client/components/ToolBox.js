@@ -22,15 +22,13 @@ const ToolGroup = React.createClass({
         const title = items[this.props.groupId]
         return (
             <div className='ToolGroup'>
-                <DropdownButton id='nestresuj' title={title} noCaret>
-                    {
+                {
                         this.props.toolGroup.map((tool, i) => {
                             return (
                                 <ToolIcon key={i} id={i} groupId={this.props.groupId} tool={tool} changeTool={this.props.changeTool}/>
                             )
                         })
                     }
-                </DropdownButton>
             </div>
         )
     }
@@ -42,10 +40,8 @@ const ToolIcon = React.createClass({
     
     render() {
         return (
-            <div className='ToolIcon'>
-               <MenuItem onClick={this.handleClick}>
+            <div className='ToolIcon' onClick={this.handleClick}>
                     {items[this.props.tool]}
-                </MenuItem>
             </div>
         )
     }
