@@ -32,9 +32,6 @@ const testSolution = function(map, curLevel){
             coord = next.coord
             dir = next.direction
         }
-        if(new Date().getTime() - start > 3500){
-            return {ok:false, reason:'TLE', failure:originalTrain}
-        }
         if(coord.x === 14 && coord.y === 20){
             if(levels[curLevel].checker(originalTrain, trainCopy)){
                 continue

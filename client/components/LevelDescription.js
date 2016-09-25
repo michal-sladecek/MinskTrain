@@ -1,13 +1,13 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
-
+import messages from '../messages/messages'
 
 const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
         let button =''
         if(fetching){
-            button = (<Button bsSize='sm' disabled>Testuje sa...</Button>)
+            button = (<Button bsSize='sm' disabled>{messages.testing}</Button>)
         } else {
-            button = (<Button bsSize='sm' onClick={sendLevel}>Odosli riesenie</Button>)
+            button = (<Button bsSize='sm' onClick={sendLevel}>{messages.sendSolution}</Button>)
         }
         return (
             <div className='LevelDescription'>
@@ -15,10 +15,9 @@ const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
                 <p>{level.objective}</p>
                 {button}
                 <div className='Hint'>
-                    <h4 className='Hint'>Hint</h4>
                     <p>{level.hint}</p>
                 </div>
-                <Button bsSize='sm' onClick={showHelp}>Zobraz napovedu</Button>
+                <Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button>
             </div>
         )
 }

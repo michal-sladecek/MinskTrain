@@ -1,4 +1,5 @@
 import React from 'react'
+import messages from '../messages/messages'
 const Main = React.createClass({
     render() {
         return (

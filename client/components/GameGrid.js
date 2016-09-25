@@ -3,11 +3,12 @@ import TileContainer from '../containers/TileContainer'
 import AnimationContainer from '../containers/AnimationContainer'
 import NotImplemented from './NotImplemented'
 import {OverlayTrigger, Tooltip} from 'react-bootstrap'
+import messages from '../messages/messages'
 
 const TrainBeg = React.createClass({
     render() {
         const tooltip = (
-             <Tooltip id="tooltip" >Z tejto stanice vyjde vlacik.</Tooltip>
+             <Tooltip id="tooltip" >{messages.stationFrom}</Tooltip>
         )
         return (
             <OverlayTrigger placement="left" overlay={tooltip} draggable>
@@ -23,7 +24,7 @@ const TrainEnd = React.createClass({
     
     render(){
         const tooltip = (
-             <Tooltip id="tooltip" >Do tejto stanice ho musite dostat.</Tooltip>
+             <Tooltip id="tooltip" >{messages.stationTo}</Tooltip>
         )
         return (
             <OverlayTrigger placement="left" overlay={tooltip} draggable>

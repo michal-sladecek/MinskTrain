@@ -29,12 +29,12 @@ const buildStation = (type, id) => {
         case 'LRSETX':
         case 'UDSETX':
         {
-            const idFrom = id[1].toUpperCase().charCodeAt(0) - 65
+            const idFrom = id[0].toUpperCase().charCodeAt(0) - 65
             if(idFrom < 0 || idFrom >= 11 || id[0].length != 1){
                 return {error: true}
             }
-            const idTo = id[0].toUpperCase().charCodeAt(0) - 65
-            if(idTo < 0 || idTo >= 11 || id[0].length != 1){
+            const idTo = id[1].toUpperCase().charCodeAt(0) - 65
+            if(idTo < 0 || idTo >= 11 || id[1].length != 1){
                 return {error: true}
             }
             return {

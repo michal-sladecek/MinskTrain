@@ -1,6 +1,7 @@
 import React from 'react'
 import NotImplemented from './NotImplemented'
 import {Button, Modal} from 'react-bootstrap'
+import messages from '../messages/messages'
 const Carriage = React.createClass({
     getInitialState: function() {
         return { show: false };
@@ -24,7 +25,7 @@ const Carriage = React.createClass({
                 <h3 >{this.props.num}</h3>
                 <Modal show={this.state.show} onHide={hideModal}>
                     <form onSubmit={submit}>
-                        <input type='text' placeholder='Enter new number' autoFocus/>
+                        <input type='text' placeholder={messages.enterNumber} autoFocus/>
                     </form>
                 </Modal>
             </div>

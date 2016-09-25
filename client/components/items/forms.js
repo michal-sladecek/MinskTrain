@@ -1,5 +1,5 @@
 import React from 'react'
-
+import messages from '../../messages/messages'
 const getBuildModal = (submit, type) => {
     switch(type){
         case 'UDPLUSONE':
@@ -16,15 +16,15 @@ const getBuildModal = (submit, type) => {
         case 'URD':
             return (
                 <form onSubmit={submit}>
-                    <input type='text' placeholder='Zadaj znak vagona' autoFocus/>
+                    <input type='text' placeholder={messages.enterVagon} autoFocus/>
                 </form>
             )
         case 'LRSETX':
         case 'UDSETX':
             return (
                 <form onSubmit={submit}>
-                    <input type='text' placeholder='Enter character of carriage to set' autoFocus/><br/>
-                    <input type='text' placeholder='Enter number to take value from'/><br/>
+                    <input type='text' placeholder={messages.enterVagonFrom1} autoFocus/><br/>
+                    <input type='text' placeholder={messages.enterVagonTo}/><br/>
                     <input type="submit"/>
                 </form>
             )
@@ -40,9 +40,9 @@ const getBuildModal = (submit, type) => {
         case 'UDMOD':
             return (
                 <form onSubmit={submit}>
-                    <input type='text' placeholder='Enter first carriage' autoFocus/><br/>
-                    <input type='text' placeholder='Enter second carriage'/><br/>
-                    <input type='text' placeholder='Enter carriage where the result should go'/><br/>
+                    <input type='text' placeholder={messages.enterVagonFrom1} autoFocus/><br/>
+                    <input type='text' placeholder={messages.enterVagonFrom2}/><br/>
+                    <input type='text' placeholder={messages.enterVagonTo}/><br/>
                     <input type="submit"/>
                 </form>
             )

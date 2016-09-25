@@ -26,5 +26,4 @@ When adding new station, you must register it in:
 * Menu vyzera hrozne, zisli by sa nejake styly
 * Napovedu treba tiez nastylovat
 * Move nie je obviozne
-* Niektore kolajnice vyzeraju zle
 * Texty nepouzivaju diakritiku
