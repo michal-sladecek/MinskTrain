@@ -23,6 +23,12 @@ const levelsDefault =  [
             objective: 'Pripocitaj 1 k vagonu A a odpocitaj 1 od vagonu B',
             hint: 'Mas novu stanicu. Po polozeni stanice sa ta hra spyta, od akeho vagona chces odpocitat alebo pripocitat 1',
             allowed: ['rails', 'stations', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] > 0)
+            },
             checker: (oldTrain, newTrain) => {
                 return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===oldTrain[1]-1))
             }
@@ -32,6 +38,12 @@ const levelsDefault =  [
             objective: 'Vynuluj vozen A',
             hint: 'Dostal si vyhybky, vyhybky sa ta tiez spytaju na vagon.\
                  Ked vlacik pride na vyhybku tak pojde rovno ak v tomt vagone bude 0.',
+            beforeTestCase: (oldTrain) => {
+                for(let i=1;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             allowed: ['rails','stations', 'switches', 'helpers'],
             checker: (oldTrain, newTrain) => {
                 return (newTrain[0]===0)
@@ -42,6 +54,12 @@ const levelsDefault =  [
             objective: 'Zmen cislo vo vagone B na cislo z vagona A',
             hint: 'Podobne ako v predoslej.',
             allowed: ['rails','stations', 'switches', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[1]===oldTrain[0])
             }
@@ -51,6 +69,12 @@ const levelsDefault =  [
             objective: 'Scitaj cisla vo vozni A a B a vysledok daj do vozna C.',
             hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
             allowed: ['rails','stations', 'switches','setters', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: function(oldTrain, newTrain) {
                 return (newTrain[2]===oldTrain[0]+oldTrain[1])
             }
@@ -60,6 +84,12 @@ const levelsDefault =  [
             objective: 'Odcitaj cislo vo vozni A od cisla vo vozni B a vysledok daj do vozna C.',
             hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
             allowed: ['rails','stations', 'switches', 'setters', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] >= oldTrain[0])
+            },
             checker: function(oldTrain, newTrain) {
                 return (newTrain[2]===oldTrain[1]-oldTrain[0])
             }
@@ -70,6 +100,9 @@ const levelsDefault =  [
             hint: 'Opat si dostal nove stanice, jedna spocita cisla v dvoch voznoch a vysledok da do tretieho, ta druha odpocita.',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
             checker: function(oldTrain, newTrain) {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
                 return (newTrain[2]===oldTrain[0]*oldTrain[1])
             }
         },
@@ -78,8 +111,14 @@ const levelsDefault =  [
             objective: 'Vydel cislo vo vozni A cislom vo vozni B a vysledok daj do C. Ak A nedeli B, tak chceme najvacsie take cislo x, ze x*B<=A',
             hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] != 0)
+            },
             checker: function(oldTrain, newTrain) {
-                return (newTrain[2]===oldTrain[0]/oldTrain[1])
+                return (newTrain[2]===Math.floor(oldTrain[0]/oldTrain[1]))
             }
         },
         {
@@ -87,6 +126,12 @@ const levelsDefault =  [
             objective: 'Vydel cislo vo vozni A cislom vo vozni B a zvysok po deleni daj do vozna C',
             hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] != 0)
+            },
             checker: function(oldTrain, newTrain) {
                 return (newTrain[2]===oldTrain[0]%oldTrain[1])
             }
@@ -94,8 +139,14 @@ const levelsDefault =  [
         {
             id: 9,
             objective: 'Daj do vozna C najvacsieho spolocneho delitela A a B',
-            hint: 'Poznas Euklidov algoritmus?',
+            hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: function(oldTrain, newTrain) {
                 return (newTrain[2]===gcd(oldTrain[0],oldTrain[1]))
             }

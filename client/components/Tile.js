@@ -25,7 +25,6 @@ const Tile = React.createClass({
         }
         const doNothing = (e) => {e.preventDefault()}
         const showModal = (e) => {
-            console.log(this.props)
             if(e.target !== this.refs.div) return
             this.setState({ showModal: true })
         }

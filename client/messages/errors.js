@@ -55,7 +55,6 @@ const functions = {
                 next = '/game/' + nextLevel
             }
             const onclick = () => {
-                console.log("CLicked")
                 func.setLevel(nextLevel)
                 func.hideModal()
             }
