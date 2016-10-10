@@ -13,10 +13,11 @@ const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
             <div className='LevelDescription'>
                 <h3>Level {level.id}</h3>
                 <p>{level.objective}</p>
-                {button}
+                
                 <div className='Hint'>
                     <p>{level.hint}</p>
                 </div>
+                {button}
                 <Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button>
             </div>
         )
