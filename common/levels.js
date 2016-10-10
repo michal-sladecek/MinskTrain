@@ -14,6 +14,7 @@ const levelsDefault =  [
                 Az budes mat vsetko hotove mozes si vlacik vyskusat tlacitkami v lokomotive.\
                 Level sa ti zarata az ho posles na otestovanie',
             allowed: ['rails', 'helpers'],
+            title: 'Tutorial',
             checker: () => {
                 return true
             }
@@ -29,6 +30,7 @@ const levelsDefault =  [
                 }
                 return (oldTrain[1] > 0)
             },
+            title: 'Stanice',
             checker: (oldTrain, newTrain) => {
                 return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===oldTrain[1]-1))
             }
@@ -38,6 +40,7 @@ const levelsDefault =  [
             objective: 'Vynuluj vozen A',
             hint: 'Dostal si vyhybky, vyhybky sa ta tiez spytaju na vagon.\
                  Ked vlacik pride na vyhybku tak pojde rovno ak v tomt vagone bude 0.',
+            title: 'Vyhybky',
             beforeTestCase: (oldTrain) => {
                 for(let i=1;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -53,6 +56,7 @@ const levelsDefault =  [
             id:3,
             objective: 'Zmen cislo vo vagone B na cislo z vagona A',
             hint: 'Podobne ako v predoslej.',
+            title: 'Zmen',
             allowed: ['rails','stations', 'switches', 'helpers'],
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
@@ -69,6 +73,7 @@ const levelsDefault =  [
             objective: 'Scitaj cisla vo vozni A a B a vysledok daj do vozna C.',
             hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
             allowed: ['rails','stations', 'switches','setters', 'helpers'],
+            title: 'Scitaj',
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -84,6 +89,7 @@ const levelsDefault =  [
             objective: 'Odcitaj cislo vo vozni A od cisla vo vozni B a vysledok daj do vozna C.',
             hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
             allowed: ['rails','stations', 'switches', 'setters', 'helpers'],
+            title: 'Odcitaj',
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -99,6 +105,7 @@ const levelsDefault =  [
             objective: 'Vynasob cisla vo vozni A a B a vysledok daj do C',
             hint: 'Opat si dostal nove stanice, jedna spocita cisla v dvoch voznoch a vysledok da do tretieho, ta druha odpocita.',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            title: 'Vynasob',
             checker: function(oldTrain, newTrain) {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -111,6 +118,7 @@ const levelsDefault =  [
             objective: 'Vydel cislo vo vozni A cislom vo vozni B a vysledok daj do C. Ak A nedeli B, tak chceme najvacsie take cislo x, ze x*B<=A',
             hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            title: 'Vydel',
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -126,6 +134,7 @@ const levelsDefault =  [
             objective: 'Vydel cislo vo vozni A cislom vo vozni B a zvysok po deleni daj do vozna C',
             hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            title: 'Zvysok po deleni',
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -140,6 +149,7 @@ const levelsDefault =  [
             id: 9,
             objective: 'Daj do vozna C najvacsieho spolocneho delitela A a B',
             hint: '',
+            title: 'Najvacsi spolocny delitel',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){

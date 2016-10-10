@@ -4,16 +4,11 @@ import {Button} from 'react-bootstrap'
 const LevelIcon = React.createClass({
     render() {
         return (
-            <Link to={`/game/${this.props.level.id}`}>
-            <Button block>
-            
-            <div className='level-icon'>  
-                    {this.props.level.solved? <h2>VYRIESENY</h2>:null}
-                    <h2>Level {this.props.level.id}</h2>     
-                    <p>{this.props.level.objective}</p>     
-            </div>
-            
-            </Button>
+            <Link to={`/game/${this.props.level.id}`}>            
+                <div className='level-icon'>
+                        {this.props.level.solved? <h2><span className="glyphicon glyphicon-ok" aria-hidden="true"></span></h2>:null}
+                        <h3>{this.props.level.title}</h3>  
+                </div>
             </Link>
         )
     }
