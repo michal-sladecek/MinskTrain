@@ -36,27 +36,39 @@ const TrainEnd = React.createClass({
             </OverlayTrigger>)
     }
 })
+const Empty = React.createClass({
+
+    render() {
+        return (
+            <div className='empty-tile'>
+                <div style={{visibility: 'hidden', height:'42px', width:'42px'}}>
+                </div>
+            </div>
+        )
+    }
+})
 const GameGrid = React.createClass({
     render() {
         var rows=[]
         for(var i=0;i<15;++i){
             var row = []
             if(i==0) row.push(<TrainBeg key={10000}/>)
+            else row.push(<Empty/>)
             for(var j=0;j<20;++j){
                 row.push(<TileContainer key={i*20+j} x={i} y={j}/>)
             }
             if(i==14)row.push(<TrainEnd key={10001}/>)
-            if(i==14)rows.push(<div className='LastTileRow' key={i}>{row}</div>)
-            else rows.push(<div className='TileRow' key={i}>{row}</div>)
+            else row.push(<Empty/>)
+            rows.push(<div className='TileRow' key={i}>{row}</div>)
         }
-        //RDRRDLLLUL
         return (
            <div className='GameGrid'>
-            <div className='grid'>
-            {rows}
-            </div>
-            <AnimationContainer/>     
-            <div className='clear'/>     
+                <div className='gridWithAnimation'>
+                        <div className='grid'>
+                        {rows}
+                        </div>
+                        <AnimationContainer/>
+                </div> 
            </div>
         )
     }

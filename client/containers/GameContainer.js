@@ -16,23 +16,13 @@ const Game = React.createClass({
     },
     render(){
         return (
-            <div>
-                <Row>
-                    <Col md={10} mdOffset={1}>
-                        <Train/>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={1}>
-                        <ToolBoxContainer level={this.props.params.level}/>
-                    </Col>
-                    <Col md={9}>
-                        <GameGrid/>
-                    </Col>
-                    <Col md={1}>
-                        <LevelDescriptionContainer level={this.props.params.level}/>
-                    </Col>
-                </Row>
+            <div className='game'>
+                <Train/>
+                <div className='bottom-game'>
+                    <ToolBoxContainer level={this.props.params.level}/>
+                    <GameGrid/>
+                    <LevelDescriptionContainer level={this.props.params.level}/>
+                </div>
             </div>
         )
     }
