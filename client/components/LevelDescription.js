@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
 import messages from '../messages/messages'
+import {Link} from 'react-router'
 
 const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
         let button =''
@@ -20,6 +21,8 @@ const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
                 {button}
                 <br/><br/>
                 <Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button>
+                <br/><br/>
+                <Link to='/'>Späť do menu</Link>
             </div>
         )
 }

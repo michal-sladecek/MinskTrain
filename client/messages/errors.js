@@ -31,7 +31,7 @@ const errors = {
         </div>),
     'NOT_ALLOWED': (
         <div>
-            <h3>Pouzivas stanicu ktora je v tomto levely zakazana.</h3>
+            <h3>Používaš stanicu, ktorá je v tomto leveli zakázaná.</h3>
             <p> Skontroluj si stanice, ktoré máš umiestnené.
                 Niektorá z týchto staníc nie je v tomto leveli povolená a nenachádza sa ani v menu naľavo.
             </p>
@@ -61,7 +61,7 @@ const functions = {
             return (
                 <div>
                     <h2>Super! Level splnený :) </h2>
-                    <Link onClick={onclick} to={next}>Dalsi level</Link>
+                    <Link onClick={onclick} to={next}>Ďalší level</Link>
                 </div>
             )
         }
