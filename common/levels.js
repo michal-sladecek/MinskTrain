@@ -138,10 +138,10 @@ const levelsDefault =  [
         },
         {
             id: 8,
-            objective: 'Vydel cislo vo vozni A cislom vo vozni B a zvysok po deleni daj do vozna C',
+            objective: 'Daj do C zvyšok A po delení B',
             hint: '',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
-            title: 'Zvysok po deleni',
+            title: 'Zvyšok',
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
@@ -154,9 +154,9 @@ const levelsDefault =  [
         },
         {
             id: 9,
-            objective: 'Daj do vozna C najvacsieho spolocneho delitela A a B',
+            objective: 'Daj do C najväčšieho spoločného deliteľa A a B',
             hint: '',
-            title: 'Najvacsi spolocny delitel',
+            title: 'Najväčší spoločný deliteľ',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
             beforeTestCase: (oldTrain) => {
                 for(let i=2;i<oldTrain.length;++i){
