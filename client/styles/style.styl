@@ -18,15 +18,46 @@
     flex-direction: column
     align-items center
     justify-content center
+
+
+.game
+    display: flex
+    flex-direction: column
+    align-items center
+    justify-content center
 .Train
     height 100px
+    margin-left 10%
+    margin-right 10%
+    
+.bottom-game
+    display: flex
+    flex-direction: row
+    justify-content space-around
+    margin-top 1%
+.ToolBox
+    width 50%
+    padding-left: 2%
     
 
-.ToolBox
-    width 100%
-    margin 0 auto
-    height 600px
-    padding-left: 10%
+.gridWithAnimation
+    position: relative
+    width: 900px
+    height: 700px
+
+.TileRow
+    display: flex
+    flex-direction: row
+    align-items space-around
+    justify-content space-around
+.Tile
+    width 42px
+    height 42px
+    border 1px solid darkgreen
+    background-color: lightgreen
+.Empty
+    visibility: hidden
+
 
 .LevelDescription
     width 100%
@@ -56,18 +87,6 @@
     background-size: 130px 110px;
     width 130px
     height 110px
-.Tile
-    width 42px
-    height 42px
-    border 1px solid darkgreen
-    background-color: lightgreen
-    float left
-.TileRow
-    float right
-    padding-right: 42px
-.LastTileRow
-    float right
-    padding-right: 0px
 .Hint
     display block
 .currentTool
@@ -82,22 +101,19 @@
 .dropdown-menu
     position relative
     min-width: 41px
-.animationSvg
-    padding-right 40px
+
+.grid
     position absolute
-    right: 0px
+    z-index: 0
+    right 0px
+.animationSvg
+    position absolute
     z-index: 1
     pointer-events: none
+    left 18px
     svg 
         background none
-    margin-left: auto; 
-    margin-right: auto;
 
-.grid 
-    position absolute
-    z-index 0
-    margin-left: auto; 
-    margin-right: auto;
 svg 
     background-color: lightgreen
     pointer-events: none
@@ -112,7 +128,12 @@ svg
     height 630px
     width  840px
 .GameGrid
-    margin 0 auto
+    display: flex
+    flex-direction: column
+    align-items center
+    justify-content center    
+    margin-left 10%
+    margin-right 3%
 
 .App
     margin-top 50px
