@@ -28,15 +28,26 @@ const Menu = React.createClass({
         this.props.getSolvedLevels()
     },
     render() {
+        const onSubmit = (e) => {
+            e.preventDefault()
+            this.props.changeClientId(e.target[0].value)
+        }
         const levels = this.props.levels
         let levelsDivided = divideArray(levels.slice(0),4)
         return (
-            <div className='levels-grid'>
+            <div>
+                <div className='levels-grid'>
+                    <form onSubmit={onSubmit}>
+                        <input type='text' placeholder='Tvoje ID'/>
+                    </form>
+                </div>
+                <div>
                 {
                     levelsDivided.map((object, i) => {
                         return <Row key={i}><LevelRow key={i} levels={levelsDivided[i]} /></Row>
                     })
                 }
+                </div>
             </div>
         )
     }

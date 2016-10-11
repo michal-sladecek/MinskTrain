@@ -1,5 +1,8 @@
 import * as actions from '../consts/actions'
 import * as urls from '../../common/urls'
+
+
+
 function fetchingStatus(){
     return {
         type: actions.FETCHING_STATUS
@@ -16,6 +19,17 @@ function gotSolvedLevels(solved){
         type:actions.GOT_SOLVED_LEVELS,
         solved, 
     }
+}
+
+function getLevels(id) {
+    return fetch(urls.baseUrl + urls.getSolvedLevels,{
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify({id})
+        })
 }
 
 export function sendLevel() {
@@ -40,14 +54,24 @@ export function sendLevel() {
 }
 export function getSolvedLevels() {
     return (dispatch, getState) => {
-        fetch(urls.baseUrl + urls.getSolvedLevels,{
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify({id: getState().game.clientId})
-        })
+        getLevels(getState().game.clientId)
+        .then(function(res){ return res.json() })
+        .then(function(json){
+            dispatch(gotSolvedLevels(json))
+            })
+    }
+}
+
+function internalChangeClientId(id) {
+    return {
+        type: actions.CHANGE_ID,
+        id
+    }
+}
+export function changeClientId(id) {
+    return (dispatch, getState) => {
+        dispatch(internalChangeClientId(id))
+        getLevels(id)
         .then(function(res){ return res.json() })
         .then(function(json){
             dispatch(gotSolvedLevels(json))

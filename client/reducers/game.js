@@ -197,13 +197,21 @@ const game = (state=defaultGame, action) => {
         case actions.GOT_SOLVED_LEVELS:
             var newLevels = state.levels
             const solved = action.solved
-            for(var i = 0; i < solved.length; ++i){
-                let x = parseInt(solved[i])
-                newLevels = [...newLevels.slice(0,x), {...newLevels[x], solved: true}, ...newLevels.slice(x+1)]
+            var newLevels = state.levels.slice()
+            for(var i = 0; i < newLevels.length; ++i) {
+                newLevels[i].solved = false
+            }
+            for(var i = 0; i < solved.length; ++i) {
+                newLevels[solved[i]].solved = true
             }
             return {
                 ...state,
                 levels: newLevels
+            }
+        case actions.CHANGE_ID:
+            return {
+                ...state,
+                clientId: action.id
             }
         default:
             return state
