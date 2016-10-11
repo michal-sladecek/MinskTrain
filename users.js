@@ -13,7 +13,6 @@ db.serialize( () => {
 })
 
 export const getAllSolvedLevels = (id, cb) => {
-    console.log("In function")
     db.each('SELECT * FROM users WHERE userId = ?', [id], (err, row) => {
         console.log("Callback")
         if(err)console.log(err)
