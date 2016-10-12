@@ -11,9 +11,9 @@ const ToolBox = ({groups, current, changeTool, level}) => {
         })
         return (
             <div className='ToolBox'>
-                    {items[current]}
-                    {toolGroups}
-             </div>
+                <p>Momentálne vybraný nástroj:<br/>{items[current]}</p>
+                {toolGroups}
+            </div>
         )
 }
 
