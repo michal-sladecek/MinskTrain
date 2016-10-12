@@ -39,11 +39,33 @@ const errors = {
     ),
     'HELP': (
         <div>
-            <h2>Napoveda k vlaciku</h2>
-            <p>V tejto hre staviate kolajnice, pokladate stanice a cielom je, aby vasa trat plnila ulohu ked po nej prejde vlacik</p>
-            <p>Tu si mozte testovat vase riesenie na roznych cislach vo vlaciku, ked kliknete na vagon tak mate moznost napisat don cislo</p>
-            <p>Na to aby vas level presiel testovacom, musi byt schopny splnit ulohu nech su na zaciatku vo vlaciku hocijake cisla</p>
-            <p>Postupom hry budes dostavat nove stanice, tieto stanice su schopne robit s vlakom nejake operacie.</p>
+            <h2>Nápoveda ku vláčiku</h2>
+            <p>
+                Vaším cieľom je postaviť trať, po ktorej vláčik prejde z jednej stanice do druhej. V každom levely
+                musí vláčik splniť aj úlohu, ktorá sa zobrazuje naľavo. 
+            </p>
+            <p>
+                Vláčik sa zobrazuje hore. V každom vozní sa nachádza nejaké číslo - toto číslo viete zmeniť kliknuťím na vozeň.
+                V lokomotíve sa nachádzajú tlačítka na ovládanie vláčika - spusti, rýchlo, rýchlejšie, pauza, stopni úplne a resetuj čísla vo vláčiku.
+            </p>
+            <p>
+                Naľavo máte menu, kde môžte vyberať nástroje, pomocou ktorých staviate koľajnice. V ďalších leveloch vám pribudnú nové nástroje.
+                Až máte postavenú trať, môžte si otestovať túto trať pomocou tlačítok v lokomotíve.
+            </p>
+            <p>
+                Ak chcete prejsť levelom, musíte ho odoslať ku nám. To urobíte pomocou tlačítka pošli na otestovanie.
+                Vaše riešenie príde ku nám, a my do vláčika dáme rôzne čísla a pustíme ho po koľajniciach nech vieme, či s hocijakými začiatočnými číslami splní úlohu.
+                Vieme ti ale garantovať, že do neho nikdy nedáme záporné čísla.
+                Ak vláčik splní úlohu s hocijakými číslami na začiatku, tak sa ti level zaráta ako splnený.
+                Ak nie, príde ti naspäť, s akými číslami vláčik neprešiel, nech si môžeš opraviť svoje riešenie. Testovanie trvá pár sekúnd a môžeš testovať koľkokrát chceš.
+            </p>
+            <p>
+                To je zatiaľ asi všetko, viac sa dozvieš postupne počas hrania. Držíme ti palce :)
+            </p>
+            <p>
+                Ak máš akékoľvek otázky alebo technické problémy, pošli email na adresu michalsladecek98@gmail.com. 
+                Najlepšie ti budem vedieť poradiť ak pošleš aj screenshot obrazovky nech vidím, čo si robil a čo ti nefunguje.
+            </p>
         </div>
     )
 }
