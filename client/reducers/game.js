@@ -4,7 +4,7 @@ import * as speedLevels from '../consts/speedLevels'
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
 import buildStation from './buildStation'
-
+import env from '../../env'
 const resetTrain = (state) => {
     return {
         ...state,
@@ -24,7 +24,7 @@ const resetTrain = (state) => {
 }
 
 const checkLevelDone = (state) => {
-    if(state.train.nextStop.x !== 14 || state.train.nextStop.y !== 20) return false
+    if(state.train.nextStop.x !== env.gameHeight - 1 || state.train.nextStop.y !== env.gameWidth) return false
     const id = state.curLevel
     const check = state.levels[id].checker
     return check(state.train.origCarriage, state.train.carriage)

@@ -5,6 +5,7 @@ import NotImplemented from './NotImplemented'
 import {OverlayTrigger, Tooltip} from 'react-bootstrap'
 import messages from '../messages/messages'
 
+import env from '../../env'
 const TrainBeg = React.createClass({
     render() {
         const tooltip = (
@@ -50,14 +51,14 @@ const Empty = React.createClass({
 const GameGrid = React.createClass({
     render() {
         var rows=[]
-        for(var i=0;i<15;++i){
+        for(var i=0;i<env.gameHeight;++i){
             var row = []
             if(i==0) row.push(<TrainBeg key={10000}/>)
             else row.push(<Empty/>)
-            for(var j=0;j<20;++j){
+            for(var j=0;j<env.gameWidth;++j){
                 row.push(<TileContainer key={i*20+j} x={i} y={j}/>)
             }
-            if(i==14)row.push(<TrainEnd key={10001}/>)
+            if(i==env.gameHeight-1)row.push(<TrainEnd key={10001}/>)
             else row.push(<Empty/>)
             rows.push(<div className='TileRow' key={i}>{row}</div>)
         }

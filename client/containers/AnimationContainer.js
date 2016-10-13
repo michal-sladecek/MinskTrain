@@ -1,3 +1,4 @@
+import env from '../../env'
 const tileSize=42
 const tick=30
 const getAnimationPath = (animationStr, coord) => {
@@ -75,15 +76,17 @@ const Animation = React.createClass({
     render(){
         const sipkaStyle = {'fill':'none',stroke: 'rgb(255,0,0)','strokeWidth': '3'}
         let animation = this.props.str
+        const width = tileSize*env.gameWidth
+        const height = tileSize*env.gameHeight
         if(!animation){
             return (<div className='animationSvg'>
-                <svg width="840" height="630">
+                <svg width={width} height={height}>
                     <line style={sipkaStyle} x1={0} y1={22} x2={22} y2={22}/>
                     <line style={sipkaStyle} x1={16} y1={16} x2={22} y2={22}/>
                     <line style={sipkaStyle} x1={16} y1={28} x2={22} y2={22}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={818} y2={607}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={613}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={601}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-22} y2={height-23}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-6} y2={height-17}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-6} y2={height-29}/>
                 </svg>
                 </div>)
         }
@@ -92,13 +95,13 @@ const Animation = React.createClass({
         }
         return (
             <div className='animationSvg'>
-                <svg width="840" height="630">
+                <svg width={width} height={height}>
                     <line style={sipkaStyle} x1={0} y1={22} x2={22} y2={22}/>
                     <line style={sipkaStyle} x1={16} y1={16} x2={22} y2={22}/>
                     <line style={sipkaStyle} x1={16} y1={28} x2={22} y2={22}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={818} y2={607}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={613}/>
-                    <line style={sipkaStyle} x1={840} y1={607} x2={834} y2={601}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-22} y2={height-23}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-6} y2={height-17}/>
+                    <line style={sipkaStyle} x1={width} y1={height-23} x2={width-6} y2={height-29}/>
                     <path ref='path' style={this.state.style} 
                         d={this.state.animationPath}/>
                 </svg>

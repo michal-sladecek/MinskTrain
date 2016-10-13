@@ -1,6 +1,6 @@
 import * as actions from '../consts/actions'
 import * as urls from '../../common/urls'
-
+import env from '../../env'
 
 
 function fetchingStatus(){
@@ -22,7 +22,7 @@ function gotSolvedLevels(solved){
 }
 
 function getLevels(id) {
-    return fetch(urls.baseUrl + urls.getSolvedLevels,{
+    return fetch(env.serverUrl + urls.getSolvedLevels,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export function sendLevel() {
       const state = getState().game
       const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel, id: state.clientId})
       dispatch(fetchingStatus())
-      fetch(urls.baseUrl + urls.sendLevel,{
+      fetch(env.serverUrl + urls.sendLevel,{
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
