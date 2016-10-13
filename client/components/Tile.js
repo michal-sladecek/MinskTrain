@@ -42,7 +42,7 @@ const Tile = React.createClass({
                 }
             }
             let onDragStart = ()=>{}
-            if(onTile != null) {
+            if(onTile != null && currentTool !== 'LR' && currentTool !== 'UD') {
                 onDragStart = this.props.changeTool.bind(this,onTile)
             }
             if(currentTool === 'LR' || currentTool === 'UD') {
