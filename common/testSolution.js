@@ -2,7 +2,7 @@ import cases from '../levelsTestCases/cases.js'
 import levels from './levels'
 import items from './items/items'
 import {processToNextNode} from './compile'
-
+import clientConfig from '../client/config'
 const testSolution = function(map, curLevel){
     for(var i=0;i<map.length;++i){
         for(var j=0;j<map[i].length;++j){
@@ -35,7 +35,7 @@ const testSolution = function(map, curLevel){
             coord = next.coord
             dir = next.direction
         }
-        if(coord.x === 14 && coord.y === 20){
+        if(coord.x === clientConfig.gameHeight - 1 && coord.y === clientConfig.gameWidth){
             if(levels[curLevel].checker(originalTrain, trainCopy)){
                 continue
             }
