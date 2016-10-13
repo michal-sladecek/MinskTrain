@@ -102,8 +102,8 @@ const game = (state=defaultGame, action) => {
             if(isNaN(number)){
                 return Object.assign({},state)
             }
-            if(number > 99 || number < 0){
-                return Object.assign({},state)
+            if(number > config.maxTrainNum || number < 0){
+                return Object.assign({}, state)
             }
             return {
                 ...state,
