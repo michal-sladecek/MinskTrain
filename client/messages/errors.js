@@ -46,6 +46,7 @@ const errors = {
             </p>
             <p>
                 Vláčik sa zobrazuje hore. V každom vozní sa nachádza nejaké číslo - toto číslo viete zmeniť kliknuťím na vozeň.
+                Maximálne číslo, ktoré môžte do vozňa napísať, je 999. 
                 V lokomotíve sa nachádzajú tlačítka na ovládanie vláčika - spusti, rýchlo, rýchlejšie, pauza, stopni úplne a resetuj čísla vo vláčiku.
             </p>
             <p>
