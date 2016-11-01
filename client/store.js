@@ -4,9 +4,13 @@ import { browserHistory } from 'react-router'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/root'
 
-const middleware = routerMiddleware(browserHistory)
-const store = createStore(rootReducer, compose(applyMiddleware(thunk), applyMiddleware(middleware)
-, window.devToolsExtension && window.devToolsExtension()));
+const devToolsMiddleware = window.devToolsExtension ? window.devToolsExtension() : (x) => x
+
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk),
+  applyMiddleware(routerMiddleware(browserHistory)),
+  devToolsMiddleware)
+);
 
 export const history = syncHistoryWithStore(browserHistory, store);
 
