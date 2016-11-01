@@ -1,17 +1,38 @@
 import 'babel-polyfill'
 import gulp from 'gulp'
+import gutil from 'gulp-util'
 import babel from 'gulp-babel'
 import path from 'path'
 import bg from 'gulp-bg'
 import eslint from 'gulp-eslint'
 import mocha from 'gulp-mocha'
+import webpack from 'webpack'
+
+import prodConfig from './webpack.config.prod'
 
 
-gulp.task('default', ['server'])
+gulp.task('default', ['devServer'])
 
-gulp.task('server', (done) => {
-    const bwPath = './node_modules/.bin/babel-watch'
-    bg(bwPath, 'devServer.js')(done)
+gulp.task('devServer', (done) => {
+  const bwPath = './node_modules/.bin/babel-watch'
+  bg(bwPath, 'server/devServer.js')(done)
+})
+
+gulp.task('prod', ['prodServer'])
+
+gulp.task('prodServer', ['prodBuild'], (done) => {
+  const bnPath = './node_modules/.bin/babel-node'
+  bg(bnPath, 'server/prodServer.js')(done)
+})
+
+gulp.task('prodBuild', (done) => {
+  webpack(prodConfig, function(err, stats) {
+    if(err) {
+      throw new gutil.PluginError('webpack', err)
+    }
+    gutil.log('[webpack]', stats.toString())
+    done()
+  })
 })
 
 gulp.task('eslint', () => {
