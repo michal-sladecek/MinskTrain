@@ -2,6 +2,7 @@ var path = require('path')
 var express = require('express')
 var bodyParser = require('body-parser')
 
+import config from './config'
 import testSolution from '../common/testSolution'
 import * as users from './users'
 import * as urls from '../common/urls'
@@ -32,12 +33,12 @@ export default (app) => {
     res.send(JSON.stringify(result))
   })
 
-  app.listen(8000, 'localhost', (err) => {
+  app.listen(config.port, config.host, (err) => {
     if (err) {
       console.log(err);
       return;
     }
 
-    console.log('Listening at http://localhost:8000');
+    console.log(`Listening at http://${config.host}:${config.port}`);
   })
 }
