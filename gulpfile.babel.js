@@ -18,9 +18,7 @@ gulp.task('devServer', (done) => {
   bg(bwPath, 'server/devServer.js')(done)
 })
 
-gulp.task('prod', ['prodServer'])
-
-gulp.task('prodServer', ['prodBuild'], (done) => {
+gulp.task('prodServer', (done) => {
   const bnPath = './node_modules/.bin/babel-node'
   bg(bnPath, 'server/prodServer.js')(done)
 })

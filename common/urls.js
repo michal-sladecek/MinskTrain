@@ -1,3 +1,7 @@
-export const baseUrl = 'http://localhost:8000'
+export const baseUrl = ''
 export const sendLevel = '/sendLevel'
 export const getSolvedLevels = '/solved'
+export const getUserProfile = '/me'
+export const login = '/login'
+export const loginCallback = login + '/callback'
+export const logout = '/logout'

@@ -205,6 +205,11 @@ const game = (state=defaultGame, action) => {
                 ...state,
                 levels: newLevels
             }
+        case actions.GOT_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile,
+            }
         default:
             return state
     }

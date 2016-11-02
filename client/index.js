@@ -2,19 +2,20 @@ import React from 'react'
 import { render } from 'react-dom'
 import css from './styles/style.styl'
 
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 import store, { history } from './store'
 
 import MenuContainer from './containers/MenuContainer.js'
 import GameContainer from './containers/GameContainer.js'
-import App from './components/App.js'
+import AppContainer from './containers/AppContainer.js'
 const router = (
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={App}>
+            <Route path="/" component={AppContainer}>
                 <IndexRoute component={MenuContainer}/>
                 <Route path="/game/:level" component={GameContainer}/>
+                <Redirect from="*" to="/" />
             </Route>
         </Router>
     </Provider>

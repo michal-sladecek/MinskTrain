@@ -6,7 +6,19 @@ const getEnv = (name, defaultValue) => {
   return res
 }
 
-export default {
-  port: getEnv('MINSKTRAIN_PORT', 8000),
-  host: getEnv('MINSKTRAIN_HOST', 'localhost'),
+let config = {
+  port: getEnv('MINSKYTRAIN_PORT', 8000),
+  host: getEnv('MINSKYTRAIN_HOST', 'localhost'),
+  oauth: {
+    clientID: getEnv('MINSKYTRAIN_OAUTH_ID'),
+    clientSecret: getEnv('MINSKYTRAIN_OAUTH_SECRET'),
+    authorizationURL: getEnv('MINSKYTRAIN_OAUTH_BASEURL') + '/oauth/authorize/',
+    tokenURL: getEnv('MINSKYTRAIN_OAUTH_BASEURL') + '/oauth/token/',
+    profileURL: getEnv('MINSKYTRAIN_OAUTH_BASEURL') + '/api/me/',
+  },
+  secret: getEnv('MINSKYTRAIN_SECRET'),
 }
+
+config.baseUrl = getEnv('MINSKYTRAIN_BASEURL', `http://${config.host}:${config.port}`)
+
+export default config
