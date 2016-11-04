@@ -24,7 +24,6 @@ export default (app) => {
         }
       }, (error, response, body) => {
         const data = JSON.parse(body)
-        console.log('Logged in', data)
         done(null, data)
       })
     }
@@ -45,18 +44,17 @@ export default (app) => {
 
   app.get(
     urls.loginCallback,
-    passport.authenticate(
-      'oauth2', {failureRedirect: urls.login}),
-      function(req, res) {
-        res.redirect('/');
-      }
+    passport.authenticate('oauth2'),
+    function(req, res) {
+      res.redirect('..');
+    }
   )
 
   app.get(
     urls.logout,
     (req, res) => {
       req.logout()
-      res.redirect('/')
+      res.redirect('.')
     }
   )
 }

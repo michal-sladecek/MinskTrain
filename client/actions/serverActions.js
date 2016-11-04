@@ -30,28 +30,28 @@ function gotUserProfile(profile){
 
 export function sendLevel() {
   return function (dispatch, getState) {
-      const state = getState().game
-      const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel, id: state.clientId})
-      dispatch(fetchingStatus())
-      fetch(urls.baseUrl + urls.sendLevel,{
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: jsonMap
+    const state = getState().game
+    const jsonMap = JSON.stringify({map: state.map, curLevel: state.curLevel, id: state.clientId})
+    dispatch(fetchingStatus())
+    fetch(`.${urls.sendLevel}`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: jsonMap
+    })
+    .then(function(res){ return res.json() })
+    .then(function(json){
+        dispatch(getSolvedLevels())
+        dispatch(gotStatus(json))
       })
-      .then(function(res){ return res.json() })
-      .then(function(json){        
-          dispatch(getSolvedLevels())
-          dispatch(gotStatus(json))
-        })
   }
 }
 
 export function getSolvedLevels() {
   return (dispatch, getState) => {
-    fetch(urls.baseUrl + urls.getSolvedLevels,{
+    fetch(`.${urls.getSolvedLevels}`, {
       headers: {
         'Accept': 'application/json',
       },
@@ -67,7 +67,7 @@ export function getSolvedLevels() {
 
 export function getUserProfile() {
   return (dispatch, getState) => {
-    fetch(urls.baseUrl + urls.getUserProfile, {
+    fetch(`.${urls.getUserProfile}`, {
       headers: {
         'Accept': 'application/json',
       },

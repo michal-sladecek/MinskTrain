@@ -1,4 +1,3 @@
-export const baseUrl = ''
 export const sendLevel = '/sendLevel'
 export const getSolvedLevels = '/solved'
 export const getUserProfile = '/me'

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navbar, Nav, NavItem, Jumbotron} from 'react-bootstrap'
+import {LinkContainer} from 'react-router-bootstrap'
 import NotificationContainer from '../containers/NotificationContainer'
 import * as urls from '../../common/urls'
 
@@ -20,12 +21,17 @@ const App = React.createClass({
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
+            <Nav>
+              <LinkContainer to="/levels"><NavItem>
+                Zoznam levelov
+              </NavItem></LinkContainer >
+            </Nav>
             <Nav pullRight>
               {profile.loggedIn === true && (<Navbar.Text>{profile.username}</Navbar.Text>)}
-              {profile.loggedIn === true && (<NavItem href={urls.logout}>
+              {profile.loggedIn === true && (<NavItem href={`.${urls.logout}`}>
                 Odhlásiť
               </NavItem>)}
-              {profile.loggedIn === false && (<NavItem href={urls.login}>
+              {profile.loggedIn === false && (<NavItem href={`.${urls.login}`}>
                 Prihlásiť (cez Trojsten)
               </NavItem>)}
             </Nav>
@@ -39,7 +45,7 @@ const App = React.createClass({
       <div className='center'>
         <p style={{fontSize: '200%'}}>
           Na použitie aplikácie je nutné
-          &nbsp;<a href={urls.login}>prihlásenie</a>.
+          &nbsp;<a href={`.${urls.login}`}>prihlásenie</a>.
         </p>
       </div>
     )
