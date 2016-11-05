@@ -1,0 +1,8 @@
+export default {
+  exampleTaskId: {
+    token: 'SecretTokenObtainedOnTheTrojstenWeb',
+    scoring: {
+      'exampleLevelId': 5, // Number of points scored by solving specific level
+    }
+  }
+}

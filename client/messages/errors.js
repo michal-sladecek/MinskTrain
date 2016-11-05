@@ -45,6 +45,12 @@ const errors = {
             <p>Na to aby vas level presiel testovacom, musi byt schopny splnit ulohu nech su na zaciatku vo vlaciku hocijake cisla</p>
             <p>Postupom hry budes dostavat nove stanice, tieto stanice su schopne robit s vlakom nejake operacie.</p>
         </div>
+    ),
+    'GRADER_ERROR': (
+        <div>
+            <h2>Riešenie sa neodovzdalo!</h2>
+            <p>Skús znova. Ak problém pretrváva, napíš na sysel@ksp.sk.</p>
+        </div>
     )
 }
 const functions = {

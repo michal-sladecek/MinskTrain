@@ -31,7 +31,13 @@ export default (app) => {
 
   app.get(urls.getSolvedLevels, (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    users.getAllSolvedLevels(req.user.id, (solved) => {
+    users.getSolvedLevels(req.user.id, (err, solved) => {
+      if (err) {
+        console.log(err)
+        res.statusCode = 500
+        res.send()
+        return
+      }
       res.send(JSON.stringify(solved))
     })
   })
@@ -40,9 +46,18 @@ export default (app) => {
     res.setHeader('Content-Type', 'application/json')
     const result = testSolution(req.body.map, req.body.curLevel)
     if(result.ok){
-      users.solveLevel(req.body.id, req.body.curLevel)
+      users.solveLevel(req.user.id, req.body.curLevel, (err) => {
+        if (err) {
+          console.log(err)
+          res.statusCode = 500
+          res.send()
+          return
+        }
+        res.send(JSON.stringify(result))
+      })
+    } else {
+      res.send(JSON.stringify(result))
     }
-    res.send(JSON.stringify(result))
   })
 
   app.get('/', (req, res) => {

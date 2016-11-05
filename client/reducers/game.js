@@ -178,6 +178,15 @@ const game = (state=defaultGame, action) => {
                     notify: {id: 'SERVER', ...action.status}
                 }
             }
+        case actions.GRADER_ERROR:
+            return {
+                ...state,
+                fetching:false,
+                train:{
+                    ...state.train,
+                    notify: {id: 'GRADER_ERROR'}
+                }
+            }
         case actions.SHOW_HELP:
             return {
                 ...state,

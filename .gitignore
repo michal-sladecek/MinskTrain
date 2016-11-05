@@ -1,5 +1,7 @@
 /users.db
 /dist
+/tasks.config.js
+
 
 # Logs
 logs

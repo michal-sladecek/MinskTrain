@@ -14,6 +14,12 @@ function gotStatus(status){
     }
 }
 
+function statusError(status){
+    return {
+        type:actions.GRADER_ERROR,
+    }
+}
+
 function gotSolvedLevels(solved){
     return {
         type:actions.GOT_SOLVED_LEVELS,
@@ -38,6 +44,7 @@ export function sendLevel() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'include',
       method: 'POST',
       body: jsonMap
     })
@@ -46,6 +53,9 @@ export function sendLevel() {
         dispatch(getSolvedLevels())
         dispatch(gotStatus(json))
       })
+    .catch((err) => {
+      dispatch(statusError())
+    })
   }
 }
 

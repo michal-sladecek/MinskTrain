@@ -4,6 +4,7 @@ import OAuth2Strategy from 'passport-oauth2'
 
 import * as urls from '../common/urls'
 import config from './config'
+import {createUser} from './users'
 
 export default (app) => {
 
@@ -22,9 +23,17 @@ export default (app) => {
           Authorization: `Bearer ${accessToken}`,
           ContentType: 'application/json',
         }
-      }, (error, response, body) => {
+      }, (err, response, body) => {
+        if (err) {
+          done(err)
+        }
         const data = JSON.parse(body)
-        done(null, data)
+        createUser(data.id, (err) => {
+          if (err) {
+            done(err)
+          }
+          done(null, data)
+        })
       })
     }
   ))
