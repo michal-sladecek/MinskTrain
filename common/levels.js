@@ -6,100 +6,107 @@ var gcd = function(a, b) {
     return gcd(b, a % b);
 };
 
-const levelsDefault =  [
-        {
-            id: 0,
-            objective: 'Vlacik musi prejst do koncovej stanice',
-            hint: 'Kolajnice si vyberas v menu a potom ich pokladas na planik klikanim alebo tahanim.\
-                Az budes mat vsetko hotove mozes si vlacik vyskusat tlacitkami v lokomotive.\
-                Level sa ti zarata az ho posles na otestovanie',
+const levelsDefault = {
+        A1: {
+            id: 'A1',
+            objective: '(1b) Vláčik musí prejsť do koncovej stanice',
+            hint: 'Pozri si tutoriál :)',
             allowed: ['rails', 'helpers'],
             checker: () => {
                 return true
             }
         },
-        {
-            id: 1,
-            objective: 'Pripocitaj 1 k vagonu A a odpocitaj 1 od vagonu B',
-            hint: 'Mas novu stanicu. Po polozeni stanice sa ta hra spyta, od akeho vagona chces odpocitat alebo pripocitat 1',
+        A2: {
+            id: 'A2',
+            objective: '(1b) Pripočítaj 1 k vozňu A a odpočítaj 1 od vozňa B',
+            hint: 'Určite si si pozrel(a) tutoriál?',
             allowed: ['rails', 'stations', 'helpers'],
             checker: (oldTrain, newTrain) => {
                 return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===oldTrain[1]-1))
             }
         },
-        {
-            id: 2,
-            objective: 'Vynuluj vozen A',
-            hint: 'Dostal si vyhybky, vyhybky sa ta tiez spytaju na vagon.\
-                 Ked vlacik pride na vyhybku tak pojde rovno ak v tomt vagone bude 0.',
+        A3: {
+            id: 'A3',
+            objective: '(1b) Vynuluj vozeň A',
+            hint: 'Pozrieť si tutoriál je naozaj dôležité.',
             allowed: ['rails','stations', 'switches', 'helpers'],
             checker: (oldTrain, newTrain) => {
                 return (newTrain[0]===0)
             }
         },
-        {
-            id:3,
-            objective: 'Zmen cislo vo vagone B na cislo z vagona A',
-            hint: 'Podobne ako v predoslej.',
+        A4: {
+            id: 'A4',
+            objective: '(3b) Zmeň číslo vo vagóne B na číslo z vagóna A',
+            hint: 'Najskôr si B vynuluj. Potom skús vynulovať aj A ale rob pritom ešte niečo naviac.',
             allowed: ['rails','stations', 'switches', 'helpers'],
             checker: (oldTrain, newTrain) => {
                 return (newTrain[1]===oldTrain[0])
             }
         },
-        {
-            id: 4,
-            objective: 'Scitaj cisla vo vozni A a B a vysledok daj do vozna C.',
-            hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
+        A5: {
+            id: 'A5',
+            objective: '(4b) Zdvojnásob číslo vo vagóne A',
+            hint: 'Už vieš presúvať. Najskôr si teda presuň A niekam preč. Vieš ho presunúť späť dvakrát?',
+            allowed: ['rails','stations', 'switches', 'helpers'],
+            checker: (oldTrain, newTrain) => {
+                return (newTrain[0]===2*oldTrain[0])
+            }
+        },
+        A6: {
+            id: 'A6',
+            objective: '(3b) Sčítaj čísla vo vozňoch A a B a výsledok ulož do vozňa C.',
+            hint: 'Aj tu sa ti presúvanie celkom hodí. Možno však treba viac krát. A nezabudni si C najskôr vynulovať.',
             allowed: ['rails','stations', 'switches','setters', 'helpers'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]+oldTrain[1])
             }
         },
-        {
-            id: 5,
-            objective: 'Odcitaj cislo vo vozni A od cisla vo vozni B a vysledok daj do vozna C.',
-            hint: 'Dostal si novu stanicu, tato stanica zmeni cislo v jednom vagone na cislo z druheho vagonu',
+        A7: {
+            id: 'A7',
+            objective: '(2b) Odčítaj číslo vo vozni A od čísla vo vozni B a výsledok ulož do vozňa C.',
+            hint: 'Toto by už malo byť ľahké.',
             allowed: ['rails','stations', 'switches', 'setters', 'helpers'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[1]-oldTrain[0])
             }
         },
-        {
-            id: 6,
-            objective: 'Vynasob cisla vo vozni A a B a vysledok daj do C',
-            hint: 'Opat si dostal nove stanice, jedna spocita cisla v dvoch voznoch a vysledok da do tretieho, ta druha odpocita.',
+        B1: {
+            id: 'B1',
+            objective: '(3b) Vynásob čísla vo vozňoch A a B a výsledok ulož do vozňa C',
+            hint: 'Sčítavať už vieš priamo stanicou. Ako nám to ale pomôže k násobeniu?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]*oldTrain[1])
             }
         },
-        {
-            id: 7,
-            objective: 'Vydel cislo vo vozni A cislom vo vozni B a vysledok daj do C. Ak A nedeli B, tak chceme najvacsie take cislo x, ze x*B<=A',
-            hint: '',
+        B2: {
+            id: 'B2',
+            objective: '(3b) Vydel číslo vo vozni A číslom vo vozni B a výsledok ulož do vozňa C. Výsledok zaokrúhli nadol.',
+            hint: 'Koľkokrát sa B nachádza v A?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]/oldTrain[1])
             }
         },
-        {
-            id: 8,
-            objective: 'Vydel cislo vo vozni A cislom vo vozni B a zvysok po deleni daj do vozna C',
-            hint: '',
+        B3: {
+            id: 'B3',
+            objective: '(4b) Nájdi zvyšok po delení čísla vo vozni A číslom vo vozni B a ulož ho do vozňa C',
+            hint: 'Všimni si že znova delíme. Len nás zaujíma iné číslo',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]%oldTrain[1])
             }
         },
-        {
-            id: 9,
-            objective: 'Daj do vozna C najvacsieho spolocneho delitela A a B',
-            hint: 'Poznas Euklidov algoritmus?',
+        B4: {
+            id: 'B4',
+            objective: '(5b) Daj do vozňa C najvačšieho spoločného deliteľa vozňov A a B',
+            hint: 'Poznáš Euklidov algoritmus?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
-            checker: function(oldTrain, newTrain) {
+            checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===gcd(oldTrain[0],oldTrain[1]))
             }
         },
-    ]
+    }
+
 
 export default levelsDefault

@@ -204,15 +204,11 @@ const game = (state=defaultGame, action) => {
                 }
             }
         case actions.GOT_SOLVED_LEVELS:
-            var newLevels = state.levels
-            const solved = action.solved
-            for(var i = 0; i < solved.length; ++i){
-                let x = parseInt(solved[i])
-                newLevels = [...newLevels.slice(0,x), {...newLevels[x], solved: true}, ...newLevels.slice(x+1)]
-            }
             return {
                 ...state,
-                levels: newLevels
+                levels: action.solved.reduce((levels, id) => ({
+                    ...levels, [id]: {...levels[id], solved: true},
+                }), state.levels)
             }
         case actions.GOT_USER_PROFILE:
             return {
