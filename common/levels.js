@@ -94,7 +94,7 @@ const levelsDefault = {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
                 }
-                return (oldTrain[1] >= oldTrain[0])
+                return true
             },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===Math.max(0, oldTrain[1]-oldTrain[0]))
