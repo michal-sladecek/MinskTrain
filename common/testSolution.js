@@ -2,12 +2,11 @@ import cases from '../levelsTestCases/cases.js'
 import levels from './levels'
 import items from './items/items'
 import {processToNextNode} from './compile'
-
+import clientConfig from '../client/config'
 const testSolution = function(map, curLevel){
     for(var i=0;i<map.length;++i){
         for(var j=0;j<map[i].length;++j){
             if(map[i][j]){
-                console.log(levels[curLevel])
                 if(levels[curLevel].allowed.indexOf(items[map[i][j].type].group) == -1){
                     return {ok:false, reason:'NOT_ALLOWED', failure: cases[0]}
                 }
@@ -16,6 +15,10 @@ const testSolution = function(map, curLevel){
     }
     for(var i=0;i<cases.length;++i){
         const originalTrain = cases[i]
+        if(levels[curLevel].beforeTestCase) {
+            let test = levels[curLevel].beforeTestCase(originalTrain)
+            if(!test) continue
+        }
         let trainCopy = originalTrain.slice()
         var start = new Date().getTime()
         let coord = {x:0, y:0}
@@ -32,7 +35,7 @@ const testSolution = function(map, curLevel){
             coord = next.coord
             dir = next.direction
         }
-        if(coord.x === 14 && coord.y === 20){
+        if(coord.x === clientConfig.gameHeight - 1 && coord.y === clientConfig.gameWidth){
             if(levels[curLevel].checker(originalTrain, trainCopy)){
                 continue
             }

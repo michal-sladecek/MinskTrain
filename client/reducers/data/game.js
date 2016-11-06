@@ -3,11 +3,12 @@
 //  D
 import levelsDefault from '../../../common/levels'
 import * as speedLevels from '../../consts/speedLevels'
+import config from '../../config'
 
 let map = []
-for(let i=0;i<15;++i){
+for(let i=0;i<config.gameHeight;++i){
     map.push([])
-    for(let j=0;j<20;j++){
+    for(let j=0;j<config.gameWidth;j++){
         map[i].push(null)
     }
 }

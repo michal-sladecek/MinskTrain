@@ -21,6 +21,12 @@ const levelsDefault = {
             objective: '(1b) Pripočítaj 1 k vozňu A a odpočítaj 1 od vozňa B (ak je neprázdny)',
             hint: 'Určite si si pozrel(a) tutoriál?',
             allowed: ['rails', 'stations', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] > 0)
+            },
             checker: (oldTrain, newTrain) => {
                 return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===Math.max(oldTrain[1]-1, 0)))
             }
@@ -29,6 +35,12 @@ const levelsDefault = {
             id: 'A3',
             objective: '(1b) Vynuluj vozeň A',
             hint: 'Pozrieť si tutoriál je naozaj dôležité.',
+            beforeTestCase: (oldTrain) => {
+                for(let i=1;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             allowed: ['rails','stations', 'switches', 'helpers'],
             checker: (oldTrain, newTrain) => {
                 return (newTrain[0]===0)
@@ -39,6 +51,12 @@ const levelsDefault = {
             objective: '(3b) Zmeň číslo vo vagóne B na číslo z vagóna A',
             hint: 'Najskôr si B vynuluj. Potom skús vynulovať aj A ale rob pritom ešte niečo naviac.',
             allowed: ['rails','stations', 'switches', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[1]===oldTrain[0])
             }
@@ -55,8 +73,14 @@ const levelsDefault = {
         A6: {
             id: 'A6',
             objective: '(3b) Sčítaj čísla vo vozňoch A a B a výsledok ulož do vozňa C.',
-            hint: 'Aj tu sa ti presúvanie celkom hodí. Možno však treba viac krát. A nezabudni si C najskôr vynulovať.',
+            hint: 'Aj tu sa ti presúvanie celkom hodí. Možno však treba viac krát.',
             allowed: ['rails','stations', 'switches','setters', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]+oldTrain[1])
             }
@@ -66,6 +90,12 @@ const levelsDefault = {
             objective: '(2b) Odčítaj číslo vo vozni A od čísla vo vozni B a výsledok ulož do vozňa C. Ak je číslo vo vozni A väčšie, výsledok je nula.',
             hint: 'Toto by už malo byť ľahké.',
             allowed: ['rails','stations', 'switches', 'setters', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] >= oldTrain[0])
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===Math.max(0, oldTrain[1]-oldTrain[0]))
             }
@@ -75,6 +105,12 @@ const levelsDefault = {
             objective: '(3b) Vynásob čísla vo vozňoch A a B a výsledok ulož do vozňa C',
             hint: 'Sčítavať už vieš priamo stanicou. Ako nám to ale pomôže k násobeniu?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]*oldTrain[1])
             }
@@ -84,8 +120,14 @@ const levelsDefault = {
             objective: '(3b) Vydel číslo vo vozni A číslom vo vozni B a výsledok ulož do vozňa C. Výsledok zaokrúhli nadol.',
             hint: 'Koľkokrát sa B nachádza v A?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] != 0)
+            },
             checker: (oldTrain, newTrain) => {
-                return (newTrain[2]===oldTrain[0]/oldTrain[1])
+                return (newTrain[2]===Math.floor(oldTrain[0]/oldTrain[1]))
             }
         },
         B3: {
@@ -93,6 +135,12 @@ const levelsDefault = {
             objective: '(4b) Nájdi zvyšok po delení čísla vo vozni A číslom vo vozni B a ulož ho do vozňa C',
             hint: 'Všimni si že znova delíme. Len nás zaujíma iné číslo',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return (oldTrain[1] != 0)
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===oldTrain[0]%oldTrain[1])
             }
@@ -102,6 +150,12 @@ const levelsDefault = {
             objective: '(5b) Daj do vozňa C najvačšieho spoločného deliteľa vozňov A a B',
             hint: 'Poznáš Euklidov algoritmus?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=2;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===gcd(oldTrain[0], oldTrain[1]))
             }

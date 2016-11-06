@@ -4,6 +4,7 @@ import * as speedLevels from '../consts/speedLevels'
 import defaultGame from './data/game'
 import {processToNextNode} from '../../common/compile'
 import buildStation from './buildStation'
+import config from '../config'
 
 const resetTrain = (state) => {
     return {
@@ -24,7 +25,7 @@ const resetTrain = (state) => {
 }
 
 const checkLevelDone = (state) => {
-    if(state.train.nextStop.x !== 14 || state.train.nextStop.y !== 20) return false
+    if(state.train.nextStop.x !== config.gameHeight - 1 || state.train.nextStop.y !== config.gameWidth) return false
     const id = state.curLevel
     const check = state.levels[id].checker
     return check(state.train.origCarriage, state.train.carriage)
@@ -101,8 +102,8 @@ const game = (state=defaultGame, action) => {
             if(isNaN(number)){
                 return Object.assign({},state)
             }
-            if(number > 99 || number < 0){
-                return Object.assign({},state)
+            if(number > config.maxTrainNum || number < 0){
+                return Object.assign({}, state)
             }
             return {
                 ...state,

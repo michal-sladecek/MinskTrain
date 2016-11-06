@@ -1,4 +1,5 @@
 import items from './items/items'
+import clientConfig from '../client/config'
 
 const directionsRev = {
     'U' : 'D',
@@ -13,7 +14,7 @@ const directions = {
     'R' : {x:0, y:1},
     'L' : {x:0, y:-1}
 }
-const endingNode = {x: 14, y: 20}
+const endingNode = {x: clientConfig.gameHeight - 1, y: clientConfig.gameWidth}
 export const getNextNode = (map, direction, coord) => {
     let curx = coord.x
     let cury = coord.y
