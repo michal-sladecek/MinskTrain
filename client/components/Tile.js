@@ -3,7 +3,7 @@ import NotImplemented from './NotImplemented'
 import items from './items/items'
 import {Modal, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import tooltips from '../messages/tooltips'
-import getBuildModal from './items/forms'
+import getModalBody from './items/forms'
 const Tile = React.createClass({
     getInitialState(){
         return { showModal: false }
@@ -15,8 +15,12 @@ const Tile = React.createClass({
         }
         const submit = (e) => {
             e.preventDefault()
-            const array = Array.prototype.slice.call(e.target.getElementsByTagName("input")).map((val) => {return val.value})
-            this.props.useTool(this.props.coord, array)
+
+            const values = Array.prototype.slice.call(
+                e.target.getElementsByTagName('select')
+            ).map((elem) => {return elem.options[elem.selectedIndex].value})
+
+            this.props.useTool(this.props.coord, values)
             hideModal()
         }
         const submitNoModal = (e) => {
@@ -31,12 +35,12 @@ const Tile = React.createClass({
         const hideModal = (e) => {
             this.setState({ showModal: false })
         }
-        let form = getBuildModal(submit, this.props.currentTool)
+        let form = getModalBody(submit, this.props.currentTool)
         let modal = []
         let whatToDo = submitNoModal
         if(form){
             modal = (
-                <Modal show={this.state.showModal} onHide={hideModal}>
+                <Modal show={this.state.showModal} onHide={hideModal} autoFocus>
                     {form}
                 </Modal>
             )

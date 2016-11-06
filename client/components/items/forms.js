@@ -1,6 +1,9 @@
 import React from 'react'
+import {Modal, Button, FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
 import messages from '../../messages/messages'
-const getBuildModal = (submit, type) => {
+
+
+const getModalData = (type) => {
     switch(type){
         case 'UDPLUSONE':
         case 'LRPLUSONE':
@@ -14,20 +17,14 @@ const getBuildModal = (submit, type) => {
         case 'LUR':
         case 'RDL':
         case 'URD':
-            return (
-                <form onSubmit={submit}>
-                    <input type='text' placeholder={messages.enterVagon} autoFocus/>
-                </form>
-            )
+            return {
+                inputs: [messages.enterVagon]
+            }
         case 'LRSETX':
         case 'UDSETX':
-            return (
-                <form onSubmit={submit}>
-                    <input type='text' placeholder={messages.enterVagonFrom1} autoFocus/><br/>
-                    <input type='text' placeholder={messages.enterVagonTo}/><br/>
-                    <input type="submit"/>
-                </form>
-            )
+            return {
+                inputs: [messages.enterVagonFrom1, messages.enterVagonTo]
+            }
         case 'LRPLUS':
         case 'UDPLUS':
         case 'LRMINUS':
@@ -38,18 +35,43 @@ const getBuildModal = (submit, type) => {
         case 'UDDIV':
         case 'LRMOD':
         case 'UDMOD':
-            return (
-                <form onSubmit={submit}>
-                    <input type='text' placeholder={messages.enterVagonFrom1} autoFocus/><br/>
-                    <input type='text' placeholder={messages.enterVagonFrom2}/><br/>
-                    <input type='text' placeholder={messages.enterVagonTo}/><br/>
-                    <input type="submit"/>
-                </form>
-            )
-        
+            return {
+                inputs: [messages.enterVagonFrom1, messages.enterVagonFrom2, messages.enterVagonTo]
+            }
         default:
             return null
     }
 }
 
-export default getBuildModal
+const OPTIONS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
+
+const getModalBody = (submit, type) => {
+    const data = getModalData(type)
+    if (!data) {
+        return null
+    }
+
+    return (
+        <form onSubmit={submit}>
+            <Modal.Body>
+                {data.inputs.map((name, i) => (
+                    <FormGroup key={i}>
+                        <ControlLabel>{name}</ControlLabel>
+                        <FormControl componentClass="select">
+                            {OPTIONS.map((opt) => (
+                                <option key={opt} value={opt}>{opt}</option>
+                            ))}
+                        </FormControl>
+                    </FormGroup>
+                ))}
+            </Modal.Body>
+            <Modal.Footer>
+                <Button type="submit">
+                    Nastav
+                </Button>
+            </Modal.Footer>
+        </form>
+    )
+}
+
+export default getModalBody
