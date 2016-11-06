@@ -9,7 +9,7 @@ const messages = {
     testing: 'Riešenie sa testuje',
     sendSolution: 'Odošli riešenie',
     showHelp: 'Zobraz nápovedu',
-    gameName: 'ZERGTrain'
+    gameName: 'MinskyTrain'
 }
 
 export default messages

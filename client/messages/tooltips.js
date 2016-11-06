@@ -2,7 +2,7 @@ import React from 'react'
 function switchTooltip(id){
     return (
             <p>
-                Pojde rovno, ak vo vagone 
+                Pôjde rovno, ak vo vozni
                 <i>
                 {' '+String.fromCharCode(65+id)+' '}
                 </i>
@@ -18,7 +18,7 @@ const tooltips = {
     'UDPLUSONE': (id) => {
         return (
             <p>
-                Pripocita 1 k vagonu 
+                Pripočíta 1 k vozňu
                 <i>
                 {' '+String.fromCharCode(65+id)+' '}
                 </i>
@@ -28,7 +28,7 @@ const tooltips = {
     'LRPLUSONE': (id) => {
         return (
             <p>
-                Pripocita 1 k vagonu 
+                Pripočíta 1 k vozňu
                 <i>
                  {' '+String.fromCharCode(65+id)+' '}
                 </i>
@@ -38,7 +38,7 @@ const tooltips = {
     'LRMINUSONE': (id) => {
         return (
             <p>
-                Odpocita 1 od vagona 
+                Odpočíta 1 od vozňa
                 <i>
                  {' '+String.fromCharCode(65+id)+' '}
                 </i>
@@ -48,7 +48,7 @@ const tooltips = {
     'UDMINUSONE': (id) => {
         return (
             <p>
-                Odpocita 1 od vagona 
+                Odpočíta 1 od vozňa
                 <i>
                  {' '+String.fromCharCode(65+id)+' '}
                 </i>
@@ -66,11 +66,11 @@ const tooltips = {
     'LRSETX': (id) => {
         return (
             <p>
-                Zmeni cislo vo vagone  
+                Zmení číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)+' '}
                 </i>
-                na cislo z vagona
+                na číslo z vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFrom)}
                 </i>
@@ -80,11 +80,11 @@ const tooltips = {
     'UDSETX': (id) => {
         return (
             <p>
-                Zmeni cislo vo vagone  
+                Zmení číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)+' '}
                 </i>
-                na cislo z vagona
+                na číslo z vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFrom)}
                 </i>
@@ -94,11 +94,11 @@ const tooltips = {
     'LRPLUS': (id) => {
         return (
             <p>
-                Scita cisla vo vagonoch  
+                Sčíta čísla vo vozňoch
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
                 </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a vysledok da do vagona
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -108,11 +108,11 @@ const tooltips = {
     'UDPLUS': (id) => {
         return (
             <p>
-                Scita cisla vo vagonoch  
+                Sčíta čísla vo vozňoch
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
                 </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a vysledok da do vagona
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -122,11 +122,11 @@ const tooltips = {
     'LRMINUS': (id) => {
         return (
             <p>
-                Odcita cislo vo vagone
+                Odčíta číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromB)+' '}
-                </i> od vagona <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
-                a vysledok da do vagona
+                </i> od vozňa <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -136,11 +136,11 @@ const tooltips = {
     'UDMINUS': (id) => {
         return (
             <p>
-                Odcita cislo vo vagone
+                Odčíta číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromB)+' '}
-                </i> od vagona <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
-                a vysledok da do vagona
+                </i> od vozňa <i>{' '+String.fromCharCode(65+id.vagonFromA)+' '}</i>
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -150,11 +150,11 @@ const tooltips = {
     'LRMUL': (id) => {
         return (
             <p>
-                Vynasobi cisla vo vagonoch  
+                Vynásobí čísla vo vozňoch
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
                 </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a vysledok da do vagona
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -164,11 +164,11 @@ const tooltips = {
     'UDMUL': (id) => {
         return (
             <p>
-                Vynasobi cisla vo vagonoch  
+                Vynásobí čísla vo vozňoch
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
                 </i> a <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a vysledok da do vagona
+                a výsledok uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -178,11 +178,11 @@ const tooltips = {
     'LRDIV': (id) => {
         return (
             <p>
-                Vydeli cislo vo vagone
+                Vydelí číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
-                </i> cislom vo vagone <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a celociselny vysledok da do vagona
+                </i> číslom vo vozni <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a výsledok zaokrúhlený nadol uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -192,11 +192,11 @@ const tooltips = {
     'UDDIV': (id) => {
         return (
              <p>
-                Vydeli cislo vo vagone
+                Vydelí číslo vo vozni
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
-                </i> cislom vo vagone <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                a celociselny vysledok da do vagona
+                </i> číslom vo vozni <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                a výsledok zaokrúhlený nadol uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -206,11 +206,11 @@ const tooltips = {
     'LRMOD': (id) => {
         return (
             <p>
-                Zvysok 
+                Zvyšok
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
-                </i> po deleni cislom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                da do vagona
+                </i> po delení číslom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
@@ -220,11 +220,11 @@ const tooltips = {
     'UDMOD': (id) => {
         return (
               <p>
-                Zvysok 
+                Zvyšok
                 <i>
                  {' '+String.fromCharCode(65+id.vagonFromA)+' '}
-                </i> po deleni cislom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
-                da do vagona
+                </i> po delení číslom <i>{' '+String.fromCharCode(65+id.vagonFromB)+' '}</i>
+                uloží do vozňa
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
