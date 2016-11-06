@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {bindActionCreators} from 'redux'
-import * as actionCreators from '../actions/trainActions'
-import {Modal} from 'react-bootstrap'
+import * as trainActions from '../actions/trainActions'
+import * as serverActions from '../actions/serverActions'
+import {push as changeRoute} from 'react-router-redux'
+import {Modal, Button} from 'react-bootstrap'
 import getNotify from '../messages/errors'
 
 
@@ -11,32 +13,40 @@ const Notification = React.createClass({
         const hideModal = (e) => {
             this.props.clearNotify()
         }
-        const otestuj = (newVagons) => {
+        const test = (newVagons) => {
             this.props.clearNotify()
             this.props.setTrain(newVagons)
             this.props.play()
         }
+        const {title, body, buttons} = getNotify(
+            this.props.notify,
+            {test, hideModal, ...this.props},
+        ) || {}
         return (
-            <Modal bsSize="large" show = {this.props.notify.id !== ''} onHide={hideModal}>  
-                    {getNotify(this.props.notify, { otestuj, hideModal , setLevel: this.props.setLevel}, this.props.nextLevel)}
+            <Modal bsSize="large" show = {this.props.notify.id !== ''} onHide={hideModal}>
+                {title && (<Modal.Header><Modal.Title>{title}</Modal.Title></Modal.Header>)}
+                {body && (<Modal.Body>{body}</Modal.Body>)}
+                <Modal.Footer>
+                    {buttons}
+                    <Button onClick={hideModal}>Zatvor</Button>
+                </Modal.Footer>
             </Modal>
         )
     }
 })
 
 const mapStateToProps = (state, ownProps) => {
-    let nextLevel = 'menu'
-    if (state.game.levels.length > state.game.curLevel) {
-        nextLevel = '' + (parseInt(state.game.curLevel) + 1)
-    }
     return {
         notify: state.game.train.notify,
-        nextLevel: nextLevel
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(actionCreators, dispatch)
+    return bindActionCreators({
+        ...trainActions,
+        ...serverActions,
+        changeRoute,
+    }, dispatch)
 }
 
 const NotificationContainer = connect(
