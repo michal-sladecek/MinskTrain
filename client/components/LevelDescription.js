@@ -17,8 +17,8 @@ const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
                 <div className='Hint'>
                     <p>{level.hint}</p>
                 </div>
-                {button}
-                <Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button>
+                <p>{button}</p>
+                <p><Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button></p>
             </div>
         )
 }
