@@ -42,6 +42,7 @@ const tooltips = {
                 <i>
                  {' '+String.fromCharCode(65+id)+' '}
                 </i>
+                (pokiaľ tam niečo je)
             </p>
         )
     },
@@ -52,6 +53,7 @@ const tooltips = {
                 <i>
                  {' '+String.fromCharCode(65+id)+' '}
                 </i>
+                (pokiaľ tam niečo je)
             </p>
         )
     },
@@ -130,6 +132,7 @@ const tooltips = {
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
+                . Ak by mal byť výsledok záporný, uloží nulu.
             </p>
         )
     },
@@ -144,6 +147,7 @@ const tooltips = {
                 <i>
                  {' '+String.fromCharCode(65+id.vagonTo)}
                 </i>
+                . Ak by mal byť výsledok záporný, uloží nulu.
             </p>
         )
     },

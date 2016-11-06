@@ -37,10 +37,10 @@ export const LRMinusOne = {
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
             case 'L': 
-                changeNum(id,vagons[id]-1)
+                changeNum(id, Math.max(0, vagons[id]-1))
                 return 'R'
             case 'R':
-                changeNum(id,vagons[id]-1)
+                changeNum(id, Math.max(0, vagons[id]-1))
                 return 'L'
             default:
                 return 'BAD_OPERATION'
@@ -53,10 +53,10 @@ export const UDMinusOne = {
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
             case 'U': 
-                changeNum(id,vagons[id]-1)
+                changeNum(id, Math.max(0, vagons[id]-1))
                 return 'D'
             case 'D':
-                changeNum(id,vagons[id]-1)
+                changeNum(id, Math.max(0, vagons[id]-1))
                 return 'U'
             default:
                 return 'BAD_OPERATION'
@@ -138,10 +138,10 @@ export const LRMinus = {
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
             case 'L': 
-                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                changeNum(id.vagonTo, Math.max(0, vagons[id.vagonFromA] - vagons[id.vagonFromB]))
                 return 'R'
             case 'R':
-                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                changeNum(id.vagonTo, Math.max(0, vagons[id.vagonFromA] - vagons[id.vagonFromB]))
                 return 'L'
             default:
                 return 'BAD_OPERATION'
@@ -155,10 +155,10 @@ export const UDMinus = {
     action: (fromDirection, vagons, id, changeNum) => {
         switch(fromDirection){
             case 'U': 
-                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                changeNum(id.vagonTo, Math.max(0, vagons[id.vagonFromA] - vagons[id.vagonFromB]))
                 return 'D'
             case 'D':
-                changeNum(id.vagonTo,vagons[id.vagonFromA] - vagons[id.vagonFromB])
+                changeNum(id.vagonTo, Math.max(0, vagons[id.vagonFromA] - vagons[id.vagonFromB]))
                 return 'U'
             default:
                 return 'BAD_OPERATION'

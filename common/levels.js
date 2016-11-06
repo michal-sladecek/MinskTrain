@@ -18,11 +18,11 @@ const levelsDefault = {
         },
         A2: {
             id: 'A2',
-            objective: '(1b) Pripočítaj 1 k vozňu A a odpočítaj 1 od vozňa B',
+            objective: '(1b) Pripočítaj 1 k vozňu A a odpočítaj 1 od vozňa B (ak je neprázdny)',
             hint: 'Určite si si pozrel(a) tutoriál?',
             allowed: ['rails', 'stations', 'helpers'],
             checker: (oldTrain, newTrain) => {
-                return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===oldTrain[1]-1))
+                return ((newTrain[0]===oldTrain[0]+1)&&(newTrain[1]===Math.max(oldTrain[1]-1, 0)))
             }
         },
         A3: {
@@ -63,11 +63,11 @@ const levelsDefault = {
         },
         A7: {
             id: 'A7',
-            objective: '(2b) Odčítaj číslo vo vozni A od čísla vo vozni B a výsledok ulož do vozňa C.',
+            objective: '(2b) Odčítaj číslo vo vozni A od čísla vo vozni B a výsledok ulož do vozňa C. Ak je číslo vo vozni A väčšie, výsledok je nula.',
             hint: 'Toto by už malo byť ľahké.',
             allowed: ['rails','stations', 'switches', 'setters', 'helpers'],
             checker: (oldTrain, newTrain) => {
-                return (newTrain[2]===oldTrain[1]-oldTrain[0])
+                return (newTrain[2]===Math.max(0, oldTrain[1]-oldTrain[0]))
             }
         },
         B1: {
@@ -103,7 +103,7 @@ const levelsDefault = {
             hint: 'Poznáš Euklidov algoritmus?',
             allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
             checker: (oldTrain, newTrain) => {
-                return (newTrain[2]===gcd(oldTrain[0],oldTrain[1]))
+                return (newTrain[2]===gcd(oldTrain[0], oldTrain[1]))
             }
         },
     }
