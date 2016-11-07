@@ -1,19 +1,14 @@
 import request from 'request'
 
 import config from './config'
-import TASKS from '../tasks.config'
+import levels from '../common/levels'
 
-
-const LEVEL_TO_TASK = Object.keys(TASKS).reduce((res, task) => (
-  Object.keys(TASKS[task].scoring).reduce((res, level) => ({...res, [level]: task}), res)
-), {})
-
-
-const submit = (uid, solved, task, done) => {
-  const {scoring, token} = TASKS[task]
-  const score = Object.keys(scoring)
+const submit = (uid, solved, group, done) => {
+  const token = config.submitTokens[group]
+  const score = Object.keys(levels)
+    .filter((level) => levels[level].group === group)
     .filter((level) => solved.indexOf(level) !== -1)
-    .reduce((score, level) => score + scoring[level], 0)
+    .reduce((score, level) => score + levels[level].points, 0)
 
   request({
     url: config.submitURL,
@@ -39,10 +34,6 @@ const submit = (uid, solved, task, done) => {
 
 
 export const resubmit = (uid, solved, level, done) => {
-  const task = LEVEL_TO_TASK[level]
-  if (!task) {
-    done(`Level not found: ${level}`)
-    return
-  }
-  submit(uid, solved, task, done)
+  const {group} = levels[level]
+  submit(uid, solved, group, done)
 }

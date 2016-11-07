@@ -10,7 +10,7 @@ const LevelIcon = React.createClass({
         <Button style={{width: '100%'}}>
           <h3>
             Level {this.props.level.id}
-            <span>&nbsp;&nbsp;{this.props.level.objective.slice(0, 4)}</span>
+            <span>&nbsp;&nbsp;({this.props.level.points}b)</span>
             {this.props.level.solved &&
               (<span>&nbsp;&nbsp;<Glyphicon glyph="ok" /></span>)
             }

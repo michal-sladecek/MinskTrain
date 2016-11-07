@@ -12,11 +12,9 @@ const LevelDescription = ({level, sendLevel, fetching, showHelp}) =>{
         return (
             <div className='LevelDescription'>
                 <h3>Level {level.id}</h3>
-                <p>{level.objective}</p>
-                
-                <div className='Hint'>
-                    <p>{level.hint}</p>
-                </div>
+                <p><strong>body</strong>: {level.points}</p>
+                <p><strong>úloha</strong>: {level.objective}</p>
+                <p><strong>hint</strong>: {level.hint}</p>
                 <p>{button}</p>
                 <p><Button bsSize='sm' onClick={showHelp}>{messages.showHelp}</Button></p>
             </div>

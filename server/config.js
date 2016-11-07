@@ -17,7 +17,11 @@ let config = {
     profileURL: getEnv('MINSKYTRAIN_OAUTH_BASEURL') + '/api/me/',
   },
   secret: getEnv('MINSKYTRAIN_SECRET'),
-  submitURL: getEnv('MINSKYTRAIN_SUBMIT_BASEURL') + '/odovzdavanie/ajax/externy_submit/'
+  submitURL: getEnv('MINSKYTRAIN_SUBMIT_BASEURL') + '/odovzdavanie/ajax/externy_submit/',
+  submitTokens: {
+    A: getEnv('MINSKYTRAIN_SUBMIT_TOKEN_A'),
+    B: getEnv('MINSKYTRAIN_SUBMIT_TOKEN_B'),
+  },
 }
 
 config.baseUrl = getEnv('MINSKYTRAIN_BASEURL', `http://${config.host}:${config.port}`)
