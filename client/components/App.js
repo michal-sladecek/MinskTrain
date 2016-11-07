@@ -24,7 +24,10 @@ const App = React.createClass({
             <Nav>
               <LinkContainer to="/levels"><NavItem>
                 Zoznam levelov
-              </NavItem></LinkContainer >
+              </NavItem></LinkContainer>
+              <LinkContainer to="/tutorial"><NavItem>
+                Tutoriál
+              </NavItem></LinkContainer>
             </Nav>
             <Nav pullRight>
               {profile.loggedIn === true && (<Navbar.Text>{profile.username}</Navbar.Text>)}

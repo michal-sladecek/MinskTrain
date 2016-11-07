@@ -23,6 +23,10 @@ export default (app) => {
 
   app.use('/static', express.static(path.join(__dirname, '..', 'public')))
 
+  app.get(urls.videoTutorial, (req, res) => {
+    res.redirect(config.tutorialURL)
+  })
+
   app.get(urls.getUserProfile, (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     const user = req.user ? {...req.user, loggedIn: true} : {loggedIn: false}

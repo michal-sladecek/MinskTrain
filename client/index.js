@@ -6,6 +6,8 @@ import { Router, Route, IndexRedirect, Redirect} from 'react-router'
 import { Provider } from 'react-redux'
 import store, { history } from './store'
 
+import Tutorial from './components/Tutorial.js'
+
 import MenuContainer from './containers/MenuContainer.js'
 import GameContainer from './containers/GameContainer.js'
 import AppContainer from './containers/AppContainer.js'
@@ -17,6 +19,7 @@ const router = (
       <Route path="/" component={AppContainer}>
         <IndexRedirect to="/levels" />
         <Route path="levels" component={MenuContainer}/>
+        <Route path="tutorial" component={Tutorial}/>
         <Route path="game/:level" component={GameContainer}/>
         <Redirect from="*" to="/" />
       </Route>

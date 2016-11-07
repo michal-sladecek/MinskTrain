@@ -22,6 +22,7 @@ let config = {
     A: getEnv('MINSKYTRAIN_SUBMIT_TOKEN_A'),
     B: getEnv('MINSKYTRAIN_SUBMIT_TOKEN_B'),
   },
+  tutorialURL: getEnv('MINSKYTRAIN_TUTORIAL_URL')
 }
 
 config.baseUrl = getEnv('MINSKYTRAIN_BASEURL', `http://${config.host}:${config.port}`)

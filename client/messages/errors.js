@@ -2,6 +2,9 @@ import React from 'react'
 import {Button} from 'react-bootstrap'
 import {Link} from 'react-router'
 
+import Tutorial from '../components/Tutorial.js'
+
+
 const errors = {
   'BAD_OPERATION': {
     title: 'Vláčik sa vykoľajil.',
@@ -45,7 +48,7 @@ const errors = {
     title: 'Tutoriál',
     body: (
       <div>
-        <p>Tu bude video.</p>
+        <Tutorial />
       </div>
     ),
   },
