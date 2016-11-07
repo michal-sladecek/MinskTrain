@@ -76,6 +76,12 @@ const levelsDefault = {
             objective: 'Zdvojnásob číslo vo vagóne A',
             hint: 'Už vieš presúvať. Najskôr si teda presuň A niekam preč. Vieš ho presunúť späť dvakrát?',
             allowed: ['rails','stations', 'switches', 'helpers'],
+            beforeTestCase: (oldTrain) => {
+                for(let i=1;i<oldTrain.length;++i){
+                    oldTrain[i]=0
+                }
+                return true
+            },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[0]===2*oldTrain[0])
             }
