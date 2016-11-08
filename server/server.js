@@ -48,18 +48,27 @@ export default (app) => {
 
   app.post(urls.sendLevel, (req, res) => {
     res.setHeader('Content-Type', 'application/json')
+    console.log('SEND_LEVEL')
+    console.log('__TIME', new Date())
+    console.log('__USER', req.user)
+    console.log('__LEVEL', req.body.curLevel)
+    console.log('__MAP', req.body.map)
     const result = testSolution(req.body.map, req.body.curLevel)
+    console.log('__RESULT', result)
     if(result.ok){
       users.solveLevel(req.user.id, req.body.curLevel, (err) => {
         if (err) {
           console.log(err)
           res.statusCode = 500
+          console.log('__FAILED')
           res.send()
           return
         }
+        console.log('__SAVED')
         res.send(JSON.stringify(result))
       })
     } else {
+      console.log('__SAVED')
       res.send(JSON.stringify(result))
     }
   })
