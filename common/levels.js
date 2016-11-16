@@ -182,7 +182,7 @@ const levelsDefault = {
                 for(let i=2;i<oldTrain.length;++i){
                     oldTrain[i]=0
                 }
-                return true
+                return (oldTrain[0]*oldTrain[1] != 0)
             },
             checker: (oldTrain, newTrain) => {
                 return (newTrain[2]===gcd(oldTrain[0], oldTrain[1]))
