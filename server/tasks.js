@@ -35,5 +35,5 @@ const submit = (uid, solved, group, done) => {
 
 export const resubmit = (uid, solved, level, done) => {
   const {group} = levels[level]
-  submit(uid, solved, group, done)
+  if(config.submitURL) submit(uid, solved, group, done)
 }

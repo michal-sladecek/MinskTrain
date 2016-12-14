@@ -24,7 +24,7 @@ let config = {
   },
   tutorialURL: getEnv('MINSKYTRAIN_TUTORIAL_URL')
 }
-
+if(!getEnv('MINSKYTRAIN_SUBMIT_BASEURL')) config.submitURL = false
 config.baseUrl = getEnv('MINSKYTRAIN_BASEURL', `http://${config.host}:${config.port}`)
 
 export default config
