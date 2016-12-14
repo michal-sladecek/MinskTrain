@@ -239,6 +239,77 @@ const levelsDefault = {
 
             }
         },
+        D1: {
+            id: 'D1',
+            points: 0,
+            group: 'D',
+            objective: 'Do vagona B uloz najvyznamnejsiu cifru cisla z vagona A',
+            hint: 'Napr. pre 123 v Acku by sa do Bcka ulozilo 1',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                let najvyznamnejsia = oldTrain[0]
+                    .toString()
+                    [0]
+                    
+                return (newTrain[1] == Number(najvyznamnejsia))
+            }
+        },
+        D2: {
+            id: 'D2',
+            points: 0,
+            group: 'D',
+            objective: 'Do vagona B uloz reverz cisla z vagona A',
+            hint: 'Napr. pre 123 v Acku by sa do Bcka ulozilo 321',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                let reverz = oldTrain[0]
+                    .toString()
+                    .split("")
+                    .reverser()
+                    .join("")
+
+                return (newTrain[1] == Number(reverz))
+            }
+        },
+        D3: {
+            id: 'D3',
+            points: 0,
+            group: 'D',
+            objective: 'Do vagona B uloz odmocninu cisla z vagona A (zaokruhlenu nadol)',
+            hint: '',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                return (newTrain[1] == Math.floor(Math.sqrt(oldTrain[0])))
+            }
+        },
+        D4: {
+            id: 'D4',
+            points: 0,
+            group: 'D',
+            objective: 'V A,B,C su cele kladne cisla. Do D uloz 1 ak su to strany nejakeho trojuholnika, inac 0',
+            hint: '',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters', 'plusminus', 'muldivmod'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                let jeTrojuholnik = (oldTrain[0]+oldTrain[1] > oldTrain[2] &&
+                    oldTrain[1]+oldTrain[2] > oldTrain[0] &&
+                    oldTrain[0]+oldTrain[2] > oldTrain[1])
+                if(jeTrojuholnik && newTrain[1] == 1) return true
+                if(!jeTrojuholnik && newTrain[1] == 0) return true
+                return false
+            }
+        },
     }
 
 
