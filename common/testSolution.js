@@ -14,7 +14,7 @@ const testSolution = function(map, curLevel){
         }
     }
     for(var i=0;i<cases.length;++i){
-        const originalTrain = cases[i]
+        const originalTrain = cases[i].slice()
         if(levels[curLevel].beforeTestCase) {
             let test = levels[curLevel].beforeTestCase(originalTrain)
             if(!test) continue
