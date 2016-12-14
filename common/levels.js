@@ -188,6 +188,57 @@ const levelsDefault = {
                 return (newTrain[2]===gcd(oldTrain[0], oldTrain[1]))
             }
         },
+        C1: {
+            id: 'C1',
+            points: 0,
+            group: 'C',
+            objective: 'Zisti, kolko z pomedzi voznov A-F obsahuje kladne cisla a vysledok daj do vozna K',
+            hint: '',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters'],
+            beforeTestCase: (oldTrain) => {
+                oldTrain[10] = 0
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                let numNonZero = 0
+                for(let i=0;i<10;++i) if(oldTrain[i] > 0) numNonZero++
+                return (newTrain[10]===numNonZero)
+            }
+        },
+        C2: {
+            id: 'C2',
+            points: 0,
+            group: 'C',
+            objective: 'Ak treba, vymen hodnoty v A a B, tak aby do ciela prisla v A ta mensia a v B vacsia z nich.',
+            hint: '',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                if(oldTrain[0] > oldTrain[1]) {
+                    return (oldTrain[0]==newTrain[1] && oldTrain[1]==newTrain[0])
+                }
+                return (newTrain[0]===oldTrain[0] && newTrain[1]==oldTrain[1])
+            }
+        },
+        C3: {
+            id: 'C3',
+            points: 0,
+            group: 'C',
+            objective: 'Usporiadaj hodnoty vo voznoch A,B,C od najmensej po najvacsiu',
+            hint: '',
+            allowed: ['rails','stations', 'switches', 'helpers', 'setters'],
+            beforeTestCase: (oldTrain) => {
+                return true
+            },
+            checker: (oldTrain, newTrain) => {
+                let a = oldTrain.slice(0,3)
+                a.sort()
+                return (newTrain[0]==a[0] && newTrain[1] == a[1] && newTrain[2] == a[2])
+
+            }
+        },
     }
 
 
